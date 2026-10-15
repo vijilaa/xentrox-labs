@@ -1,6 +1,6 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
-import logoSymbol from '../assets/images/logo-symbol.png';
+import logoSymbol from '../assets/Images/logo-symbol.png';
 
 // Standalone Logo Symbol component for navbar, sidebar, login, etc.
 export function LogoSymbol({ size = 38, className = '' }) {
