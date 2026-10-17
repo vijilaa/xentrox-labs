@@ -83,7 +83,21 @@ const sendHealthCheck = (req, res) => {
   });
 };
 
+// Ensure DB connection is active before processing requests (critical for serverless / cold starts)
+app.use(async (req, res, next) => {
+  if (!isDbConnected() && process.env.MONGO_URI) {
+    try {
+      await connectDB();
+    } catch (err) {
+      console.warn('⚠️ [DB Pre-check] Reconnect triggered:', err.message);
+    }
+  }
+  next();
+});
+
 app.get('/', sendHealthCheck);
+app.get('/health', sendHealthCheck);
+app.get('/api', sendHealthCheck);
 app.get('/api/health', sendHealthCheck);
 
 // Database check middleware for state-dependent endpoints
@@ -104,13 +118,21 @@ const checkDatabaseReady = (req, res, next) => {
   });
 };
 
-// API Routes
+// API Routes with /api prefix
 app.use('/api/admin', adminRoutes);
 app.use('/api/categories', categoryRoutes);
 app.use('/api/courses', courseRoutes);
 app.use('/api/portfolio', portfolioRoutes);
 app.use('/api/blogs', blogRoutes);
 app.use('/api/enquiries', checkDatabaseReady, enquiryRoutes);
+
+// Also mount routes directly for serverless handlers where /api prefix may be stripped
+app.use('/admin', adminRoutes);
+app.use('/categories', categoryRoutes);
+app.use('/courses', courseRoutes);
+app.use('/portfolio', portfolioRoutes);
+app.use('/blogs', blogRoutes);
+app.use('/enquiries', checkDatabaseReady, enquiryRoutes);
 
 // Error Handling Middlewares
 app.use(notFound);

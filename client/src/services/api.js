@@ -59,7 +59,10 @@ const fetchAPI = async (endpoint, method = 'GET', body = null, token = null) => 
   }
 
   try {
-    const url = `${API_BASE_URL}${endpoint}`;
+    // Prevent accidental duplicate /api/api prefixes
+    const cleanEndpoint = endpoint.replace(/^\/api(?=\/|$)/, '');
+    const normalizedEndpoint = cleanEndpoint.startsWith('/') ? cleanEndpoint : `/${cleanEndpoint}`;
+    const url = `${API_BASE_URL}${normalizedEndpoint}`;
     const response = await fetch(url, options);
 
     // Parse JSON safely with fallback for non-JSON responses
@@ -74,7 +77,16 @@ const fetchAPI = async (endpoint, method = 'GET', body = null, token = null) => 
     }
 
     if (!response.ok) {
-      const errorText = data.message || `Request failed with status ${response.status}`;
+      let errorText = data.message;
+      if (!errorText) {
+        if (response.status === 405) {
+          errorText = '405 Method Not Allowed: API request was received by static frontend instead of backend. Check Vercel API routing or VITE_API_URL.';
+        } else if (response.status === 404) {
+          errorText = '404 Not Found: API endpoint could not be found.';
+        } else {
+          errorText = `Request failed with status ${response.status}`;
+        }
+      }
       const err = new Error(errorText);
       err.status = response.status;
       err.data = data;
