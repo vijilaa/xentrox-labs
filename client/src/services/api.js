@@ -1,12 +1,50 @@
-const API_BASE_URL = 'http://localhost:5000/api';
+// Resolve the Backend API URL dynamically based on environment and access point
+const resolveApiBaseUrl = () => {
+  // 1. Explicit Vite environment variable (Highest Priority - used for Vercel/Netlify/production)
+  const envUrl = import.meta.env.VITE_API_URL;
+  if (envUrl && typeof envUrl === 'string' && envUrl.trim() !== '') {
+    const trimmed = envUrl.trim().replace(/\/+$/, '');
+    return trimmed.endsWith('/api') ? trimmed : `${trimmed}/api`;
+  }
+
+  // 2. Browser runtime detection
+  if (typeof window !== 'undefined' && window.location) {
+    const { hostname, protocol } = window.location;
+
+    // A. Desktop Localhost
+    if (hostname === 'localhost' || hostname === '127.0.0.1') {
+      return 'http://localhost:5000/api';
+    }
+
+    // B. Mobile testing over Local Area Network (Wi-Fi IP e.g. 192.168.x.x, 10.x.x.x)
+    const isLocalNetworkIp = /^(192\.168\.|10\.|172\.(1[6-9]|2[0-9]|3[0-1])\.)/.test(hostname);
+    if (isLocalNetworkIp) {
+      return `${protocol}//${hostname}:5000/api`;
+    }
+
+    // C. Production Deployed Domain (e.g. *.vercel.app, *.netlify.app, or custom domain)
+    // Default to relative /api for platforms using rewrites/proxies
+    return '/api';
+  }
+
+  return 'http://localhost:5000/api';
+};
+
+export const API_BASE_URL = resolveApiBaseUrl();
+
+// Log current API endpoint in development for easy debugging
+if (import.meta.env.DEV) {
+  console.log(`[XentroX API] Endpoint configured: ${API_BASE_URL}`);
+}
 
 // Helper for making authenticated/unauthenticated API calls
 const fetchAPI = async (endpoint, method = 'GET', body = null, token = null) => {
   const headers = {
-    'Content-Type': 'application/json'
+    'Content-Type': 'application/json',
+    Accept: 'application/json'
   };
 
-  const authToken = token || localStorage.getItem('xentrox_admin_token');
+  const authToken = token || (typeof localStorage !== 'undefined' ? localStorage.getItem('xentrox_admin_token') : null);
   if (authToken) {
     headers['Authorization'] = `Bearer ${authToken}`;
   }
@@ -21,20 +59,40 @@ const fetchAPI = async (endpoint, method = 'GET', body = null, token = null) => 
   }
 
   try {
-    const response = await fetch(`${API_BASE_URL}${endpoint}`, options);
-    const data = await response.json().catch(() => ({}));
+    const url = `${API_BASE_URL}${endpoint}`;
+    const response = await fetch(url, options);
+
+    // Parse JSON safely with fallback for non-JSON responses
+    const rawText = await response.text();
+    let data = {};
+    if (rawText) {
+      try {
+        data = JSON.parse(rawText);
+      } catch {
+        data = { message: rawText };
+      }
+    }
 
     if (!response.ok) {
-      const err = new Error(data.message || `Request failed with status ${response.status}`);
+      const errorText = data.message || `Request failed with status ${response.status}`;
+      const err = new Error(errorText);
       err.status = response.status;
+      err.data = data;
       throw err;
     }
 
     return data;
   } catch (error) {
+    // Human-friendly network failure detection (e.g. offline, DNS failure, CORS block)
     if (error.name === 'TypeError' && error.message.toLowerCase().includes('fetch')) {
-      const netErr = new Error('Cannot connect to server. Please verify backend server is running on http://localhost:5000');
+      const isLocalHost = typeof window !== 'undefined' && (window.location.hostname === 'localhost' || window.location.hostname === '127.0.0.1');
+      const networkErrorMessage = isLocalHost
+        ? 'Cannot connect to backend server on port 5000. Please ensure the backend server is running.'
+        : 'Cannot connect to server. Please check your internet connection or verify the deployed backend service is active.';
+
+      const netErr = new Error(networkErrorMessage);
       netErr.isNetworkError = true;
+      netErr.originalError = error;
       throw netErr;
     }
     throw error;
@@ -122,3 +180,7 @@ export const updateEnquiryStatus = (id, status) =>
 
 export const deleteEnquiry = (id) =>
   fetchAPI(`/enquiries/${id}`, 'DELETE');
+
+// System Health API Check
+export const checkServerHealth = () =>
+  fetchAPI('/health', 'GET').catch(() => fetchAPI('/', 'GET'));

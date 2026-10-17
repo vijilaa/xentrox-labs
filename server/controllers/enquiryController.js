@@ -1,3 +1,4 @@
+const mongoose = require('mongoose');
 const Enquiry = require('../models/Enquiry');
 
 // @desc    Submit a new student/lead enquiry (Public from enrollment modal / website)
@@ -5,35 +6,60 @@ const Enquiry = require('../models/Enquiry');
 // @access  Public
 const createEnquiry = async (req, res) => {
   try {
+    // Check MongoDB Atlas connection readiness
+    if (mongoose.connection.readyState !== 1) {
+      return res.status(503).json({
+        success: false,
+        message:
+          'Database is currently reconnecting to MongoDB Atlas. If this persists, ensure 0.0.0.0/0 is added to your MongoDB Atlas IP Access List.'
+      });
+    }
+
     const { fullName, name, email, phone, course, message } = req.body;
     const studentName = (fullName || name || '').trim();
 
     if (!studentName || !email || !phone) {
       return res.status(400).json({
         success: false,
-        message: 'Please provide full name, email, and phone number'
+        message: 'Please provide your full name, email address, and phone number.'
       });
     }
 
-    // Validate phone: must be exactly 10 digits
-    const phoneDigits = String(phone).replace(/\D/g, '');
-    if (phoneDigits.length !== 10) {
+    // Email format validation
+    const cleanEmail = email.trim().toLowerCase();
+    const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+    if (!emailRegex.test(cleanEmail)) {
       return res.status(400).json({
         success: false,
-        message: 'Phone number must be exactly 10 digits. Please enter a valid mobile number.'
+        message: 'Please enter a valid email address.'
+      });
+    }
+
+    // Sanitize and normalize phone digits (handling mobile autofill +91, 91, or leading 0)
+    let phoneDigits = String(phone).replace(/\D/g, '');
+    if (phoneDigits.length === 12 && phoneDigits.startsWith('91')) {
+      phoneDigits = phoneDigits.slice(2);
+    } else if (phoneDigits.length === 11 && phoneDigits.startsWith('0')) {
+      phoneDigits = phoneDigits.slice(1);
+    }
+
+    if (phoneDigits.length < 10 || phoneDigits.length > 15) {
+      return res.status(400).json({
+        success: false,
+        message: 'Phone number must be at least 10 digits. Please enter a valid mobile number.'
       });
     }
 
     const enquiry = await Enquiry.create({
       fullName: studentName,
-      email: email.trim().toLowerCase(),
+      email: cleanEmail,
       phone: phoneDigits,
-      course: course || 'General Inquiry',
-      message: message || '',
+      course: (course || 'General Technical Inquiry').trim(),
+      message: (message || '').trim(),
       status: 'pending'
     });
 
-    console.log(`📥 [Enquiry Saved to Atlas] New enquiry from ${studentName} (${enquiry.email}) for ${enquiry.course}`);
+    console.log(`📥 [Enquiry Saved to Atlas] New enquiry from ${studentName} (${enquiry.email}) for "${enquiry.course}"`);
 
     res.status(201).json({
       success: true,
@@ -42,7 +68,15 @@ const createEnquiry = async (req, res) => {
     });
   } catch (error) {
     console.error('❌ [Enquiry Save Failed]:', error.message);
-    res.status(500).json({ success: false, message: error.message || 'Failed to save enquiry to database' });
+    const isAtlasNetwork = error.message.includes('whitelisted') || error.message.includes('SSL alert') || error.message.includes('buffering timed out');
+    const userMessage = isAtlasNetwork
+      ? 'Database connection temporarily lost. Please verify MongoDB Atlas IP whitelist (0.0.0.0/0) and retry.'
+      : (error.message || 'Failed to save enquiry to database');
+
+    res.status(500).json({
+      success: false,
+      message: userMessage
+    });
   }
 };
 
@@ -51,6 +85,13 @@ const createEnquiry = async (req, res) => {
 // @access  Private (Admin)
 const getEnquiries = async (req, res) => {
   try {
+    if (mongoose.connection.readyState !== 1) {
+      return res.status(503).json({
+        success: false,
+        message: 'Database is currently reconnecting to Atlas. Please try again in a few moments.'
+      });
+    }
+
     const { status } = req.query;
     let filter = {};
 

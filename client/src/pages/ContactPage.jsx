@@ -16,11 +16,23 @@ export default function ContactPage() {
     setLoading(true);
 
     try {
-      const phoneDigits = (form.phone || '').replace(/\D/g, '') || '9999999999';
+      let phoneDigits = (form.phone || '').replace(/\D/g, '');
+      if (phoneDigits.length === 12 && phoneDigits.startsWith('91')) {
+        phoneDigits = phoneDigits.slice(2);
+      } else if (phoneDigits.length === 11 && phoneDigits.startsWith('0')) {
+        phoneDigits = phoneDigits.slice(1);
+      }
+
+      if (phoneDigits.length < 10) {
+        setErrorMsg('Please enter a valid 10-digit mobile number.');
+        setLoading(false);
+        return;
+      }
+
       await createEnquiry({
         fullName: form.name,
         email: form.email,
-        phone: phoneDigits.length === 10 ? phoneDigits : '9999999999',
+        phone: phoneDigits.slice(0, 10),
         course: 'General Contact Inquiry',
         message: form.message
       });

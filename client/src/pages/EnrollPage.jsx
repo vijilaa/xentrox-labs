@@ -1,4 +1,4 @@
-﻿import React, { useState } from 'react';
+import React, { useState } from 'react';
 import { Link, useSearchParams } from 'react-router-dom';
 import { createEnquiry } from '../services/api';
 import { courseCategories, headerInfo } from '../data/coursesData';
@@ -38,14 +38,18 @@ export default function EnrollPage() {
   const [errorMsg, setErrorMsg] = useState('');
 
   const handlePhoneChange = (e) => {
-    const digits = e.target.value.replace(/\D/g, '');
-    setFormData({ ...formData, phone: digits });
-    if (digits.length === 0) {
+    let digits = e.target.value.replace(/\D/g, '');
+    if (digits.length === 12 && digits.startsWith('91')) {
+      digits = digits.slice(2);
+    } else if (digits.length === 11 && digits.startsWith('0')) {
+      digits = digits.slice(1);
+    }
+    const cleanPhone = digits.slice(0, 10);
+    setFormData({ ...formData, phone: cleanPhone });
+    if (cleanPhone.length === 0) {
       setPhoneError('');
-    } else if (digits.length < 10) {
-      setPhoneError('Mobile number must be exactly 10 digits.');
-    } else if (digits.length > 10) {
-      setPhoneError('Mobile number must not exceed 10 digits.');
+    } else if (cleanPhone.length < 10) {
+      setPhoneError('Mobile number must be 10 digits.');
     } else {
       setPhoneError('');
     }
@@ -55,7 +59,13 @@ export default function EnrollPage() {
     e.preventDefault();
     setErrorMsg('');
 
-    const phoneDigits = formData.phone.replace(/\D/g, '');
+    let phoneDigits = formData.phone.replace(/\D/g, '');
+    if (phoneDigits.length === 12 && phoneDigits.startsWith('91')) {
+      phoneDigits = phoneDigits.slice(2);
+    } else if (phoneDigits.length === 11 && phoneDigits.startsWith('0')) {
+      phoneDigits = phoneDigits.slice(1);
+    }
+
     if (phoneDigits.length !== 10) {
       setPhoneError('Please enter a valid 10-digit mobile number.');
       return;
