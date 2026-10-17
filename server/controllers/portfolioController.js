@@ -39,7 +39,7 @@ const getPortfolioById = async (req, res) => {
 // @access  Private (Admin)
 const createPortfolioItem = async (req, res) => {
   try {
-    const { title, category, client, description, image, liveUrl, tags, featured } = req.body;
+    const { title, category, client, description, image, liveUrl, tags, featured, outcomes } = req.body;
 
     if (!title || !description) {
       return res.status(400).json({ success: false, message: 'Please provide project title and description' });
@@ -53,7 +53,8 @@ const createPortfolioItem = async (req, res) => {
       image: image || 'https://images.unsplash.com/photo-1555066931-4365d14bab8c?auto=format&fit=crop&w=800&q=80',
       liveUrl: liveUrl || '',
       tags: tags || [],
-      featured: featured || false
+      featured: featured || false,
+      outcomes: outcomes || ''
     });
 
     res.status(201).json({

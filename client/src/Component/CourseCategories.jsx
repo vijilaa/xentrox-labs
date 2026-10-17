@@ -172,10 +172,10 @@ function PosterCourseCard({
 
   return (
     <div
-      className={`group relative rounded-3xl p-6 sm:p-7 flex flex-col justify-between transition-all duration-300 hover:-translate-y-2 hover:shadow-2xl scroll-reveal stagger-${(index % 6) + 1} ${
+      className={`group relative rounded-3xl p-6 sm:p-7 flex flex-col justify-between h-full transition-all duration-200 hover:-translate-y-1 hover:shadow-xl scroll-reveal ${
         isDark
-          ? 'bg-[#003831] text-white border-2 border-[#004D43] hover:border-lime-400/80 shadow-lg'
-          : 'bg-white text-slate-900 border-2 border-[#DCEBE2] hover:border-lime-500 shadow-md'
+          ? 'bg-[#003831] text-white border-2 border-[#004D43] hover:border-lime-400/80 shadow-md'
+          : 'bg-white text-slate-900 border-2 border-[#DCEBE2] hover:border-lime-500 shadow-xs'
       }`}
     >
       <div>

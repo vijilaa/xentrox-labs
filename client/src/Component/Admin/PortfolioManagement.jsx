@@ -34,6 +34,7 @@ export default function PortfolioManagement({
     image: 'https://images.unsplash.com/photo-1555066931-4365d14bab8c?auto=format&fit=crop&w=800&q=80',
     liveUrl: '',
     tagsStr: 'React, Node.js, MongoDB',
+    outcomes: '',
     featured: false
   });
 
@@ -46,6 +47,7 @@ export default function PortfolioManagement({
       item.category.toLowerCase().includes(q) ||
       (item.client && item.client.toLowerCase().includes(q)) ||
       (item.description && item.description.toLowerCase().includes(q)) ||
+      (item.outcomes && item.outcomes.toLowerCase().includes(q)) ||
       matchesTags
     );
   });
@@ -60,6 +62,7 @@ export default function PortfolioManagement({
       image: 'https://images.unsplash.com/photo-1555066931-4365d14bab8c?auto=format&fit=crop&w=800&q=80',
       liveUrl: '',
       tagsStr: 'React, Node.js, MongoDB',
+      outcomes: '',
       featured: false
     });
     setModalOpen(true);
@@ -75,6 +78,7 @@ export default function PortfolioManagement({
       image: item.image || '',
       liveUrl: item.liveUrl || '',
       tagsStr: item.tags ? item.tags.join(', ') : '',
+      outcomes: item.outcomes || '',
       featured: item.featured || false
     });
     setModalOpen(true);
@@ -187,7 +191,14 @@ export default function PortfolioManagement({
 
                 <h4 className="text-base font-black text-slate-900 dark:text-white mb-1">{item.title}</h4>
                 <p className="text-[11px] text-blue-600 dark:text-cyan-400 font-semibold mb-2">Client: {item.client}</p>
-                <p className="text-xs text-slate-600 dark:text-slate-300 line-clamp-2 leading-relaxed mb-4">{item.description}</p>
+                <p className="text-xs text-slate-600 dark:text-slate-300 line-clamp-2 leading-relaxed mb-3">{item.description}</p>
+
+                {item.outcomes && (
+                  <div className="p-2 rounded-xl bg-lime-50/70 dark:bg-lime-950/30 border border-lime-200 dark:border-lime-800 text-[11px] text-slate-700 dark:text-slate-300 mb-3">
+                    <span className="font-bold text-lime-700 dark:text-lime-400">Outcome: </span>
+                    <span>{item.outcomes}</span>
+                  </div>
+                )}
 
                 {item.tags && item.tags.length > 0 && (
                   <div className="flex flex-wrap gap-1 mb-4">
@@ -323,6 +334,17 @@ export default function PortfolioManagement({
                   placeholder="React, Node.js, MongoDB, Docker"
                   value={formData.tagsStr}
                   onChange={(e) => setFormData({ ...formData, tagsStr: e.target.value })}
+                  className="w-full bg-slate-50 dark:bg-slate-950 border border-slate-200 dark:border-slate-800 rounded-xl px-3.5 py-2 text-slate-900 dark:text-white placeholder-slate-400 dark:placeholder-slate-500 focus:outline-none focus:border-blue-500 dark:focus:border-cyan-500"
+                />
+              </div>
+
+              <div>
+                <label className="block text-slate-700 dark:text-slate-300 font-bold mb-1">Measurable Outcome / Business Impact</label>
+                <input
+                  type="text"
+                  placeholder="e.g. 99.98% uptime, 40% speed boost, handling 15,000+ daily telemetry pings"
+                  value={formData.outcomes}
+                  onChange={(e) => setFormData({ ...formData, outcomes: e.target.value })}
                   className="w-full bg-slate-50 dark:bg-slate-950 border border-slate-200 dark:border-slate-800 rounded-xl px-3.5 py-2 text-slate-900 dark:text-white placeholder-slate-400 dark:placeholder-slate-500 focus:outline-none focus:border-blue-500 dark:focus:border-cyan-500"
                 />
               </div>

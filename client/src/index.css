@@ -233,29 +233,42 @@ a {
 /* ── Cards ── */
 .institute-card {
   background: #FFFFFF;
-  border: 1px solid #D4E8DC;
-  border-radius: 16px;
-  transition: transform 0.28s cubic-bezier(0.16, 1, 0.3, 1), box-shadow 0.28s ease, border-color 0.22s ease;
+  border: 1px solid #D8E8DF;
+  border-radius: 20px;
+  transition: transform 0.22s cubic-bezier(0.16, 1, 0.3, 1), box-shadow 0.22s ease, border-color 0.2s ease;
 }
 
 .institute-card:hover {
-  transform: translateY(-5px);
+  transform: translateY(-2px);
   border-color: #84CC16;
-  box-shadow: 0 16px 36px -8px rgba(3, 59, 50, 0.10);
+  box-shadow: 0 10px 25px -5px rgba(3, 59, 50, 0.08), 0 4px 10px -3px rgba(3, 59, 50, 0.04);
 }
 
 .course-card {
   background: #FFFFFF;
-  border: 1px solid #D4E8DC;
-  border-radius: 16px;
+  border: 1px solid #D8E8DF;
+  border-radius: 20px;
   overflow: hidden;
-  transition: transform 0.28s cubic-bezier(0.16, 1, 0.3, 1), box-shadow 0.28s ease, border-color 0.22s ease;
+  transition: transform 0.22s cubic-bezier(0.16, 1, 0.3, 1), box-shadow 0.22s ease, border-color 0.2s ease;
 }
 
 .course-card:hover {
-  transform: translateY(-5px);
+  transform: translateY(-2px);
   border-color: #84CC16;
-  box-shadow: 0 16px 36px -8px rgba(3, 59, 50, 0.12);
+  box-shadow: 0 10px 25px -5px rgba(3, 59, 50, 0.08), 0 4px 10px -3px rgba(3, 59, 50, 0.04);
+}
+
+.pro-card {
+  background: #FFFFFF;
+  border: 1px solid #D8E8DF;
+  border-radius: 20px;
+  transition: transform 0.22s cubic-bezier(0.16, 1, 0.3, 1), box-shadow 0.22s ease, border-color 0.2s ease;
+}
+
+.pro-card:hover {
+  transform: translateY(-2px);
+  border-color: #84CC16;
+  box-shadow: 0 12px 28px -6px rgba(3, 59, 50, 0.09), 0 4px 10px -3px rgba(3, 59, 50, 0.04);
 }
 
 /* ── Form Controls ── */
@@ -344,14 +357,13 @@ textarea:focus {
 }
 
 @keyframes float {
-
   0%,
   100% {
     transform: translateY(0);
   }
 
   50% {
-    transform: translateY(-8px);
+    transform: translateY(-2px);
   }
 }
 

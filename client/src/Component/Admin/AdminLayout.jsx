@@ -168,14 +168,17 @@ export default function AdminLayout({ onBackToSite, theme = 'dark', toggleTheme 
   const handleCreatePortfolio = async (data) => {
     await createPortfolioItem(data);
     await fetchAllData();
+    window.dispatchEvent(new Event('portfolio_updated'));
   };
   const handleUpdatePortfolio = async (id, data) => {
     await updatePortfolioItem(id, data);
     await fetchAllData();
+    window.dispatchEvent(new Event('portfolio_updated'));
   };
   const handleDeletePortfolio = async (id) => {
     await deletePortfolioItem(id);
     await fetchAllData();
+    window.dispatchEvent(new Event('portfolio_updated'));
   };
 
   // Blog Actions

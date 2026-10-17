@@ -36,6 +36,10 @@ const portfolioSchema = new mongoose.Schema(
     featured: {
       type: Boolean,
       default: false
+    },
+    outcomes: {
+      type: String,
+      default: ''
     }
   },
   {
