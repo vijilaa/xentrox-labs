@@ -28,12 +28,6 @@ export default function CoursesPage({ onOpenEnroll, onSelectCourse }) {
         <div className="absolute inset-0 bg-gradient-to-r from-[#033B32] via-[#033B32]/95 to-[#064E3B]/90 pointer-events-none" />
 
         <div className="max-w-7xl w-full mx-auto px-5 sm:px-8 lg:px-12 relative z-10">
-          <div className="text-xs font-mono font-bold text-lime-400/80 mb-3 flex items-center gap-2">
-            <Link to="/" className="hover:text-lime-300 transition-colors">Home</Link>
-            <span className="text-lime-400/40">/</span>
-            <span className="text-lime-400">Courses</span>
-          </div>
-
           <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 items-center">
             <div className="lg:col-span-8">
               <div className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-lime-500/15 border border-lime-500/30 text-lime-400 text-xs font-bold uppercase tracking-wider mb-4">

@@ -135,17 +135,6 @@ export default function App() {
       />
 
       <WhatsAppButton />
-
-      {/* Admin Portal Floating Pill */}
-      <button
-        onClick={() => { window.location.hash = 'admin'; setViewMode('admin'); }}
-        className="fixed bottom-5 left-5 sm:bottom-6 sm:left-6 z-40 bg-white border border-[#DDE9E4] hover:border-lime-500 text-slate-700 hover:text-lime-600 px-3.5 py-2.5 rounded-full shadow-lg text-xs font-bold flex items-center gap-2 group transition-all duration-200 hover:scale-105 cursor-pointer"
-        title="Access XentroX Admin Portal"
-      >
-        <LogoSymbol size={18} className="group-hover:rotate-12 transition-transform" />
-        <span className="hidden sm:inline font-heading font-black tracking-wide">Admin Portal</span>
-        <LayoutDashboard className="w-3.5 h-3.5 text-slate-400 group-hover:text-lime-500" />
-      </button>
     </div>
   );
 }

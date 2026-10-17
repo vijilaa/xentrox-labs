@@ -216,11 +216,6 @@ export default function BlogsPage() {
         {/* ── Page Banner ── */}
         <section className="page-banner py-16 sm:py-24">
           <div className="max-w-7xl w-full mx-auto px-5 sm:px-8 lg:px-12 relative z-10">
-            <nav className="flex items-center gap-2 text-xs font-semibold text-lime-400/60 mb-6">
-              <Link to="/" className="hover:text-lime-400 transition-colors">Home</Link>
-              <span>/</span>
-              <span className="text-lime-400">Blogs</span>
-            </nav>
             <div className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-lime-500/15 border border-lime-500/30 text-lime-400 text-xs font-bold uppercase tracking-wider mb-5">
               <Sparkles className="w-3.5 h-3.5" />
               Insights &amp; Learning

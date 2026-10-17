@@ -76,8 +76,30 @@ h5,
 h6 {
   font-family: var(--font-heading);
   letter-spacing: -0.02em;
-  color: var(--text-primary);
+  color: inherit;
   line-height: 1.2;
+}
+
+/* Ensure bright contrast in dark green/teal brand sections */
+.text-white h1,
+.text-white h2,
+.text-white h3,
+.text-white h4,
+.text-white h5,
+.text-white h6,
+[class*="bg-[#033B32]"] h1,
+[class*="bg-[#033B32]"] h2,
+[class*="bg-[#033B32]"] h3,
+[class*="bg-[#033B32]"] h4,
+[class*="bg-[#033B32]"] h5,
+[class*="bg-[#033B32]"] h6,
+[class*="bg-[#003831]"] h1,
+[class*="bg-[#003831]"] h2,
+[class*="bg-[#003831]"] h3,
+[class*="bg-[#003831]"] h4,
+[class*="bg-[#003831]"] h5,
+[class*="bg-[#003831]"] h6 {
+  color: #FFFFFF;
 }
 
 a {

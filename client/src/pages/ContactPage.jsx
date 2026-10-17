@@ -53,11 +53,6 @@ export default function ContactPage() {
       {/* Page Banner */}
       <section className="bg-[#033B32] py-14 sm:py-20">
         <div className="max-w-[1440px] w-full mx-auto px-4 sm:px-6 lg:px-10">
-          <div className="text-xs font-mono mb-3 flex items-center gap-2 text-lime-400/60">
-            <Link to="/" className="hover:text-lime-400">Home</Link>
-            <span>/</span>
-            <span className="text-lime-400">Contact Us</span>
-          </div>
           <div className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-lime-500/15 border border-lime-500/30 text-lime-400 text-xs font-bold uppercase tracking-wider mb-4">
             <Sparkles className="w-3.5 h-3.5" />
             Get in Touch

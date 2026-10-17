@@ -121,7 +121,7 @@ export default function Highlights({ onOpenEnroll }) {
               <span className="text-xs font-mono text-lime-400 font-bold uppercase tracking-wider block">
                 Studio-Driven Learning Experience
               </span>
-              <h3 className="text-2xl sm:text-3xl font-black font-heading leading-tight">
+              <h3 className="text-2xl sm:text-3xl font-black font-heading leading-tight text-white">
                 Train inside the same studio that ships software to global clients.
               </h3>
               <p className="text-sm sm:text-base text-slate-200 max-w-2xl leading-relaxed">

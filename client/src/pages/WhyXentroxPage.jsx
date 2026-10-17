@@ -1,4 +1,4 @@
-﻿import React from 'react';
+import React from 'react';
 import { Link, useNavigate } from 'react-router-dom';
 import {
   Boxes,
@@ -53,12 +53,6 @@ export default function WhyXentroxPage({ onOpenEnroll }) {
       {/* 1. Header */}
       <section className="py-16 sm:py-20 bg-[#F8FAF8] border-b border-[#E2ECE6] transition-colors">
         <div className="max-w-[1440px] w-full mx-auto px-4 sm:px-6 lg:px-10">
-          <div className="text-xs font-mono font-bold text-lime-600 mb-3 flex items-center gap-2">
-            <Link to="/" className="hover:underline text-slate-500">Home</Link>
-            <span>/</span>
-            <span>Why XentroX</span>
-          </div>
-
           <div className="max-w-3xl">
             <span className="institute-badge mb-4">
               <Sparkles className="w-3.5 h-3.5" />
