@@ -6,13 +6,19 @@ const Enquiry = require('../models/Enquiry');
 // @access  Public
 const createEnquiry = async (req, res) => {
   try {
-    // Check MongoDB Atlas connection readiness
+    // Check MongoDB Atlas connection readiness with auto-connect fallback
     if (mongoose.connection.readyState !== 1) {
-      return res.status(503).json({
-        success: false,
-        message:
-          'Database is currently reconnecting to MongoDB Atlas. If this persists, ensure 0.0.0.0/0 is added to your MongoDB Atlas IP Access List.'
-      });
+      const { connectDB, getDbStatus } = require('../config/db');
+      await connectDB();
+      if (mongoose.connection.readyState !== 1) {
+        const dbInfo = getDbStatus();
+        return res.status(503).json({
+          success: false,
+          errorCategory: dbInfo.errorCategory || 'DATABASE_UNAVAILABLE',
+          message: dbInfo.userMessage || 'Database connection to MongoDB Atlas is currently unavailable. Please verify Atlas Network Access.',
+          diagnostic: dbInfo.diagnostic
+        });
+      }
     }
 
     const { fullName, name, email, phone, course, message } = req.body;
@@ -86,10 +92,17 @@ const createEnquiry = async (req, res) => {
 const getEnquiries = async (req, res) => {
   try {
     if (mongoose.connection.readyState !== 1) {
-      return res.status(503).json({
-        success: false,
-        message: 'Database is currently reconnecting to Atlas. Please try again in a few moments.'
-      });
+      const { connectDB, getDbStatus } = require('../config/db');
+      await connectDB();
+      if (mongoose.connection.readyState !== 1) {
+        const dbInfo = getDbStatus();
+        return res.status(503).json({
+          success: false,
+          errorCategory: dbInfo.errorCategory || 'DATABASE_UNAVAILABLE',
+          message: dbInfo.userMessage || 'Database connection to MongoDB Atlas is currently unavailable. Please verify Atlas Network Access.',
+          diagnostic: dbInfo.diagnostic
+        });
+      }
     }
 
     const { status } = req.query;

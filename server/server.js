@@ -2,7 +2,6 @@ const express = require('express');
 const cors = require('cors');
 const dotenv = require('dotenv');
 const mongoose = require('mongoose');
-
 const path = require('path');
 
 // Load environment variables before any module or DB connection
@@ -76,13 +75,19 @@ const sendHealthCheck = (req, res) => {
     status: 'online',
     server: 'running',
     environment: process.env.NODE_ENV || 'development',
-    database: dbInfo.status,
-    databaseReady: dbInfo.ready,
-    databaseName: dbInfo.database,
-    host: dbInfo.host,
+    database: {
+      status: dbInfo.status,
+      ready: dbInfo.ready,
+      name: dbInfo.database,
+      host: dbInfo.host,
+      clusterTarget: dbInfo.clusterTarget,
+      uriConfigured: dbInfo.uriConfigured,
+      errorCategory: dbInfo.errorCategory,
+      diagnostic: dbInfo.diagnostic
+    },
     message: dbInfo.ready
       ? 'XentroX Labs REST API Service is fully operational'
-      : 'API server is running; database is connecting/reconnecting to MongoDB Atlas. Ensure 0.0.0.0/0 is whitelisted in Atlas Network Access.'
+      : dbInfo.userMessage
   });
 };
 
@@ -92,49 +97,37 @@ app.all('/health', sendHealthCheck);
 app.all('/api', sendHealthCheck);
 app.all('/api/health', sendHealthCheck);
 
-// Ensure DB connection is active before processing data requests (critical for serverless / cold starts)
-app.use(async (req, res, next) => {
-  // Health checks already returned above; for all other endpoints, ensure active DB connection
-  if (!isDbConnected() && process.env.MONGO_URI) {
-    try {
-      await connectDB();
-    } catch (err) {
-      console.warn('⚠️ [DB Pre-check] Reconnect triggered:', err.message);
-    }
-  }
-  next();
-});
-
-// Database check middleware for state-dependent endpoints
-const checkDatabaseReady = async (req, res, next) => {
+// Unified Database Connection Middleware for all API data routes
+// Guarantees Mongoose connection is verified active before any controller/route handler runs
+const ensureDatabaseConnected = async (req, res, next) => {
+  // 1. If connection is already live, proceed immediately
   if (isDbConnected()) {
     return next();
   }
 
-  // Attempt connection if not yet active
-  if (process.env.MONGO_URI) {
-    try {
-      await connectDB();
-    } catch (err) {
-      console.warn('⚠️ [DB Middleware] Reconnect failed:', err.message);
+  // 2. Attempt connection (or await in-flight connection promise)
+  try {
+    const conn = await connectDB();
+    if (conn && isDbConnected()) {
+      return next();
     }
+  } catch (err) {
+    console.error('❌ [Database Middleware] Connection error:', err.message);
   }
 
-  if (isDbConnected()) {
-    return next();
-  }
-
-  // Allow GET requests to try or fallback, but protect POST/PUT/DELETE
-  if (req.method === 'GET') {
-    return next();
-  }
+  // 3. If database is not available, return clean 503 Service Unavailable
+  const dbInfo = getDbStatus();
 
   return res.status(503).json({
     success: false,
-    message:
-      'Database connection to MongoDB Atlas is currently reconnecting. If this persists, please ensure your IP (or 0.0.0.0/0) is whitelisted in MongoDB Atlas Network Access.'
+    errorCategory: dbInfo.errorCategory || 'DATABASE_UNAVAILABLE',
+    message: dbInfo.userMessage || 'Database connection to MongoDB Atlas is currently unavailable.',
+    diagnostic: dbInfo.diagnostic || 'Please verify MongoDB Atlas Network Access and Vercel Environment Variables.'
   });
 };
+
+// Protect all API data routes with the database connection middleware
+app.use('/api', ensureDatabaseConnected);
 
 // API Routes with /api prefix
 app.use('/api/admin', adminRoutes);
@@ -142,15 +135,15 @@ app.use('/api/categories', categoryRoutes);
 app.use('/api/courses', courseRoutes);
 app.use('/api/portfolio', portfolioRoutes);
 app.use('/api/blogs', blogRoutes);
-app.use('/api/enquiries', checkDatabaseReady, enquiryRoutes);
+app.use('/api/enquiries', enquiryRoutes);
 
 // Also mount routes directly for serverless handlers where /api prefix may be stripped or omitted
-app.use('/admin', adminRoutes);
-app.use('/categories', categoryRoutes);
-app.use('/courses', courseRoutes);
-app.use('/portfolio', portfolioRoutes);
-app.use('/blogs', blogRoutes);
-app.use('/enquiries', checkDatabaseReady, enquiryRoutes);
+app.use('/admin', ensureDatabaseConnected, adminRoutes);
+app.use('/categories', ensureDatabaseConnected, categoryRoutes);
+app.use('/courses', ensureDatabaseConnected, courseRoutes);
+app.use('/portfolio', ensureDatabaseConnected, portfolioRoutes);
+app.use('/blogs', ensureDatabaseConnected, blogRoutes);
+app.use('/enquiries', ensureDatabaseConnected, enquiryRoutes);
 
 // Error Handling Middlewares
 app.use(notFound);
@@ -165,7 +158,7 @@ if (!process.env.VERCEL) {
     console.log(`🌐 [XentroX] Environment: ${process.env.NODE_ENV || 'development'}`);
     console.log(`📡 [XentroX] Initiating MongoDB Atlas connection in background...`);
     
-    // Safe background Atlas connection
+    // Safe background Atlas connection for local persistent server
     connectDB().catch((err) => {
       console.error('⚠️ [XentroX] Background Atlas connection attempt encountered an issue:', err.message);
     });
