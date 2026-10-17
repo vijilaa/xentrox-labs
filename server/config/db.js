@@ -27,14 +27,55 @@ if (!cached) {
 
 let connectionAttempts = 0;
 
+// Automatically sanitize and URL-encode credentials in MONGO_URI if special characters (@, #, $, etc.) are unencoded
+const sanitizeMongoUri = (rawUri) => {
+  if (!rawUri || typeof rawUri !== 'string') return rawUri;
+
+  const prefixMatch = rawUri.match(/^(mongodb(?:\+srv)?:\/\/)(.*)$/);
+  if (!prefixMatch) return rawUri;
+
+  const prefix = prefixMatch[1];
+  const rest = prefixMatch[2];
+
+  // Find the LAST '@' which separates credentials from host
+  const lastAtIndex = rest.lastIndexOf('@');
+  if (lastAtIndex === -1) return rawUri;
+
+  const credentialsPart = rest.substring(0, lastAtIndex);
+  const hostAndOptions = rest.substring(lastAtIndex + 1);
+
+  // Split username and password by first ':'
+  const firstColonIndex = credentialsPart.indexOf(':');
+  if (firstColonIndex === -1) return rawUri;
+
+  const username = credentialsPart.substring(0, firstColonIndex);
+  const rawPassword = credentialsPart.substring(firstColonIndex + 1);
+
+  // Cleanly encode credentials in case raw special characters like '@' were entered
+  let decodedPassword = rawPassword;
+  try {
+    decodedPassword = decodeURIComponent(rawPassword);
+  } catch {}
+  const encodedPassword = encodeURIComponent(decodedPassword);
+
+  let decodedUser = username;
+  try {
+    decodedUser = decodeURIComponent(username);
+  } catch {}
+  const encodedUser = encodeURIComponent(decodedUser);
+
+  return `${prefix}${encodedUser}:${encodedPassword}@${hostAndOptions}`;
+};
+
 // Helper to safely extract cluster hostname and database name without exposing credentials
 const extractSafeUriDetails = (uri) => {
   if (!uri || typeof uri !== 'string') {
     return { configured: false, clusterHost: null, databaseName: null };
   }
   try {
+    const sanitized = sanitizeMongoUri(uri);
     // Regex extracts hostname and DB name after @
-    const match = uri.match(/@([^/?#]+)(?:\/([^?#]+))?/);
+    const match = sanitized.match(/@([^/?#]+)(?:\/([^?#]+))?/);
     return {
       configured: true,
       clusterHost: match ? match[1] : 'xentroxlabscluster.ln58fho.mongodb.net',
@@ -111,13 +152,9 @@ const ensureDefaultAdmin = async () => {
 };
 
 const connectDB = async () => {
-  const atlasUri = process.env.MONGO_URI;
+  const rawAtlasUri = process.env.MONGO_URI;
 
-  const safeDetails = extractSafeUriDetails(atlasUri);
-  cached.clusterHost = safeDetails.clusterHost;
-  cached.databaseName = safeDetails.databaseName;
-
-  if (!atlasUri) {
+  if (!rawAtlasUri) {
     const errorDetails = {
       category: 'MISSING_ENV_ERROR',
       userMessage: 'Database connection string is missing.',
@@ -128,6 +165,11 @@ const connectDB = async () => {
     console.error(`❌ [MongoDB] ${errorDetails.diagnostic}`);
     return null;
   }
+
+  const atlasUri = sanitizeMongoUri(rawAtlasUri);
+  const safeDetails = extractSafeUriDetails(atlasUri);
+  cached.clusterHost = safeDetails.clusterHost;
+  cached.databaseName = safeDetails.databaseName;
 
   // 1. Return active connection if ready (warm serverless container reuse)
   if (cached.conn && mongoose.connection.readyState === 1) {
