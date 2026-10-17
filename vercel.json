@@ -1,14 +1,73 @@
 {
   "version": 2,
-  "outputDirectory": "client/dist",
   "rewrites": [
+    {
+      "source": "/api",
+      "destination": "/api/index.js"
+    },
     {
       "source": "/api/(.*)",
       "destination": "/api/index.js"
     },
     {
-      "source": "/((?!api/).*)",
-      "destination": "/index.html"
+      "source": "/health",
+      "destination": "/api/index.js"
+    },
+    {
+      "source": "/admin",
+      "destination": "/api/index.js"
+    },
+    {
+      "source": "/admin/(.*)",
+      "destination": "/api/index.js"
+    },
+    {
+      "source": "/categories",
+      "destination": "/api/index.js"
+    },
+    {
+      "source": "/categories/(.*)",
+      "destination": "/api/index.js"
+    },
+    {
+      "source": "/courses",
+      "destination": "/api/index.js"
+    },
+    {
+      "source": "/courses/(.*)",
+      "destination": "/api/index.js"
+    },
+    {
+      "source": "/portfolio",
+      "destination": "/api/index.js"
+    },
+    {
+      "source": "/portfolio/(.*)",
+      "destination": "/api/index.js"
+    },
+    {
+      "source": "/blogs",
+      "destination": "/api/index.js"
+    },
+    {
+      "source": "/blogs/(.*)",
+      "destination": "/api/index.js"
+    },
+    {
+      "source": "/enquiries",
+      "destination": "/api/index.js"
+    },
+    {
+      "source": "/enquiries/(.*)",
+      "destination": "/api/index.js"
+    },
+    {
+      "source": "/",
+      "destination": "/api/index.js"
+    },
+    {
+      "source": "/(.*)",
+      "destination": "/api/index.js"
     }
   ]
 }

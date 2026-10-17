@@ -1,7 +1,20 @@
 const mongoose = require('mongoose');
+const path = require('path');
+const dotenv = require('dotenv');
 
-let isConnecting = false;
-let reconnectTimer = null;
+dotenv.config({ path: path.resolve(__dirname, '../.env') });
+dotenv.config();
+
+// Disable buffering so queries fail fast or await active connection
+mongoose.set('bufferCommands', false);
+
+// Global connection cache for serverless environments (prevents duplicate connections & cold start timeouts)
+let cached = global.mongoose;
+
+if (!cached) {
+  cached = global.mongoose = { conn: null, promise: null };
+}
+
 let connectionAttempts = 0;
 
 const ensureDefaultAdmin = async () => {
@@ -30,7 +43,7 @@ const getAtlasTroubleshootingGuide = (errorMessage) => {
     errorMessage.includes('whitelisted') ||
     errorMessage.includes('SSL alert number 80') ||
     errorMessage.includes('MongooseServerSelectionError') ||
-    errorMessage.includes('bad auth') === false && errorMessage.includes('timed out');
+    (!errorMessage.includes('bad auth') && errorMessage.includes('timed out'));
 
   if (isWhitelistError) {
     return [
@@ -52,81 +65,72 @@ const connectDB = async () => {
     return null;
   }
 
-  // Prevent concurrent connection attempts
-  if (isConnecting || mongoose.connection.readyState === 1) {
-    return mongoose.connection;
+  // 1. If connection already active, reuse it immediately
+  if (cached.conn && mongoose.connection.readyState === 1) {
+    return cached.conn;
   }
 
-  isConnecting = true;
-  connectionAttempts += 1;
-
-  try {
+  // 2. If connection is in progress, await the existing promise instead of skipping
+  if (!cached.promise) {
+    connectionAttempts += 1;
     console.log(`[MongoDB] Connecting to MongoDB Atlas (Attempt #${connectionAttempts})...`);
 
-    const conn = await mongoose.connect(atlasUri, {
-      serverSelectionTimeoutMS: 5000, // Fail quickly (5s) instead of hanging 30s
+    const opts = {
+      bufferCommands: false, // Fail fast on disconnected state instead of buffering 10s
+      serverSelectionTimeoutMS: 10000, // 10s timeout for TLS handshake and replica set election
       socketTimeoutMS: 45000,
       connectTimeoutMS: 10000,
       maxPoolSize: 10,
-      minPoolSize: 1,
-      family: 4 // Use IPv4 for stability across networks
+      minPoolSize: 1
+    };
+
+    cached.promise = mongoose.connect(atlasUri, opts).then((m) => {
+      console.log(`✅ [MongoDB] Connected to Atlas Host: ${m.connection.host}`);
+      console.log(`📦 [MongoDB] Database: ${m.connection.name}`);
+      return m;
+    }).catch((err) => {
+      cached.promise = null;
+      console.error(`❌ [MongoDB] Atlas connection failed: ${err.message}`);
+      console.error(getAtlasTroubleshootingGuide(err.message));
+      throw err;
     });
+  }
 
-    console.log(`✅ [MongoDB] Connected to Atlas Host: ${conn.connection.host}`);
-    console.log(`📦 [MongoDB] Database: ${conn.connection.name}`);
-
-    if (reconnectTimer) {
-      clearTimeout(reconnectTimer);
-      reconnectTimer = null;
-    }
-    connectionAttempts = 0;
-    isConnecting = false;
-
-    // Verify admin once connected
+  try {
+    cached.conn = await cached.promise;
     await ensureDefaultAdmin();
-    return conn;
+    return cached.conn;
   } catch (error) {
-    isConnecting = false;
-    console.error(`❌ [MongoDB] Atlas connection failed: ${error.message}`);
-    console.error(getAtlasTroubleshootingGuide(error.message));
-
-    // Schedule automatic reconnection without crashing the backend server process
-    if (!reconnectTimer) {
-      const delay = Math.min(5000 * Math.min(connectionAttempts, 3), 15000);
-      console.log(`🔄 [MongoDB] Will automatically retry connection in ${delay / 1000} seconds...`);
-      reconnectTimer = setTimeout(() => {
-        reconnectTimer = null;
-        connectDB().catch(() => {});
-      }, delay);
-    }
-
+    cached.promise = null;
     return null;
   }
 };
 
-// Mongoose Connection Event Handlers
-mongoose.connection.on('connected', () => {
-  console.log(`📡 [MongoDB Event] Connection established with ${mongoose.connection.name}`);
-});
+// Mongoose Connection Event Handlers (registered once)
+if (!global.__mongooseEventsAttached) {
+  global.__mongooseEventsAttached = true;
 
-mongoose.connection.on('error', (err) => {
-  console.error(`⚠️ [MongoDB Event Error]: ${err.message}`);
-});
+  mongoose.connection.on('connected', () => {
+    console.log(`📡 [MongoDB Event] Connection established with ${mongoose.connection.name}`);
+  });
 
-mongoose.connection.on('disconnected', () => {
-  console.warn('⚠️ [MongoDB Event] Connection lost to Atlas. Scheduling reconnection...');
-  if (!reconnectTimer && !isConnecting) {
-    reconnectTimer = setTimeout(() => {
-      reconnectTimer = null;
-      connectDB().catch(() => {});
-    }, 5000);
-  }
-});
+  mongoose.connection.on('error', (err) => {
+    console.error(`⚠️ [MongoDB Event Error]: ${err.message}`);
+  });
 
-mongoose.connection.on('reconnected', () => {
-  console.log('✅ [MongoDB Event] Successfully reconnected to Atlas cluster');
-  ensureDefaultAdmin().catch(() => {});
-});
+  mongoose.connection.on('disconnected', () => {
+    console.warn('⚠️ [MongoDB Event] Connection lost to Atlas.');
+    if (cached) {
+      cached.conn = null;
+      cached.promise = null;
+    }
+  });
+
+  mongoose.connection.on('reconnected', () => {
+    console.log('✅ [MongoDB Event] Successfully reconnected to Atlas cluster');
+    ensureDefaultAdmin().catch(() => {});
+  });
+}
 
 const isDbConnected = () => mongoose.connection.readyState === 1;
 
@@ -152,4 +156,3 @@ connectDB.getDbStatus = getDbStatus;
 connectDB.ensureDefaultAdmin = ensureDefaultAdmin;
 
 module.exports = connectDB;
-

@@ -3,7 +3,10 @@ const cors = require('cors');
 const dotenv = require('dotenv');
 const mongoose = require('mongoose');
 
+const path = require('path');
+
 // Load environment variables before any module or DB connection
+dotenv.config({ path: path.resolve(__dirname, '.env') });
 dotenv.config();
 
 const { connectDB, getDbStatus, isDbConnected } = require('./config/db');
@@ -55,8 +58,9 @@ const corsOptions = {
     return callback(null, true);
   },
   credentials: true,
-  methods: ['GET', 'POST', 'PUT', 'DELETE', 'OPTIONS', 'PATCH'],
-  allowedHeaders: ['Content-Type', 'Authorization', 'X-Requested-With', 'Accept', 'Origin']
+  methods: ['GET', 'POST', 'PUT', 'DELETE', 'OPTIONS', 'PATCH', 'HEAD'],
+  allowedHeaders: ['Content-Type', 'Authorization', 'X-Requested-With', 'Accept', 'Origin'],
+  optionsSuccessStatus: 200
 };
 
 app.use(cors(corsOptions));
@@ -64,12 +68,11 @@ app.use(cors(corsOptions));
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 
-// Health Check API - root and /api/health
+// Health Check API - root, /health, /api, and /api/health
 const sendHealthCheck = (req, res) => {
   const dbInfo = getDbStatus();
-  const statusCode = dbInfo.ready ? 200 : 200; // Always 200 so deployment health probes don't fail container
 
-  res.status(statusCode).json({
+  res.status(200).json({
     status: 'online',
     server: 'running',
     environment: process.env.NODE_ENV || 'development',
@@ -83,8 +86,15 @@ const sendHealthCheck = (req, res) => {
   });
 };
 
-// Ensure DB connection is active before processing requests (critical for serverless / cold starts)
+// Handle all HTTP methods (GET, POST, HEAD, OPTIONS) for health checks so probes never fail
+app.all('/', sendHealthCheck);
+app.all('/health', sendHealthCheck);
+app.all('/api', sendHealthCheck);
+app.all('/api/health', sendHealthCheck);
+
+// Ensure DB connection is active before processing data requests (critical for serverless / cold starts)
 app.use(async (req, res, next) => {
+  // Health checks already returned above; for all other endpoints, ensure active DB connection
   if (!isDbConnected() && process.env.MONGO_URI) {
     try {
       await connectDB();
@@ -95,13 +105,21 @@ app.use(async (req, res, next) => {
   next();
 });
 
-app.get('/', sendHealthCheck);
-app.get('/health', sendHealthCheck);
-app.get('/api', sendHealthCheck);
-app.get('/api/health', sendHealthCheck);
-
 // Database check middleware for state-dependent endpoints
-const checkDatabaseReady = (req, res, next) => {
+const checkDatabaseReady = async (req, res, next) => {
+  if (isDbConnected()) {
+    return next();
+  }
+
+  // Attempt connection if not yet active
+  if (process.env.MONGO_URI) {
+    try {
+      await connectDB();
+    } catch (err) {
+      console.warn('⚠️ [DB Middleware] Reconnect failed:', err.message);
+    }
+  }
+
   if (isDbConnected()) {
     return next();
   }
@@ -126,7 +144,7 @@ app.use('/api/portfolio', portfolioRoutes);
 app.use('/api/blogs', blogRoutes);
 app.use('/api/enquiries', checkDatabaseReady, enquiryRoutes);
 
-// Also mount routes directly for serverless handlers where /api prefix may be stripped
+// Also mount routes directly for serverless handlers where /api prefix may be stripped or omitted
 app.use('/admin', adminRoutes);
 app.use('/categories', categoryRoutes);
 app.use('/courses', courseRoutes);
