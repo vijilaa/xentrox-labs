@@ -215,11 +215,11 @@ export default function Navbar({ onOpenEnroll, onSelectCourse }) {
           </div>
 
           {/* Mobile: Hamburger Button (Visible on all screens < lg) */}
-          <div className="flex lg:hidden items-center gap-1.5 xs:gap-2 shrink-0 z-50">
+          <div className="flex lg:hidden items-center gap-2 shrink-0 z-50">
             <button
               type="button"
               onClick={handleEnrollClick}
-              className="px-2.5 xs:px-3 py-1 h-8 text-[11px] font-bold rounded-lg bg-[#84CC16] text-[#003831] shadow-xs active:scale-95 transition-transform cursor-pointer"
+              className="px-3 h-9 text-xs font-bold rounded-xl bg-[#84CC16] hover:bg-[#92dc1d] active:bg-[#78ba14] text-[#003831] shadow-xs active:scale-95 transition-all cursor-pointer flex items-center justify-center shrink-0"
             >
               Enroll
             </button>
@@ -229,13 +229,17 @@ export default function Navbar({ onOpenEnroll, onSelectCourse }) {
               onClick={() => setMobileOpen((p) => !p)}
               aria-label={mobileOpen ? 'Close menu' : 'Open menu'}
               aria-expanded={mobileOpen}
-              className={`w-8.5 h-8.5 flex items-center justify-center rounded-lg border transition-all cursor-pointer ${
+              className={`w-9 h-9 shrink-0 flex items-center justify-center rounded-xl border shadow-xs transition-all cursor-pointer active:scale-90 ${
                 mobileOpen
-                  ? 'bg-[#84CC16] text-[#003831] border-lime-500'
-                  : 'bg-[#F4F9F6] border-[#E2EBE5] text-slate-800'
-              } active:scale-90`}
+                  ? 'bg-[#84CC16] text-[#003831] border-lime-500 shadow-lime-400/20'
+                  : 'bg-white hover:bg-slate-50 border-[#D4E2D8] text-slate-800'
+              }`}
             >
-              {mobileOpen ? <X size={18} className="animate-scale-in" /> : <Menu size={18} />}
+              {mobileOpen ? (
+                <X size={18} className="stroke-[2.5] animate-scale-in" />
+              ) : (
+                <Menu size={18} className="stroke-[2.2]" />
+              )}
             </button>
           </div>
         </div>
