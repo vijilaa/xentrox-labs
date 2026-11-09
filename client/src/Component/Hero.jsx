@@ -88,7 +88,7 @@ export default function Hero({ onOpenEnroll }) {
         <img
           src="/kanyakumari-tech-hero.png"
           alt="XentroX Labs - Practical Tech Education with Kanyakumari Coastline & Modern Tech Skyline"
-          className="hero-panorama-img h-full w-full object-cover object-[36%_38%] sm:object-left lg:object-[28%_center] xl:object-[35%_center]"
+          className="hero-panorama-img h-full w-full object-cover object-[42%_10%] sm:object-left lg:object-[28%_center] xl:object-[35%_center]"
           fetchPriority="high"
           decoding="async"
         />
@@ -144,12 +144,12 @@ export default function Hero({ onOpenEnroll }) {
       </div>
 
       {/* ── Main Content Container ── */}
-      <div className="hero-container relative z-10 mx-auto w-full max-w-[1440px] px-4 xs:px-5 pt-[88px] xs:pt-[96px] sm:pt-28 md:pt-32 lg:pt-20 pb-10 xs:pb-12 sm:pb-16 lg:pb-20">
+      <div className="hero-container relative z-10 mx-auto w-full max-w-[1440px] px-4 xs:px-5 pt-[230px] xs:pt-[250px] sm:pt-28 md:pt-32 lg:pt-20 pb-8 xs:pb-10 sm:pb-16 lg:pb-20">
         <div className="hero-copy max-w-md sm:max-w-lg lg:max-w-[480px] pt-0 sm:pt-2 lg:pt-16 xl:pt-20">
 
           {/* Headline - High-impact executive landing page typography */}
-          <h1 className="hero-heading mb-4 sm:mb-6 font-heading text-2xl xs:text-3xl sm:text-4xl md:text-[42px] lg:text-[46px] xl:text-[50px] font-extrabold leading-[1.14] tracking-tight text-white">
-            <span className="block text-white drop-shadow-xs">
+          <h1 className="hero-heading mb-3 sm:mb-6 font-heading text-[24px] xs:text-[27px] sm:text-4xl md:text-[42px] lg:text-[46px] xl:text-[50px] font-extrabold leading-[1.16] tracking-tight text-white text-center sm:text-left">
+            <span className="block text-white drop-shadow-md">
               Connecting Kanyakumari
             </span>
             <span className="hero-heading-accent mt-1 sm:mt-1.5 block">
@@ -158,7 +158,7 @@ export default function Hero({ onOpenEnroll }) {
           </h1>
 
           {/* Action Buttons - Decreased size, sleek & modern with page-matched animations */}
-          <div className="hero-actions mb-6 sm:mb-8 flex flex-col gap-2.5 sm:flex-row sm:items-center">
+          <div className="hero-actions mb-5 sm:mb-8 flex flex-col gap-2.5 sm:flex-row sm:items-center justify-center sm:justify-start">
             <Link
               to="/courses"
               className="hero-primary-btn group inline-flex h-10 w-full sm:w-auto items-center justify-center gap-2 rounded-lg px-4 sm:px-5 py-2.5 text-xs sm:text-sm font-semibold no-underline shadow-sm"
@@ -180,7 +180,7 @@ export default function Hero({ onOpenEnroll }) {
           </div>
 
           {/* Key Trust Benefits with clean dividers */}
-          <div className="hero-trust flex flex-wrap items-center gap-2 xs:gap-2.5 sm:gap-3.5 text-xs sm:text-[13px] font-medium text-white/90">
+          <div className="hero-trust flex flex-wrap items-center justify-center sm:justify-start gap-2 xs:gap-2.5 sm:gap-3.5 text-xs sm:text-[13px] font-medium text-white/90">
             <div className="flex items-center gap-1.5">
               <CheckCircle2 size={15} className="shrink-0 text-lime-400" />
               <span className="font-semibold text-white/95">Practical Labs</span>
@@ -225,25 +225,27 @@ export default function Hero({ onOpenEnroll }) {
 
         @media (max-width: 640px) {
           .hero-section {
-            min-height: auto !important;
-            padding-bottom: 2.5rem;
+            min-height: 590px !important;
+            padding-bottom: 2rem !important;
           }
           .hero-left-vignette {
             background: linear-gradient(
-              90deg,
-              rgba(3, 35, 29, 0.95) 0%,
-              rgba(3, 35, 29, 0.82) 48%,
-              rgba(3, 35, 29, 0.28) 72%,
-              rgba(3, 35, 29, 0.08) 100%
+              180deg,
+              rgba(3, 35, 29, 0.45) 0%,
+              rgba(3, 35, 29, 0.1) 18%,
+              transparent 36%,
+              rgba(3, 35, 29, 0.7) 58%,
+              rgba(3, 35, 29, 0.96) 82%,
+              #03231d 100%
             ) !important;
           }
           .hero-statue-glow {
-            left: 76% !important;
-            top: 36% !important;
+            left: 50% !important;
+            top: 24% !important;
             transform: translate(-50%, -50%) !important;
-            width: 240px !important;
+            width: 260px !important;
             height: 280px !important;
-            opacity: 0.75 !important;
+            opacity: 0.85 !important;
           }
         }
 

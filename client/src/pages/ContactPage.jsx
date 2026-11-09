@@ -66,9 +66,7 @@ export default function ContactPage() {
         {/* Content on the left */}
         <div className="max-w-[1440px] w-full mx-auto px-4 xs:px-5 sm:px-8 lg:px-12 xl:px-16 relative z-10 py-10 sm:py-16">
           <div className="max-w-xl">
-            <span className="inline-block text-[11px] font-bold tracking-widest text-lime-400 uppercase mb-2.5 drop-shadow-sm">
-              Connect With Us
-            </span>
+
             <h1 className="text-xl xs:text-2xl sm:text-3xl md:text-4xl lg:text-[42px] xl:text-[46px] font-bold font-heading tracking-tight text-white leading-[1.18] mb-3 sm:mb-4 drop-shadow-md">
               Talk to Us About Your Tech Journey
             </h1>
