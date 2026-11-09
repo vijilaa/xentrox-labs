@@ -4,7 +4,7 @@ import Navbar from './Component/Navbar';
 import Footer from './Component/Footer';
 import CourseModal from './Component/CourseModal';
 import EnrollmentModal from './Component/EnrollmentModal';
-import WhatsAppButton from './Component/WhatsAppButton';
+import Chatbot from './Component/Chatbot';
 import AdminLayout from './Component/Admin/AdminLayout';
 import useScrollReveal from './hooks/useScrollReveal';
 import { LayoutDashboard } from 'lucide-react';
@@ -13,23 +13,46 @@ import { LogoSymbol } from './Component/Logo';
 // Pages
 import HomePage from './pages/HomePage';
 import AboutPage from './pages/AboutPage';
-import WhyXentroxPage from './pages/WhyXentroxPage';
 import CoursesPage from './pages/CoursesPage';
 import PortfolioPage from './pages/PortfolioPage';
 import CareerAssistancePage from './pages/CareerAssistancePage';
 import BlogsPage from './pages/BlogsPage';
 import ContactPage from './pages/ContactPage';
 import EnrollPage from './pages/EnrollPage';
+import NotFoundPage from './pages/NotFoundPage';
+
+import Lenis from 'lenis';
+import 'lenis/dist/lenis.css';
+import gsap from 'gsap';
+import { ScrollTrigger } from 'gsap/ScrollTrigger';
 
 import './App.css';
+
+gsap.registerPlugin(ScrollTrigger);
 
 function ScrollToTop() {
   const { pathname } = useLocation();
   useEffect(() => {
-    window.scrollTo({ top: 0, left: 0, behavior: 'instant' });
+    if (window.lenis) {
+      window.lenis.scrollTo(0, { immediate: true });
+    } else {
+      window.scrollTo({ top: 0, left: 0, behavior: 'instant' });
+    }
   }, [pathname]);
   return null;
 }
+
+// Helper to detect if current route is the protected admin path
+const isAdminPath = (pathname = '', hash = '') => {
+  const p = (pathname || '').toLowerCase();
+  const h = (hash || '').toLowerCase();
+  return (
+    p === '/xentroxadmin' ||
+    p.startsWith('/xentroxadmin/') ||
+    h === '#xentroxadmin' ||
+    h.startsWith('#xentroxadmin/')
+  );
+};
 
 export default function App() {
   const [selectedCourse, setSelectedCourse] = useState(null);
@@ -41,12 +64,47 @@ export default function App() {
   const navigate = useNavigate();
 
   const [viewMode, setViewMode] = useState(() => {
-    return window.location.hash === '#admin' || window.location.pathname === '/admin'
+    return isAdminPath(window.location.pathname, window.location.hash)
       ? 'admin'
       : 'public';
   });
 
   useScrollReveal();
+
+  // Initialize Lenis smooth inertial scrolling
+  useEffect(() => {
+    if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
+      return;
+    }
+
+    const lenis = new Lenis({
+      duration: 1.15,
+      easing: (t) => Math.min(1, 1.001 - Math.pow(2, -10 * t)),
+      orientation: 'vertical',
+      gestureOrientation: 'vertical',
+      smoothWheel: true,
+      wheelMultiplier: 1.0,
+      touchMultiplier: 1.4,
+    });
+
+    window.lenis = lenis;
+
+    // Sync Lenis scroll events with GSAP ScrollTrigger
+    lenis.on('scroll', ScrollTrigger.update);
+
+    const rafCallback = (time) => {
+      lenis.raf(time * 1000);
+    };
+
+    gsap.ticker.add(rafCallback);
+    gsap.ticker.lagSmoothing(0);
+
+    return () => {
+      gsap.ticker.remove(rafCallback);
+      lenis.destroy();
+      window.lenis = null;
+    };
+  }, []);
 
   // Force light theme always
   useEffect(() => {
@@ -56,16 +114,22 @@ export default function App() {
 
   useEffect(() => {
     const handleHashChange = () => {
-      if (window.location.hash === '#admin') setViewMode('admin');
-      else if (window.location.hash === '' || window.location.hash === '#') setViewMode('public');
+      if (isAdminPath(window.location.pathname, window.location.hash)) {
+        setViewMode('admin');
+      } else if (window.location.hash === '' || window.location.hash === '#') {
+        setViewMode('public');
+      }
     };
     window.addEventListener('hashchange', handleHashChange);
     return () => window.removeEventListener('hashchange', handleHashChange);
   }, []);
 
   useEffect(() => {
-    if (location.pathname === '/admin' || window.location.hash === '#admin') setViewMode('admin');
-    else setViewMode('public');
+    if (isAdminPath(location.pathname, window.location.hash)) {
+      setViewMode('admin');
+    } else {
+      setViewMode('public');
+    }
   }, [location.pathname]);
 
   const handleOpenEnroll = (trackName = '') => {
@@ -105,7 +169,7 @@ export default function App() {
         <Routes>
           <Route path="/" element={<HomePage onOpenEnroll={handleOpenEnroll} onSelectCourse={handleSelectCourse} />} />
           <Route path="/about" element={<AboutPage onOpenEnroll={handleOpenEnroll} />} />
-          <Route path="/why-xentrox" element={<WhyXentroxPage onOpenEnroll={handleOpenEnroll} />} />
+          <Route path="/why-xentrox" element={<Navigate to="/" replace />} />
           <Route path="/courses" element={<CoursesPage onSelectCourse={handleSelectCourse} onOpenEnroll={handleOpenEnroll} />} />
           <Route path="/projects" element={<PortfolioPage onOpenEnroll={handleOpenEnroll} />} />
           <Route path="/portfolio" element={<PortfolioPage onOpenEnroll={handleOpenEnroll} />} />
@@ -114,8 +178,18 @@ export default function App() {
           <Route path="/insights" element={<Navigate to="/blogs" replace />} />
           <Route path="/contact" element={<ContactPage />} />
           <Route path="/enroll" element={<EnrollPage />} />
-          <Route path="/admin" element={<AdminLayout theme="light" toggleTheme={() => { }} onBackToSite={() => navigate('/')} />} />
-          <Route path="*" element={<Navigate to="/" replace />} />
+          {/* New Admin Routes */}
+          <Route path="/XentroXadmin" element={<AdminLayout theme="light" toggleTheme={() => { }} onBackToSite={() => navigate('/')} />} />
+          <Route path="/XentroXadmin/*" element={<AdminLayout theme="light" toggleTheme={() => { }} onBackToSite={() => navigate('/')} />} />
+          <Route path="/xentroxadmin" element={<Navigate to="/XentroXadmin" replace />} />
+          <Route path="/xentroxadmin/*" element={<Navigate to="/XentroXadmin" replace />} />
+
+          {/* Old /admin route explicitly displays 404 Page Not Found */}
+          <Route path="/admin" element={<NotFoundPage />} />
+          <Route path="/admin/*" element={<NotFoundPage />} />
+
+          {/* Global Fallback: 404 Page Not Found */}
+          <Route path="*" element={<NotFoundPage />} />
         </Routes>
       </main>
 
@@ -134,7 +208,11 @@ export default function App() {
         initialCourse={enrollTrack}
       />
 
-      <WhatsAppButton />
+
+      <Chatbot
+        onOpenEnroll={handleOpenEnroll}
+        onSelectCourse={handleSelectCourse}
+      />
     </div>
   );
 }

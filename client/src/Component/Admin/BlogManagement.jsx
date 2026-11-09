@@ -1,5 +1,7 @@
 import React, { useState } from 'react';
 import { Plus, Edit2, Trash2, X, Search, FileText, AlertCircle } from 'lucide-react';
+import ImageUploadInput from './ImageUploadInput';
+import { resolveImageUrl, DEFAULT_BLOG_FALLBACK } from '../../utils/imageHelper';
 
 export default function BlogManagement({
   blogs,
@@ -100,22 +102,22 @@ export default function BlogManagement({
   return (
     <div className="space-y-6">
       {/* Action Header */}
-      <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-4 p-5 rounded-3xl bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-800 shadow-xl transition-colors">
+      <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-3.5 sm:gap-4 p-4 xs:p-5 rounded-2xl sm:rounded-3xl bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-800 shadow-xl transition-colors">
         <div>
-          <h3 className="text-lg font-black text-slate-900 dark:text-white">Blogs & Articles</h3>
-          <p className="text-xs text-slate-500 dark:text-slate-400">
+          <h3 className="text-base sm:text-lg font-black text-slate-900 dark:text-white">Blogs & Articles</h3>
+          <p className="text-[11px] sm:text-xs text-slate-500 dark:text-slate-400">
             Publish industry insights, career guides, and technical tutorials ({blogs.length} total)
           </p>
         </div>
 
-        <div className="flex items-center gap-3">
-          <div className="relative w-48 sm:w-64">
+        <div className="flex flex-col xs:flex-row items-stretch xs:items-center gap-2.5 sm:gap-3">
+          <div className="relative w-full xs:w-48 sm:w-64">
             <input
               type="text"
               placeholder="Search blogs..."
               value={activeSearch}
               onChange={(e) => handleSearchChange(e.target.value)}
-              className="w-full bg-slate-50 dark:bg-slate-950 border border-slate-200 dark:border-slate-800 rounded-xl px-3.5 py-2 pl-9 pr-8 text-xs text-slate-900 dark:text-white placeholder-slate-400 dark:placeholder-slate-500 focus:outline-none focus:border-blue-500 dark:focus:border-cyan-500 transition-colors"
+              className="w-full bg-slate-50 dark:bg-slate-950 border border-slate-200 dark:border-slate-800 rounded-xl px-3.5 py-2 pl-9 pr-8 text-xs text-slate-900 dark:text-white placeholder-slate-400 dark:placeholder-slate-500 focus:outline-none focus:border-lime-500 dark:focus:border-lime-400 transition-colors"
             />
             <Search className="w-3.5 h-3.5 absolute left-3 top-3 text-slate-400 dark:text-slate-500" />
             {activeSearch && (
@@ -151,7 +153,7 @@ export default function BlogManagement({
                 </p>
                 <button
                   onClick={handleClearSearch}
-                  className="mt-4 px-4 py-1.5 rounded-xl bg-blue-50 dark:bg-cyan-500/10 text-blue-600 dark:text-cyan-400 border border-blue-200 dark:border-cyan-500/20 hover:bg-blue-600 hover:text-white dark:hover:bg-cyan-500 dark:hover:text-slate-950 text-xs font-bold transition-all"
+                  className="mt-4 px-4 py-1.5 rounded-xl bg-lime-50 dark:bg-lime-500/10 text-lime-600 dark:text-lime-400 border border-lime-200 dark:border-lime-500/20 hover:bg-lime-400 hover:text-[#022620] dark:hover:bg-lime-400 dark:hover:text-slate-950 text-xs font-bold transition-all"
                 >
                   Clear Search Filter
                 </button>
@@ -174,6 +176,7 @@ export default function BlogManagement({
             <table className="w-full text-left text-xs">
               <thead className="bg-slate-50 dark:bg-slate-950 text-slate-600 dark:text-slate-400 text-[10px] font-bold uppercase tracking-wider border-b border-slate-200 dark:border-slate-800">
                 <tr>
+                  <th className="p-3.5">Image</th>
                   <th className="p-3.5">Blog Title</th>
                   <th className="p-3.5">Slug</th>
                   <th className="p-3.5">Category</th>
@@ -185,8 +188,20 @@ export default function BlogManagement({
               <tbody className="divide-y divide-slate-100 dark:divide-slate-800/60 font-medium">
                 {filteredBlogs.map((blog) => (
                   <tr key={blog._id} className="hover:bg-slate-50/70 dark:hover:bg-slate-950/40 transition-colors">
+                    <td className="p-3.5">
+                      <div className="w-10 h-10 rounded-lg overflow-hidden bg-slate-100 dark:bg-slate-800 border border-slate-200 dark:border-slate-700 shrink-0">
+                        <img
+                          src={resolveImageUrl(blog.image, DEFAULT_BLOG_FALLBACK)}
+                          alt={blog.title}
+                          className="w-full h-full object-cover"
+                          onError={(e) => {
+                            e.target.src = DEFAULT_BLOG_FALLBACK;
+                          }}
+                        />
+                      </div>
+                    </td>
                     <td className="p-3.5 text-slate-900 dark:text-white font-bold">{blog.title}</td>
-                    <td className="p-3.5 text-blue-600 dark:text-cyan-400 font-mono text-[11px]">{blog.slug}</td>
+                    <td className="p-3.5 text-lime-600 dark:text-lime-400 font-mono text-[11px]">{blog.slug}</td>
                     <td className="p-3.5 text-slate-600 dark:text-slate-300">{blog.category}</td>
                     <td className="p-3.5 text-slate-600 dark:text-slate-300">{blog.author}</td>
                     <td className="p-3.5">
@@ -203,7 +218,7 @@ export default function BlogManagement({
                     <td className="p-3.5 text-right space-x-2">
                       <button
                         onClick={() => handleOpenEdit(blog)}
-                        className="p-1.5 rounded-lg bg-blue-50 dark:bg-blue-600/20 text-blue-600 dark:text-cyan-300 hover:bg-blue-600 hover:text-white transition-colors"
+                        className="p-1.5 rounded-lg bg-lime-50 dark:bg-lime-500/20 text-lime-600 dark:text-lime-300 hover:bg-lime-400 hover:text-[#022620] transition-colors"
                         title="Edit Blog"
                       >
                         <Edit2 className="w-3.5 h-3.5" />
@@ -226,8 +241,8 @@ export default function BlogManagement({
 
       {/* Create / Edit Modal */}
       {modalOpen && (
-        <div className="fixed inset-0 z-50 flex items-center justify-center p-4 bg-slate-950/80 backdrop-blur-md animate-fadeIn">
-          <div className="relative w-full max-w-lg bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-800 rounded-3xl p-6 shadow-2xl overflow-hidden max-h-[85vh] overflow-y-auto transition-colors">
+        <div className="fixed inset-0 z-50 flex items-center justify-center p-3 xs:p-4 bg-slate-950/80 backdrop-blur-md animate-fadeIn">
+          <div className="relative w-full max-w-lg bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-800 rounded-2xl sm:rounded-3xl p-5 sm:p-6 shadow-2xl overflow-hidden max-h-[92vh] overflow-y-auto transition-colors">
             <button
               onClick={() => setModalOpen(false)}
               className="absolute top-5 right-5 p-2 rounded-full bg-slate-100 dark:bg-slate-800 text-slate-500 dark:text-slate-400 hover:text-slate-900 dark:hover:text-white transition-colors"
@@ -248,18 +263,18 @@ export default function BlogManagement({
                   placeholder="e.g. Top 5 Full Stack Development Trends"
                   value={formData.title}
                   onChange={(e) => setFormData({ ...formData, title: e.target.value })}
-                  className="w-full bg-slate-50 dark:bg-slate-950 border border-slate-200 dark:border-slate-800 rounded-xl px-3.5 py-2 text-slate-900 dark:text-white placeholder-slate-400 dark:placeholder-slate-500 focus:outline-none focus:border-blue-500 dark:focus:border-cyan-500"
+                  className="w-full bg-slate-50 dark:bg-slate-950 border border-slate-200 dark:border-slate-800 rounded-xl px-3.5 py-2 text-slate-900 dark:text-white placeholder-slate-400 dark:placeholder-slate-500 focus:outline-none focus:border-lime-500 dark:focus:border-lime-400"
                 />
               </div>
 
-              <div className="grid grid-cols-2 gap-3">
+              <div className="grid grid-cols-1 sm:grid-cols-2 gap-3">
                 <div>
                   <label className="block text-slate-700 dark:text-slate-300 font-bold mb-1">Author</label>
                   <input
                     type="text"
                     value={formData.author}
                     onChange={(e) => setFormData({ ...formData, author: e.target.value })}
-                    className="w-full bg-slate-50 dark:bg-slate-950 border border-slate-200 dark:border-slate-800 rounded-xl px-3.5 py-2 text-slate-900 dark:text-white placeholder-slate-400 dark:placeholder-slate-500 focus:outline-none focus:border-blue-500 dark:focus:border-cyan-500"
+                    className="w-full bg-slate-50 dark:bg-slate-950 border border-slate-200 dark:border-slate-800 rounded-xl px-3.5 py-2 text-slate-900 dark:text-white placeholder-slate-400 dark:placeholder-slate-500 focus:outline-none focus:border-lime-500 dark:focus:border-lime-400"
                   />
                 </div>
 
@@ -269,7 +284,7 @@ export default function BlogManagement({
                     type="text"
                     value={formData.category}
                     onChange={(e) => setFormData({ ...formData, category: e.target.value })}
-                    className="w-full bg-slate-50 dark:bg-slate-950 border border-slate-200 dark:border-slate-800 rounded-xl px-3.5 py-2 text-slate-900 dark:text-white placeholder-slate-400 dark:placeholder-slate-500 focus:outline-none focus:border-blue-500 dark:focus:border-cyan-500"
+                    className="w-full bg-slate-50 dark:bg-slate-950 border border-slate-200 dark:border-slate-800 rounded-xl px-3.5 py-2 text-slate-900 dark:text-white placeholder-slate-400 dark:placeholder-slate-500 focus:outline-none focus:border-lime-500 dark:focus:border-lime-400"
                   />
                 </div>
               </div>
@@ -281,7 +296,26 @@ export default function BlogManagement({
                   placeholder="Short 1-2 sentence preview"
                   value={formData.excerpt}
                   onChange={(e) => setFormData({ ...formData, excerpt: e.target.value })}
-                  className="w-full bg-slate-50 dark:bg-slate-950 border border-slate-200 dark:border-slate-800 rounded-xl px-3.5 py-2 text-slate-900 dark:text-white placeholder-slate-400 dark:placeholder-slate-500 focus:outline-none focus:border-blue-500 dark:focus:border-cyan-500"
+                  className="w-full bg-slate-50 dark:bg-slate-950 border border-slate-200 dark:border-slate-800 rounded-xl px-3.5 py-2 text-slate-900 dark:text-white placeholder-slate-400 dark:placeholder-slate-500 focus:outline-none focus:border-lime-500 dark:focus:border-lime-400"
+                />
+              </div>
+
+              <ImageUploadInput
+                label="Cover Image"
+                value={formData.image}
+                onChange={(img) => setFormData({ ...formData, image: img })}
+                fallbackUrl={DEFAULT_BLOG_FALLBACK}
+                recommendedText="Upload an image from your files or paste a direct image URL. Recommended: 1200×630px."
+              />
+
+              <div>
+                <label className="block text-slate-700 dark:text-slate-300 font-bold mb-1">Tags (Comma separated)</label>
+                <input
+                  type="text"
+                  placeholder="React, AI, WebDev, Career"
+                  value={formData.tagsStr}
+                  onChange={(e) => setFormData({ ...formData, tagsStr: e.target.value })}
+                  className="w-full bg-slate-50 dark:bg-slate-950 border border-slate-200 dark:border-slate-800 rounded-xl px-3.5 py-2 text-slate-900 dark:text-white placeholder-slate-400 dark:placeholder-slate-500 focus:outline-none focus:border-lime-500 dark:focus:border-lime-400"
                 />
               </div>
 
@@ -293,7 +327,7 @@ export default function BlogManagement({
                   placeholder="Write the full blog article content..."
                   value={formData.content}
                   onChange={(e) => setFormData({ ...formData, content: e.target.value })}
-                  className="w-full bg-slate-50 dark:bg-slate-950 border border-slate-200 dark:border-slate-800 rounded-xl px-3.5 py-2 text-slate-900 dark:text-white placeholder-slate-400 dark:placeholder-slate-500 focus:outline-none focus:border-blue-500 dark:focus:border-cyan-500 font-sans"
+                  className="w-full bg-slate-50 dark:bg-slate-950 border border-slate-200 dark:border-slate-800 rounded-xl px-3.5 py-2 text-slate-900 dark:text-white placeholder-slate-400 dark:placeholder-slate-500 focus:outline-none focus:border-lime-500 dark:focus:border-lime-400 font-sans"
                 />
               </div>
 

@@ -1,13 +1,15 @@
+
 import React, { useState, useEffect } from 'react';
 import { Link, useNavigate } from 'react-router-dom';
 import Hero from '../Component/Hero';
 import Highlights from '../Component/Highlights';
 import CourseCategories from '../Component/CourseCategories';
-import BlogsBanner from '../Component/BlogsBanner';
 import KickstartBanner from '../Component/KickstartBanner';
+import KickstartAcademyBanner from '../Component/KickstartAcademyBanner';
 import { getPortfolioItems } from '../services/api';
 import { portfolioProjects as initialFallbackProjects } from '../data/coursesData';
-import { ArrowRight, Code2, FolderGit2, Sparkles, CheckCircle2, ExternalLink } from 'lucide-react';
+import { resolveImageUrl, handleImageError, DEFAULT_PORTFOLIO_FALLBACK } from '../utils/imageHelper';
+import { ArrowRight } from 'lucide-react';
 
 export default function HomePage({ onOpenEnroll, onSelectCourse }) {
   const navigate = useNavigate();
@@ -19,7 +21,13 @@ export default function HomePage({ onOpenEnroll, onSelectCourse }) {
   const loadPortfolio = async () => {
     try {
       const res = await getPortfolioItems();
-      if (res && res.data && Array.isArray(res.data) && res.data.length > 0) {
+
+      if (
+        res &&
+        res.data &&
+        Array.isArray(res.data) &&
+        res.data.length > 0
+      ) {
         setProjects(res.data);
       } else {
         setProjects(initialFallbackProjects);
@@ -37,198 +45,291 @@ export default function HomePage({ onOpenEnroll, onSelectCourse }) {
     const handlePortfolioUpdate = () => {
       loadPortfolio();
     };
+
     window.addEventListener('portfolio_updated', handlePortfolioUpdate);
-    return () => window.removeEventListener('portfolio_updated', handlePortfolioUpdate);
+
+    return () =>
+      window.removeEventListener(
+        'portfolio_updated',
+        handlePortfolioUpdate
+      );
   }, []);
 
   return (
-    <div>
-      {/* 1. Hero with rich visual */}
+    <div className="bg-white text-slate-800">
+
+      {/* 1. Hero */}
       <Hero onOpenEnroll={onOpenEnroll} />
 
-      {/* 2. Core Pillars & Practical Advantage with visual training banner */}
+      {/* 2. Core Pillars */}
       <Highlights onOpenEnroll={onOpenEnroll} />
 
-      {/* 3. Courses — curated preview of top categories */}
-      <section className="py-16 sm:py-20 bg-[#FAFCFA] border-y border-[#D4E8DC]">
-        <div className="max-w-7xl w-full mx-auto px-5 sm:px-8 lg:px-12">
-          <div className="flex flex-col md:flex-row md:items-end justify-between gap-6 mb-10">
-            <div>
-              <span className="institute-badge mb-3">
-                <Sparkles className="w-3.5 h-3.5 text-lime-600" />
-                Industry-Curated Curriculum
-              </span>
-              <h2 className="text-3xl sm:text-4xl lg:text-5xl font-black font-heading text-slate-900 leading-tight">
-                Industry-Oriented <span className="text-[#003831]">Tech &amp; Marketing</span> <span className="text-lime-600">Courses</span>
+      {/* 3. Professional Courses Section */}
+      <section
+        data-anim="fade-up"
+        data-delay="50"
+        className="
+          relative
+          py-12 sm:py-16
+          bg-[#F7FAF8]
+          border-y border-[#E2EBE5]
+        "
+      >
+        <div className="max-w-[1440px] w-full mx-auto px-4 xs:px-5 sm:px-8 lg:px-12 xl:px-16">
+
+          {/* Section Heading - Highlighted, clean, not oversized */}
+          <div className="scroll-reveal flex flex-col md:flex-row md:items-end md:justify-between gap-4 mb-6 sm:mb-10">
+
+            <div className="max-w-3xl">
+              <h2 className="text-xl xs:text-2xl sm:text-3xl lg:text-[32px] font-bold font-heading text-slate-900 leading-tight tracking-tight">
+                Industry-Oriented{' '}
+                <span className="text-[#003831]">
+                  Tech &amp; Marketing
+                </span>{' '}
+                <span className="text-lime-600">
+                  Courses
+                </span>
               </h2>
-              <p className="text-base sm:text-lg text-slate-600 mt-2 max-w-xl font-medium">
-                Learn from professionals. Work on real projects. Build your future.
-              </p>
             </div>
+
             <Link
               to="/courses"
-              className="btn-dark-green text-sm sm:text-base py-3 px-6 rounded-xl font-bold inline-flex items-center gap-2 shrink-0 no-underline"
+              className="
+                group
+                btn-dark-green
+                text-xs sm:text-sm
+                py-2.5 px-4.5
+                rounded-lg
+                font-semibold
+                inline-flex items-center justify-center gap-2
+                w-full sm:w-auto shrink-0
+                no-underline
+                transition-all duration-200
+                hover:-translate-y-0.5
+                active:scale-95
+              "
             >
-              View All 6 Domains <ArrowRight className="w-4 h-4 text-lime-400" />
+              <span>View All 6 Domains</span>
+              <ArrowRight className="w-3.5 h-3.5 text-lime-400 transition-transform duration-200 group-hover:translate-x-1" />
             </Link>
+
           </div>
 
-          {/* Show first 3 poster categories */}
-          <CourseCategories
-            searchQuery={courseSearch}
-            setSearchQuery={setCourseSearch}
-            onSelectCourse={onSelectCourse}
-            onOpenEnroll={onOpenEnroll}
-            maxCategories={3}
-          />
-
-          <div className="text-center mt-12">
-            <Link
-              to="/courses"
-              className="btn-primary text-base py-4 px-10 rounded-xl font-extrabold inline-flex items-center gap-2 no-underline shadow-md"
-            >
-              See All 50+ Training Programs <ArrowRight className="w-5 h-5" />
-            </Link>
+          {/* Course Categories */}
+          <div
+            className="
+              [&_.grid]:!gap-6
+              [&_.grid]:!gap-y-6
+              [&_.grid>*]:min-w-0
+              [&_.grid>*]:h-full
+              [&_.grid>*]:rounded-xl
+              [&_.grid>*]:transition-all
+              [&_.grid>*]:duration-300
+            "
+          >
+            <CourseCategories
+              searchQuery={courseSearch}
+              setSearchQuery={setCourseSearch}
+              onSelectCourse={onSelectCourse}
+              onOpenEnroll={onOpenEnroll}
+              maxCategories={3}
+            />
           </div>
+
         </div>
       </section>
 
-      {/* 4. Practical Projects Snapshot with real live backend projects */}
-      <section className="py-16 sm:py-20 bg-white">
-        <div className="max-w-7xl w-full mx-auto px-5 sm:px-8 lg:px-12">
-          <div className="flex flex-col md:flex-row md:items-end justify-between gap-6 mb-12">
-            <div>
-              <span className="institute-badge mb-3">
-                <FolderGit2 className="w-3.5 h-3.5" />
-                Live Client Deliveries
-              </span>
-              <h2 className="text-3xl sm:text-4xl font-black font-heading text-slate-900">
+      {/* 4. Practical Projects */}
+      <section data-anim="fade-up" data-delay="80" className="py-12 sm:py-16 lg:py-20 bg-white">
+        <div className="max-w-[1440px] w-full mx-auto px-4 xs:px-5 sm:px-8 lg:px-12 xl:px-16">
+
+          {/* Projects Heading */}
+          <div className="scroll-reveal flex flex-col md:flex-row md:items-end md:justify-between gap-4 mb-6 sm:mb-10">
+
+            <div className="max-w-2xl">
+              <h2 className="text-xl xs:text-2xl sm:text-3xl lg:text-[32px] font-bold font-heading text-slate-900 tracking-tight leading-tight">
                 Real Systems Our Trainees Build
               </h2>
-              <p className="text-base text-slate-600 mt-2 max-w-lg">
+
+              <p className="text-xs sm:text-sm text-slate-600 mt-2 max-w-xl leading-relaxed">
                 Not generic to-do apps — production software shipped to real commercial clients inside our studio.
               </p>
             </div>
+
             <Link
               to="/projects"
-              className="btn-outline text-sm py-3 px-6 rounded-xl font-bold inline-flex items-center gap-2 no-underline shrink-0"
+              className="btn-outline text-xs sm:text-sm py-2.5 px-4.5 rounded-lg font-semibold inline-flex items-center justify-center gap-2 w-full sm:w-auto no-underline shrink-0 active:scale-95 transition-all group"
             >
-              View All Case Studies <ArrowRight className="w-4 h-4" />
+              <span>View All Case Studies</span>
+              <ArrowRight className="w-3.5 h-3.5 text-[#003831] group-hover:text-lime-600 transition-transform duration-200 group-hover:translate-x-1" />
             </Link>
+
           </div>
 
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-6 sm:gap-8">
-            {projects.slice(0, 3).map((item) => {
+          {/* Project Cards */}
+          <div data-anim="stagger" data-stagger="110" className="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3 gap-6 sm:gap-7 items-stretch">
+
+            {projects.slice(0, 3).map((item, index) => {
               const itemId = item._id || item.id;
+
               const itemTags = Array.isArray(item.tags)
                 ? item.tags
                 : typeof item.tags === 'string'
-                ? item.tags.split(',').map((t) => t.trim())
-                : [];
+                  ? item.tags.split(',').map((t) => t.trim())
+                  : [];
 
               return (
-                <div
+                <article
                   key={itemId}
-                  className="group bg-white rounded-3xl border border-[#D4E8DC] hover:border-lime-500 hover:shadow-xl transition-all duration-300 flex flex-col justify-between overflow-hidden h-full"
+                  style={{ transitionDelay: `${index * 90}ms` }}
+                  className="
+                    scroll-reveal
+                    group
+                    bg-white
+                    rounded-2xl
+                    border border-[#E2EBE5]
+                    hover:border-lime-500/60
+                    shadow-xs
+                    hover:shadow-[0_14px_36px_rgba(3,59,50,0.08)]
+                    transition-all duration-300
+                    hover:-translate-y-1
+                    flex flex-col
+                    overflow-hidden
+                    h-full
+                  "
                 >
+
                   <div>
-                    {/* Project Image Preview */}
-                    <div className="relative h-48 w-full overflow-hidden bg-slate-100">
+                    {/* Project Image */}
+                    <div className="relative h-44 sm:h-48 w-full overflow-hidden bg-slate-100">
+
                       <img
-                        src={
-                          item.image ||
-                          'https://images.unsplash.com/photo-1555066931-4365d14bab8c?auto=format&fit=crop&w=800&q=80'
-                        }
+                        src={resolveImageUrl(item.image, DEFAULT_PORTFOLIO_FALLBACK)}
                         alt={item.title}
-                        className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
+                        className="
+                          w-full h-full object-cover
+                          transition-transform duration-500 ease-out
+                          group-hover:scale-105
+                        "
                         loading="lazy"
+                        onError={e => handleImageError(e, DEFAULT_PORTFOLIO_FALLBACK)}
                       />
-                      <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-transparent" />
-                      <span className="absolute top-3 left-3 text-[10px] font-bold px-2.5 py-1 rounded-full bg-lime-400 text-[#022620] shadow-sm">
+
+                      <div className="absolute inset-0 bg-gradient-to-t from-black/70 via-black/20 to-transparent" />
+
+                      <span
+                        className="
+                          absolute top-3 left-3
+                          text-[10px] font-extrabold uppercase tracking-wider
+                          px-2.5 py-1
+                          rounded-lg
+                          bg-lime-400 text-[#003831]
+                          shadow-xs
+                        "
+                      >
                         {item.category || 'Software Build'}
                       </span>
-                      <span className="absolute bottom-3 left-3 text-xs text-white/90 font-mono drop-shadow-sm truncate max-w-[85%]">
+
+                      <span
+                        className="
+                          absolute bottom-3 left-3 right-3
+                          text-xs text-white/95 font-medium
+                          drop-shadow-sm
+                          truncate
+                        "
+                      >
                         Client: {item.client || 'Client Project'}
                       </span>
+
                     </div>
 
-                    {/* Card Content */}
-                    <div className="p-6">
-                      <h3 className="text-base sm:text-lg font-bold text-slate-900 group-hover:text-[#033B32] transition-colors font-heading mb-2 leading-snug">
+                    {/* Project Content */}
+                    <div className="p-5 sm:p-6">
+
+                      <h3
+                        className="
+                          text-base sm:text-[17px]
+                          font-bold text-slate-900
+                          group-hover:text-[#003831]
+                          transition-colors
+                          font-heading
+                          mb-2 leading-snug
+                          line-clamp-1
+                        "
+                      >
                         {item.title}
                       </h3>
-                      <p className="text-xs sm:text-sm text-slate-600 leading-relaxed mb-4 line-clamp-3">
+
+                      <p className="text-xs sm:text-sm text-slate-600 leading-relaxed mb-3.5 line-clamp-2 min-h-[2.5rem]">
                         {item.description}
                       </p>
+
                       {item.outcomes && (
-                        <div className="p-3 rounded-xl bg-[#F4F9F6] border border-[#D4E8DC] text-xs text-slate-700 mb-4">
-                          <strong className="text-lime-700 font-bold block mb-0.5">Measurable Outcome:</strong>
-                          <span>{item.outcomes}</span>
+                        <div className="p-3 rounded-xl bg-[#F7FAF8] border border-[#E2EBE5] text-xs text-slate-700 mb-3 leading-relaxed">
+                          <strong className="text-lime-700 font-bold block mb-0.5">
+                            Measurable Outcome:
+                          </strong>
+                          <span className="line-clamp-1">{item.outcomes}</span>
                         </div>
                       )}
+
                     </div>
                   </div>
 
-                  {/* Card Bottom */}
-                  <div className="px-6 pb-6 pt-0">
+                  {/* Project Card Footer */}
+                  <div className="px-5 sm:px-6 pb-5 sm:pb-6 pt-0 mt-auto">
+
                     {itemTags.length > 0 && (
-                      <div className="flex flex-wrap gap-1.5 pt-3 border-t border-[#EEF3F0] mb-3">
+                      <div className="flex flex-wrap gap-1.5 pt-3.5 border-t border-slate-100 mb-3.5">
+
                         {itemTags.slice(0, 4).map((t) => (
-                          <span key={t} className="tech-tag text-[10px]">{t}</span>
+                          <span
+                            key={t}
+                            className="text-[11px] font-medium px-2 py-0.5 rounded-md bg-[#F7FAF8] text-slate-700 border border-[#E2EBE5]"
+                          >
+                            {t}
+                          </span>
                         ))}
+
                       </div>
                     )}
 
                     <div className="flex items-center justify-between pt-1">
+
                       <Link
                         to="/projects"
-                        className="text-xs font-bold text-[#033B32] hover:text-lime-700 flex items-center gap-1 transition-colors"
+                        className="
+                          text-xs
+                          font-bold text-[#003831]
+                          hover:text-lime-700
+                          inline-flex items-center gap-1.5
+                          transition-colors
+                          no-underline
+                          group/link
+                        "
                       >
-                        Explore Project <ArrowRight className="w-3.5 h-3.5" />
+                        <span>Explore Case Study</span>
+                        <ArrowRight className="w-3.5 h-3.5 transition-transform duration-200 group-hover/link:translate-x-1 text-lime-600" />
                       </Link>
+
                     </div>
                   </div>
-                </div>
+
+                </article>
               );
             })}
+
           </div>
+
         </div>
       </section>
 
-      {/* 5. Career Placement banner */}
+      {/* 5. Career Placement Banner */}
       <KickstartBanner onOpenEnroll={onOpenEnroll} />
 
-      {/* 6. Blogs */}
-      <BlogsBanner />
+      {/* 6. XentroX Academy - Kick Start Your Career Banner (Matching Reference Model) */}
+      <KickstartAcademyBanner onOpenEnroll={onOpenEnroll} />
 
-      {/* 7. Final Call to Action */}
-      <section className="py-20 bg-[#033B32] relative overflow-hidden">
-        <div className="max-w-7xl w-full mx-auto px-5 sm:px-8 lg:px-12 text-center relative z-10">
-          <div className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-lime-500/15 border border-lime-500/30 text-lime-400 text-xs font-bold uppercase tracking-wider mb-6">
-            Admissions Open · 2026 Batches
-          </div>
-          <h2 className="text-3xl sm:text-5xl font-black font-heading tracking-tight mb-5 text-white leading-tight">
-            Ready to Accelerate Your<br className="hidden sm:block" /> Tech Career?
-          </h2>
-          <p className="text-base sm:text-lg text-white/80 max-w-xl mx-auto mb-8 leading-relaxed font-normal">
-            Join our next studio cohort in Marthandam or Trivandrum. Speak with our engineering mentors, tour the labs, and choose your track.
-          </p>
-          <div className="flex flex-wrap items-center justify-center gap-4">
-            <Link
-              to="/courses"
-              className="px-8 py-3.5 rounded-xl bg-white text-[#022620] font-bold text-sm sm:text-base hover:bg-slate-100 transition-colors shadow-lg no-underline"
-            >
-              Explore 50+ Courses
-            </Link>
-            <button
-              onClick={() => (onOpenEnroll ? onOpenEnroll() : navigate('/enroll'))}
-              className="btn-primary text-sm sm:text-base py-3.5 px-9 rounded-xl font-extrabold cursor-pointer"
-            >
-              Enroll Now — Free Application <ArrowRight className="w-4 h-4" />
-            </button>
-          </div>
-        </div>
-      </section>
     </div>
   );
 }

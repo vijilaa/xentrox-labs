@@ -2,14 +2,15 @@ import React, { useState, useEffect, useCallback } from 'react';
 import { Link } from 'react-router-dom';
 import { getBlogs } from '../services/api';
 import { fallbackBlogs } from '../data/coursesData';
-import { ArrowRight, Calendar, User, Sparkles, Loader2, Clock } from 'lucide-react';
+import { resolveImageUrl, handleImageError, DEFAULT_BLOG_FALLBACK } from '../utils/imageHelper';
+import { ArrowRight, Calendar, User, Loader2, Clock } from 'lucide-react';
 
 function formatDate(d) {
   try { return new Date(d).toLocaleDateString('en-IN', { year: 'numeric', month: 'short', day: 'numeric' }); }
   catch { return d || ''; }
 }
 
-const FALLBACK_IMG = 'https://images.unsplash.com/photo-1461749280684-dccba630e2f6?w=700&q=80';
+const FALLBACK_IMG = DEFAULT_BLOG_FALLBACK;
 
 const catColour = {
   'React.js':   'bg-blue-50 text-blue-700 border-blue-200',
@@ -41,26 +42,22 @@ export default function BlogsBanner() {
 
   return (
     <>
-      <section className="py-16 sm:py-20 bg-[#F4F9F6] border-y border-[#D4E8DC]">
-        <div className="max-w-7xl w-full mx-auto px-5 sm:px-8 lg:px-12">
+      <section className="py-12 xs:py-16 sm:py-20 bg-[#F4F9F6] border-y border-[#D4E8DC]">
+        <div className="max-w-7xl w-full mx-auto px-4 xs:px-5 sm:px-8 lg:px-12">
 
           {/* Header */}
-          <div className="flex flex-col md:flex-row md:items-end justify-between gap-6 mb-10">
+          <div className="flex flex-col md:flex-row md:items-end justify-between gap-5 sm:gap-6 mb-8 sm:mb-10">
             <div>
-              <span className="institute-badge mb-4">
-                <Sparkles className="w-3.5 h-3.5" />
-                Insights &amp; Learning
-              </span>
-              <h2 className="text-3xl sm:text-4xl font-black font-heading tracking-tight text-slate-900">
+              <h2 className="text-2xl xs:text-3xl sm:text-4xl font-black font-heading tracking-tight text-slate-900">
                 Engineering <span className="text-lime-600">Articles</span>
               </h2>
-              <p className="text-base text-slate-500 mt-2 max-w-lg">
-                Expert guides on React, MERN Stack, AI, and digital marketing from our training team.
+              <p className="text-xs xs:text-sm sm:text-base text-slate-500 mt-2 max-w-lg">
+                Practical guides and career insights from our engineering mentors.
               </p>
             </div>
             <Link
               to="/blogs"
-              className="btn-outline text-sm py-3 px-6 rounded-xl font-bold inline-flex items-center gap-2 shrink-0 no-underline"
+              className="btn-outline text-xs sm:text-sm py-2.5 xs:py-3 px-5 sm:px-6 rounded-xl font-bold inline-flex items-center justify-center gap-2 shrink-0 no-underline w-full md:w-auto"
             >
               All Articles <ArrowRight className="w-4 h-4" />
             </Link>
@@ -79,12 +76,12 @@ export default function BlogsBanner() {
                   onClick={() => setActive(blog)}
                   className="group flex flex-col bg-white border border-[#D4E8DC] rounded-2xl overflow-hidden hover:border-lime-400 hover:shadow-lg transition-all duration-300 cursor-pointer"
                 >
-                  <div className="relative h-40 overflow-hidden flex-shrink-0">
+                  <div className="relative h-40 overflow-hidden flex-shrink-0 bg-slate-100">
                     <img
-                      src={blog.image || FALLBACK_IMG}
+                      src={resolveImageUrl(blog.image, FALLBACK_IMG)}
                       alt={blog.title}
                       className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
-                      onError={e => { e.target.src = FALLBACK_IMG; }}
+                      onError={e => handleImageError(e, FALLBACK_IMG)}
                     />
                     <div className="absolute inset-0 bg-gradient-to-t from-slate-900/40 to-transparent" />
                     {blog.category && (
@@ -117,35 +114,39 @@ export default function BlogsBanner() {
       {/* Quick modal */}
       {active && (
         <div
-          className="fixed inset-0 z-[9999] flex items-center justify-center p-4 bg-slate-900/75 backdrop-blur-sm animate-fade-in"
+          className="fixed inset-0 z-[9999] flex items-center justify-center p-3 xs:p-4 bg-slate-900/75 backdrop-blur-sm animate-fade-in"
           onClick={() => setActive(null)}
         >
           <div
-            className="w-full max-w-xl bg-white border border-[#D4E8DC] rounded-2xl overflow-hidden shadow-2xl max-h-[85vh] overflow-y-auto animate-scale-in"
+            className="w-full max-w-[calc(100vw-1.5rem)] sm:max-w-xl bg-white border border-[#D4E8DC] rounded-2xl overflow-hidden shadow-2xl max-h-[85vh] overflow-y-auto animate-scale-in"
             onClick={e => e.stopPropagation()}
           >
             {active.image && (
-              <div className="h-44 overflow-hidden">
-                <img src={active.image} alt={active.title} className="w-full h-full object-cover"
-                  onError={e => { e.target.src = FALLBACK_IMG; }} />
+              <div className="h-40 xs:h-44 overflow-hidden bg-slate-100">
+                <img
+                  src={resolveImageUrl(active.image, FALLBACK_IMG)}
+                  alt={active.title}
+                  className="w-full h-full object-cover"
+                  onError={e => handleImageError(e, FALLBACK_IMG)}
+                />
               </div>
             )}
-            <div className="p-6">
+            <div className="p-4 xs:p-6">
               {active.category && (
                 <span className={`text-[10px] font-extrabold px-2.5 py-1 rounded-full border mb-3 inline-block ${cc(active.category)}`}>
                   {active.category}
                 </span>
               )}
-              <h2 className="text-xl font-black font-heading text-slate-900 mb-3 leading-tight">{active.title}</h2>
+              <h2 className="text-lg xs:text-xl font-black font-heading text-slate-900 mb-2.5 xs:mb-3 leading-tight">{active.title}</h2>
               <div className="flex items-center gap-3 text-xs text-slate-400 mb-4">
                 <span className="flex items-center gap-1"><User className="w-3 h-3 text-lime-500" />{active.author || 'XentroX Labs'}</span>
                 {(active.createdAt || active.date) && <span>{formatDate(active.createdAt || active.date)}</span>}
               </div>
-              <div className="text-base text-slate-700 leading-relaxed space-y-3">
+              <div className="text-sm xs:text-base text-slate-700 leading-relaxed space-y-3">
                 {(active.content || active.excerpt || '').split('\n').map((p, i) => p.trim() ? <p key={i}>{p}</p> : null)}
               </div>
             </div>
-            <div className="px-6 pb-5 pt-4 border-t border-[#D4E8DC] flex justify-between items-center">
+            <div className="px-4 xs:px-6 pb-4 xs:pb-5 pt-3 xs:pt-4 border-t border-[#D4E8DC] flex justify-between items-center">
               <Link to="/blogs" onClick={() => setActive(null)} className="text-xs font-bold text-lime-700 hover:underline">
                 View All Articles →
               </Link>

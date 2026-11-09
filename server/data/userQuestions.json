@@ -1,0 +1,775 @@
+[
+  {
+    "id": "uq_1793940134322_43je5",
+    "timestamp": "2026-11-06T04:42:14.322Z",
+    "query": "hi",
+    "matchedQuestionId": "comp-founders",
+    "matchedQuestion": "Who are the founders and leadership team of XentroX?",
+    "category": "Company & Overview",
+    "confidence": 1,
+    "matchedKeywords": [],
+    "answered": true,
+    "frequency": 1,
+    "sessionId": null,
+    "source": "web_chatbot"
+  },
+  {
+    "id": "uq_1793940097936_3o641",
+    "timestamp": "2026-11-06T04:41:37.936Z",
+    "query": "What programming languages do you recommend for beginners?",
+    "matchedQuestionId": "course-beginners",
+    "matchedQuestion": "What programming languages do you recommend for beginners?",
+    "category": "Courses & Curriculum",
+    "confidence": 1,
+    "matchedKeywords": [
+      "exact_question_match",
+      "beginner",
+      "programming language",
+      "c"
+    ],
+    "answered": true,
+    "frequency": 1,
+    "sessionId": null,
+    "source": "web_chatbot"
+  },
+  {
+    "id": "uq_1792683376019_de3hm",
+    "timestamp": "2026-10-22T15:36:16.019Z",
+    "query": "about fees",
+    "matchedQuestionId": "fees-structure",
+    "matchedQuestion": "What is the fee structure for courses at XentroX Labs?",
+    "category": "Fees & Admissions",
+    "confidence": 0.95,
+    "matchedKeywords": [
+      "fee",
+      "fees",
+      "cost",
+      "price",
+      "charges",
+      "tuition"
+    ],
+    "answered": true,
+    "frequency": 1,
+    "sessionId": null,
+    "source": "web_chatbot"
+  },
+  {
+    "id": "uq_1792683292718_vkpkw",
+    "timestamp": "2026-10-22T15:34:52.718Z",
+    "query": "do you offer emi",
+    "matchedQuestionId": "fees-emi",
+    "matchedQuestion": "Do you offer EMI or installment payment options?",
+    "category": "Fees & Admissions",
+    "confidence": 1,
+    "matchedKeywords": [
+      "emi"
+    ],
+    "answered": true,
+    "frequency": 1,
+    "sessionId": null,
+    "source": "web_chatbot"
+  },
+  {
+    "id": "uq_1792683292715_ga5cp",
+    "timestamp": "2026-10-22T15:34:52.715Z",
+    "query": "tell me about course fees",
+    "matchedQuestionId": "fees-structure",
+    "matchedQuestion": "What is the fee structure for courses at XentroX Labs?",
+    "category": "Fees & Admissions",
+    "confidence": 0.95,
+    "matchedKeywords": [
+      "fee",
+      "fees",
+      "cost",
+      "price",
+      "charges",
+      "tuition"
+    ],
+    "answered": true,
+    "frequency": 1,
+    "sessionId": null,
+    "source": "web_chatbot"
+  },
+  {
+    "id": "uq_1792683292707_69zq8",
+    "timestamp": "2026-10-22T15:34:52.707Z",
+    "query": "What is the fee for MERN stack?",
+    "matchedQuestionId": "fees-structure",
+    "matchedQuestion": "What is the fee structure for courses at XentroX Labs?",
+    "category": "Fees & Admissions",
+    "confidence": 0.96,
+    "matchedKeywords": [
+      "fee",
+      "fees",
+      "cost",
+      "price",
+      "charges",
+      "tuition"
+    ],
+    "answered": true,
+    "frequency": 1,
+    "sessionId": null,
+    "source": "web_chatbot"
+  },
+  {
+    "id": "uq_1792682730394_iuurs",
+    "timestamp": "2026-10-22T15:25:30.394Z",
+    "query": "courses offered",
+    "matchedQuestionId": "courses-all",
+    "matchedQuestion": "What courses and tech programs do you offer?",
+    "category": "Courses & Curriculum",
+    "confidence": 0.85,
+    "matchedKeywords": [
+      "courses",
+      "programs",
+      "tracks",
+      "curriculum",
+      "training"
+    ],
+    "answered": true,
+    "frequency": 1,
+    "sessionId": null,
+    "source": "web_chatbot"
+  },
+  {
+    "id": "uq_1792682539749_dvu3f",
+    "timestamp": "2026-10-22T15:22:19.749Z",
+    "query": "Are there any scholarships or discounts available?",
+    "matchedQuestionId": "fees-scholarships",
+    "matchedQuestion": "Are there any scholarships or discounts available?",
+    "category": "Fees & Admissions",
+    "confidence": 1,
+    "matchedKeywords": [
+      "exact_question_match",
+      "scholarship",
+      "discount"
+    ],
+    "answered": true,
+    "frequency": 1,
+    "sessionId": null,
+    "source": "web_chatbot"
+  },
+  {
+    "id": "uq_1792682486740_ne6z6",
+    "timestamp": "2026-10-22T15:21:26.740Z",
+    "query": "Do you offer placement assistance and job guarantee?",
+    "matchedQuestionId": "placements-support",
+    "matchedQuestion": "Do you offer placement assistance and job guarantee?",
+    "category": "Placements & Career Support",
+    "confidence": 1,
+    "matchedKeywords": [
+      "exact_question_match",
+      "placement",
+      "job",
+      "career",
+      "hiring",
+      "guarantee",
+      "placement assistance"
+    ],
+    "answered": true,
+    "frequency": 1,
+    "sessionId": null,
+    "source": "web_chatbot"
+  },
+  {
+    "id": "uq_1792682437799_il5gr",
+    "timestamp": "2026-10-22T15:20:37.799Z",
+    "query": "What if I miss a class or have doubts?",
+    "matchedQuestionId": "admissions-missed-classes",
+    "matchedQuestion": "What if I miss a class or have doubts? Do you provide backup or recorded sessions?",
+    "category": "Fees & Admissions",
+    "confidence": 1,
+    "matchedKeywords": [
+      "miss a class",
+      "doubts"
+    ],
+    "answered": true,
+    "frequency": 1,
+    "sessionId": null,
+    "source": "automated_test"
+  },
+  {
+    "id": "uq_1792682437791_fttkc",
+    "timestamp": "2026-10-22T15:20:37.791Z",
+    "query": "Tell me about Subin CEO",
+    "matchedQuestionId": "comp-founders",
+    "matchedQuestion": "Who are the founders and leadership team of XentroX?",
+    "category": "Company & Overview",
+    "confidence": 0.41,
+    "matchedKeywords": [
+      "ceo",
+      "subin"
+    ],
+    "answered": true,
+    "frequency": 1,
+    "sessionId": null,
+    "source": "automated_test"
+  },
+  {
+    "id": "uq_1792682437772_pcvht",
+    "timestamp": "2026-10-22T15:20:37.772Z",
+    "query": "Can non-IT or arts graduates learn programming?",
+    "matchedQuestionId": "admissions-non-it",
+    "matchedQuestion": "I am from a non-IT / Arts / Commerce / Mechanical background. Can I learn coding?",
+    "category": "Fees & Admissions",
+    "confidence": 0.35,
+    "matchedKeywords": [
+      "arts"
+    ],
+    "answered": true,
+    "frequency": 1,
+    "sessionId": null,
+    "source": "automated_test"
+  },
+  {
+    "id": "uq_1792682437765_wo281",
+    "timestamp": "2026-10-22T15:20:37.765Z",
+    "query": "Where is your Trivandrum training lab located?",
+    "matchedQuestionId": "contact-locations",
+    "matchedQuestion": "Where are your training labs and offices located?",
+    "category": "Locations & Contact",
+    "confidence": 1,
+    "matchedKeywords": [
+      "location",
+      "locations",
+      "address",
+      "office",
+      "branch",
+      "where",
+      "trivandrum"
+    ],
+    "answered": true,
+    "frequency": 1,
+    "sessionId": null,
+    "source": "automated_test"
+  },
+  {
+    "id": "uq_1792682437757_fi3sp",
+    "timestamp": "2026-10-22T15:20:37.757Z",
+    "query": "Do you offer 100% placement guarantee?",
+    "matchedQuestionId": "placements-support",
+    "matchedQuestion": "Do you offer placement assistance and job guarantee?",
+    "category": "Placements & Career Support",
+    "confidence": 1,
+    "matchedKeywords": [
+      "placement",
+      "job",
+      "career",
+      "hiring",
+      "guarantee"
+    ],
+    "answered": true,
+    "frequency": 1,
+    "sessionId": null,
+    "source": "automated_test"
+  },
+  {
+    "id": "uq_1792682437748_dfy81",
+    "timestamp": "2026-10-22T15:20:37.748Z",
+    "query": "What are the fees for mern stack development?",
+    "matchedQuestionId": "fees-structure",
+    "matchedQuestion": "What is the fee structure for courses at XentroX Labs?",
+    "category": "Fees & Admissions",
+    "confidence": 0.95,
+    "matchedKeywords": [
+      "fee",
+      "fees",
+      "cost",
+      "price",
+      "charges",
+      "tuition"
+    ],
+    "answered": true,
+    "frequency": 1,
+    "sessionId": null,
+    "source": "automated_test"
+  },
+  {
+    "id": "uq_1792682393050_yxwt4",
+    "timestamp": "2026-10-22T15:19:53.050Z",
+    "query": "What is XentroX Labs and what do you do?",
+    "matchedQuestionId": "comp-overview",
+    "matchedQuestion": "What is XentroX Labs and what do you do?",
+    "category": "Company & Overview",
+    "confidence": 1,
+    "matchedKeywords": [
+      "exact_question_match",
+      "xentrox",
+      "xentrox labs",
+      "what is xentrox"
+    ],
+    "answered": true,
+    "frequency": 2,
+    "sessionId": null,
+    "source": "web_chatbot",
+    "lastAskedAt": "2026-11-06T07:11:39.145Z"
+  },
+  {
+    "id": "uq_1792682362033_g5eij",
+    "timestamp": "2026-10-22T15:19:22.033Z",
+    "query": "What is the fee structure for courses at XentroX Labs?",
+    "matchedQuestionId": "fees-structure",
+    "matchedQuestion": "What is the fee structure for courses at XentroX Labs?",
+    "category": "Fees & Admissions",
+    "confidence": 1,
+    "matchedKeywords": [
+      "exact_question_match",
+      "fee",
+      "fees",
+      "cost",
+      "price",
+      "charges",
+      "tuition",
+      "fee structure"
+    ],
+    "answered": true,
+    "frequency": 4,
+    "sessionId": null,
+    "source": "web_chatbot",
+    "lastAskedAt": "2026-11-09T08:46:30.265Z"
+  },
+  {
+    "id": "uq_1792682298479_j2w4i",
+    "timestamp": "2026-10-22T15:18:18.479Z",
+    "query": "Tell me about the MERN Stack Development course",
+    "matchedQuestionId": "course-mern",
+    "matchedQuestion": "Tell me about the MERN Stack Development course.",
+    "category": "Courses & Curriculum",
+    "confidence": 1,
+    "matchedKeywords": [
+      "mern",
+      "mern stack"
+    ],
+    "answered": true,
+    "frequency": 11,
+    "sessionId": null,
+    "source": "web_chatbot",
+    "lastAskedAt": "2026-11-09T08:46:29.183Z"
+  },
+  {
+    "id": "uq_1792682279060_wv41c",
+    "timestamp": "2026-10-22T15:17:59.060Z",
+    "query": "fees",
+    "matchedQuestionId": "fees-structure",
+    "matchedQuestion": "What is the fee structure for courses at XentroX Labs?",
+    "category": "Fees & Admissions",
+    "confidence": 1,
+    "matchedKeywords": [
+      "fee",
+      "fees",
+      "cost",
+      "price",
+      "charges",
+      "tuition"
+    ],
+    "answered": true,
+    "frequency": 2,
+    "sessionId": null,
+    "source": "web_chatbot",
+    "lastAskedAt": "2026-10-23T05:33:55.468Z"
+  },
+  {
+    "id": "uq_1792682209947_jmhzn",
+    "timestamp": "2026-10-22T15:16:49.947Z",
+    "query": "What courses and tech programs do you offer?",
+    "matchedQuestionId": "courses-all",
+    "matchedQuestion": "What courses and tech programs do you offer?",
+    "category": "Courses & Curriculum",
+    "confidence": 1,
+    "matchedKeywords": [
+      "exact_question_match",
+      "courses",
+      "programs",
+      "tracks",
+      "curriculum",
+      "training"
+    ],
+    "answered": true,
+    "frequency": 12,
+    "sessionId": null,
+    "source": "web_chatbot",
+    "lastAskedAt": "2026-11-09T06:52:31.764Z"
+  },
+  {
+    "id": "uq_1792681827898_qjktp",
+    "timestamp": "2026-10-22T15:10:27.898Z",
+    "query": "flutter course duration",
+    "matchedQuestionId": "admissions-duration",
+    "matchedQuestion": "What is the typical duration of courses at XentroX Labs?",
+    "category": "Fees & Admissions",
+    "confidence": 0.64,
+    "matchedKeywords": [
+      "duration",
+      "course duration"
+    ],
+    "answered": true,
+    "frequency": 1,
+    "sessionId": null,
+    "source": "web_chatbot"
+  },
+  {
+    "id": "uq_1792681827895_xpx3b",
+    "timestamp": "2026-10-22T15:10:27.895Z",
+    "query": "do you teach docker",
+    "matchedQuestionId": "course-devops-cloud",
+    "matchedQuestion": "Do you teach DevOps, Docker, CI/CD, and AWS Cloud?",
+    "category": "Courses & Curriculum",
+    "confidence": 0.87,
+    "matchedKeywords": [
+      "docker"
+    ],
+    "answered": true,
+    "frequency": 1,
+    "sessionId": null,
+    "source": "web_chatbot"
+  },
+  {
+    "id": "uq_1792681827891_sjcnm",
+    "timestamp": "2026-10-22T15:10:27.891Z",
+    "query": "is pg facility available near lab",
+    "matchedQuestionId": "campus-accommodation",
+    "matchedQuestion": "Do you provide hostel or PG accommodation assistance for outstation students?",
+    "category": "Locations & Contact",
+    "confidence": 0.24,
+    "matchedKeywords": [
+      "pg"
+    ],
+    "answered": true,
+    "frequency": 1,
+    "sessionId": null,
+    "source": "web_chatbot"
+  },
+  {
+    "id": "uq_1792681827888_a6xbe",
+    "timestamp": "2026-10-22T15:10:27.888Z",
+    "query": "tell me about subin sir",
+    "matchedQuestionId": "comp-founders",
+    "matchedQuestion": "Who are the founders and leadership team of XentroX?",
+    "category": "Company & Overview",
+    "confidence": 0.21,
+    "matchedKeywords": [
+      "subin"
+    ],
+    "answered": true,
+    "frequency": 1,
+    "sessionId": null,
+    "source": "web_chatbot"
+  },
+  {
+    "id": "uq_1792681827885_2jasy",
+    "timestamp": "2026-10-22T15:10:27.885Z",
+    "query": "can I get a job after course",
+    "matchedQuestionId": "placements-support",
+    "matchedQuestion": "Do you offer placement assistance and job guarantee?",
+    "category": "Placements & Career Support",
+    "confidence": 0.26,
+    "matchedKeywords": [
+      "job"
+    ],
+    "answered": true,
+    "frequency": 1,
+    "sessionId": null,
+    "source": "web_chatbot"
+  },
+  {
+    "id": "uq_1792681827882_1ktbv",
+    "timestamp": "2026-10-22T15:10:27.882Z",
+    "query": "where is the office",
+    "matchedQuestionId": "contact-locations",
+    "matchedQuestion": "Where are your training labs and offices located?",
+    "category": "Locations & Contact",
+    "confidence": 0.95,
+    "matchedKeywords": [
+      "office",
+      "where"
+    ],
+    "answered": true,
+    "frequency": 2,
+    "sessionId": null,
+    "source": "web_chatbot",
+    "lastAskedAt": "2026-10-22T15:34:52.721Z"
+  },
+  {
+    "id": "uq_1792681827879_jhh7k",
+    "timestamp": "2026-10-22T15:10:27.879Z",
+    "query": "what is the price",
+    "matchedQuestionId": "fees-structure",
+    "matchedQuestion": "What is the fee structure for courses at XentroX Labs?",
+    "category": "Fees & Admissions",
+    "confidence": 0.21,
+    "matchedKeywords": [
+      "price"
+    ],
+    "answered": true,
+    "frequency": 1,
+    "sessionId": null,
+    "source": "web_chatbot"
+  },
+  {
+    "id": "uq_1792681827874_kwa6b",
+    "timestamp": "2026-10-22T15:10:27.874Z",
+    "query": "how much does it cost",
+    "matchedQuestionId": "fees-structure",
+    "matchedQuestion": "What is the fee structure for courses at XentroX Labs?",
+    "category": "Fees & Admissions",
+    "confidence": 1,
+    "matchedKeywords": [
+      "cost",
+      "how much"
+    ],
+    "answered": true,
+    "frequency": 2,
+    "sessionId": null,
+    "source": "web_chatbot",
+    "lastAskedAt": "2026-10-22T15:34:52.711Z"
+  },
+  {
+    "id": "uq_1792681801613_986e7",
+    "timestamp": "2026-10-22T15:10:01.613Z",
+    "query": "missed class",
+    "matchedQuestionId": "admissions-missed-classes",
+    "matchedQuestion": "What if I miss a class or have doubts? Do you provide backup or recorded sessions?",
+    "category": "Fees & Admissions",
+    "confidence": 0.45,
+    "matchedKeywords": [
+      "missed class"
+    ],
+    "answered": true,
+    "frequency": 1,
+    "sessionId": null,
+    "source": "web_chatbot"
+  },
+  {
+    "id": "uq_1792681801609_dxxhu",
+    "timestamp": "2026-10-22T15:10:01.609Z",
+    "query": "contact number",
+    "matchedQuestionId": "contact-details",
+    "matchedQuestion": "How can I contact XentroX Labs for admissions or queries?",
+    "category": "Locations & Contact",
+    "confidence": 0.48,
+    "matchedKeywords": [
+      "contact",
+      "number"
+    ],
+    "answered": true,
+    "frequency": 1,
+    "sessionId": null,
+    "source": "web_chatbot"
+  },
+  {
+    "id": "uq_1792681801605_frgcy",
+    "timestamp": "2026-10-22T15:10:01.605Z",
+    "query": "subin ceo",
+    "matchedQuestionId": "comp-founders",
+    "matchedQuestion": "Who are the founders and leadership team of XentroX?",
+    "category": "Company & Overview",
+    "confidence": 0.41,
+    "matchedKeywords": [
+      "ceo",
+      "subin"
+    ],
+    "answered": true,
+    "frequency": 1,
+    "sessionId": null,
+    "source": "web_chatbot"
+  },
+  {
+    "id": "uq_1792681801601_soh50",
+    "timestamp": "2026-10-22T15:10:01.601Z",
+    "query": "weekend classes",
+    "matchedQuestionId": "admissions-weekend",
+    "matchedQuestion": "Do you have weekend batches for working professionals or college students?",
+    "category": "Fees & Admissions",
+    "confidence": 0.81,
+    "matchedKeywords": [
+      "weekend"
+    ],
+    "answered": true,
+    "frequency": 1,
+    "sessionId": null,
+    "source": "web_chatbot"
+  },
+  {
+    "id": "uq_1792681801598_sgzcg",
+    "timestamp": "2026-10-22T15:10:01.598Z",
+    "query": "can I attend demo",
+    "matchedQuestionId": "admissions-demo",
+    "matchedQuestion": "Can I attend a free demo class before enrolling?",
+    "category": "Fees & Admissions",
+    "confidence": 0.37,
+    "matchedKeywords": [
+      "demo"
+    ],
+    "answered": true,
+    "frequency": 1,
+    "sessionId": null,
+    "source": "web_chatbot"
+  },
+  {
+    "id": "uq_1792681801594_0ew4i",
+    "timestamp": "2026-10-22T15:10:01.594Z",
+    "query": "non it student",
+    "matchedQuestionId": "admissions-non-it",
+    "matchedQuestion": "I am from a non-IT / Arts / Commerce / Mechanical background. Can I learn coding?",
+    "category": "Fees & Admissions",
+    "confidence": 0.42,
+    "matchedKeywords": [
+      "non it"
+    ],
+    "answered": true,
+    "frequency": 1,
+    "sessionId": null,
+    "source": "web_chatbot"
+  },
+  {
+    "id": "uq_1792681801591_rnwgy",
+    "timestamp": "2026-10-22T15:10:01.591Z",
+    "query": "gap in career",
+    "matchedQuestionId": "career-gap",
+    "matchedQuestion": "I have a career gap or education gap. Can I still get placed in an IT job?",
+    "category": "Fees & Admissions",
+    "confidence": 0.35,
+    "matchedKeywords": [
+      "gap"
+    ],
+    "answered": true,
+    "frequency": 1,
+    "sessionId": null,
+    "source": "web_chatbot"
+  },
+  {
+    "id": "uq_1792681801587_ghtqw",
+    "timestamp": "2026-10-22T15:10:01.587Z",
+    "query": "what is xentrox",
+    "matchedQuestionId": "comp-overview",
+    "matchedQuestion": "What is XentroX Labs and what do you do?",
+    "category": "Company & Overview",
+    "confidence": 1,
+    "matchedKeywords": [
+      "xentrox",
+      "what is xentrox"
+    ],
+    "answered": true,
+    "frequency": 1,
+    "sessionId": null,
+    "source": "web_chatbot"
+  },
+  {
+    "id": "uq_1792681801584_myl1z",
+    "timestamp": "2026-10-22T15:10:01.584Z",
+    "query": "job placement guarantee",
+    "matchedQuestionId": "placements-support",
+    "matchedQuestion": "Do you offer placement assistance and job guarantee?",
+    "category": "Placements & Career Support",
+    "confidence": 0.88,
+    "matchedKeywords": [
+      "placement",
+      "job",
+      "guarantee"
+    ],
+    "answered": true,
+    "frequency": 1,
+    "sessionId": null,
+    "source": "web_chatbot"
+  },
+  {
+    "id": "uq_1792681801581_oshwo",
+    "timestamp": "2026-10-22T15:10:01.581Z",
+    "query": "trivandrum location",
+    "matchedQuestionId": "contact-locations",
+    "matchedQuestion": "Where are your training labs and offices located?",
+    "category": "Locations & Contact",
+    "confidence": 0.41,
+    "matchedKeywords": [
+      "location",
+      "trivandrum"
+    ],
+    "answered": true,
+    "frequency": 1,
+    "sessionId": null,
+    "source": "web_chatbot"
+  },
+  {
+    "id": "uq_1792681801576_nlov3",
+    "timestamp": "2026-10-22T15:10:01.576Z",
+    "query": "fees for mern",
+    "matchedQuestionId": "fees-structure",
+    "matchedQuestion": "What is the fee structure for courses at XentroX Labs?",
+    "category": "Fees & Admissions",
+    "confidence": 0.39,
+    "matchedKeywords": [
+      "fee",
+      "fees"
+    ],
+    "answered": true,
+    "frequency": 1,
+    "sessionId": null,
+    "source": "web_chatbot"
+  },
+  {
+    "id": "uq_1792681801571_dkpqn",
+    "timestamp": "2026-10-22T15:10:01.571Z",
+    "query": "how much is the fee",
+    "matchedQuestionId": "fees-structure",
+    "matchedQuestion": "What is the fee structure for courses at XentroX Labs?",
+    "category": "Fees & Admissions",
+    "confidence": 0.66,
+    "matchedKeywords": [
+      "fee",
+      "how much"
+    ],
+    "answered": true,
+    "frequency": 1,
+    "sessionId": null,
+    "source": "web_chatbot"
+  },
+  {
+    "id": "uq_1729605600000",
+    "timestamp": "2026-10-22T14:30:00.000Z",
+    "query": "What is the fee for MERN stack course?",
+    "matchedQuestionId": "fees-structure",
+    "matchedQuestion": "What is the fee structure for courses at XentroX Labs?",
+    "confidence": 0.92,
+    "matchedKeywords": [
+      "fee",
+      "fees",
+      "mern",
+      "mern stack"
+    ],
+    "answered": true,
+    "frequency": 1,
+    "source": "chatbot_widget"
+  },
+  {
+    "id": "uq_1729605720000",
+    "timestamp": "2026-10-22T14:32:00.000Z",
+    "query": "Where is your office located in Trivandrum?",
+    "matchedQuestionId": "contact-locations",
+    "matchedQuestion": "Where are your training labs and offices located?",
+    "confidence": 0.95,
+    "matchedKeywords": [
+      "office",
+      "located",
+      "trivandrum"
+    ],
+    "answered": true,
+    "frequency": 1,
+    "source": "chatbot_widget"
+  },
+  {
+    "id": "uq_1729605900000",
+    "timestamp": "2026-10-22T14:35:00.000Z",
+    "query": "Do you provide job placement guarantee?",
+    "matchedQuestionId": "placements-support",
+    "matchedQuestion": "Do you offer placement assistance and job guarantee?",
+    "confidence": 0.94,
+    "matchedKeywords": [
+      "job",
+      "placement",
+      "guarantee"
+    ],
+    "answered": true,
+    "frequency": 1,
+    "source": "chatbot_widget"
+  }
+]

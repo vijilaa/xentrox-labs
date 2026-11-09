@@ -1,152 +1,325 @@
-import React from 'react';
-import { Code2, FolderGit2, Users2, Briefcase, CheckCircle2, Sparkles, ArrowRight, Laptop, Award } from 'lucide-react';
-import { Link } from 'react-router-dom';
+
+import React, { useEffect, useRef } from 'react';
+import { CheckCircle2 } from 'lucide-react';
 
 const pillars = [
   {
     id: 'practical',
-    icon: Code2,
-    number: '01',
-    title: 'Practical Hands-On Coding',
-    description: 'You write code from Day 1. Solve real programming challenges and build applications with modern developer toolchains.',
-    points: ['Live terminal & cloud dev environments', 'Real Git branching & PR reviews', 'Automated testing standards'],
-    accent: 'bg-emerald-50 border-emerald-100 text-emerald-700',
+    title: 'Learn by Doing',
+    description: 'Build real projects from day one.',
+    points: ['Hands-on coding', 'Git and code reviews'],
   },
   {
     id: 'projects',
-    icon: FolderGit2,
-    number: '02',
-    title: 'Real Client Project Experience',
-    description: 'Train on active codebases and digital campaigns delivered by XentroX Solutions for real businesses.',
-    points: ['Production web & mobile apps', 'Database architecture & APIs', 'Measurable outcomes on live systems'],
-    accent: 'bg-lime-50 border-lime-100 text-lime-700',
+    title: 'Real Projects',
+    description: 'Create work that shows your skills.',
+    points: ['Web and mobile apps', 'Portfolio-ready projects'],
   },
   {
     id: 'mentors',
-    icon: Users2,
-    number: '03',
-    title: 'Mentorship by Working Engineers',
-    description: 'Learn from software developers and growth marketers who build and ship production software every single day.',
-    points: ['Weekly 1-on-1 code reviews', 'Architectural design best practices', 'Direct feedback on code quality'],
-    accent: 'bg-teal-50 border-teal-100 text-teal-700',
+    title: 'Expert Mentors',
+    description: 'Learn from experienced developers.',
+    points: ['Personal feedback', 'Code reviews'],
   },
   {
-    id: 'placement',
-    icon: Briefcase,
-    number: '04',
-    title: 'Career & Placement Support',
-    description: 'End-to-end career preparation — from portfolio to job offer — bridging the gap between learning and hiring.',
-    points: ['ATS resume & GitHub portfolio', 'Mock interviews & DSA practice', 'Direct hiring partner referrals'],
-    accent: 'bg-violet-50 border-violet-100 text-violet-700',
+    id: 'career',
+    title: 'Career Support',
+    description: 'Prepare for your next step in tech.',
+    points: ['Resume preparation', 'Interview practice'],
   },
 ];
 
 export default function Highlights({ onOpenEnroll }) {
-  return (
-    <section className="py-16 sm:py-24 bg-white border-t border-[#D4E8DC]">
-      <div className="max-w-7xl w-full mx-auto px-5 sm:px-8 lg:px-12">
+  const sectionRef = useRef(null);
 
-        <div className="flex flex-col lg:flex-row lg:items-end justify-between gap-6 mb-12">
-          <div className="max-w-2xl">
-            <span className="institute-badge mb-4">
-              <Sparkles className="w-3.5 h-3.5" />
-              The Practical Advantage
-            </span>
-            <h2 className="text-3xl sm:text-5xl font-black font-heading tracking-tight text-slate-900">
-              Why Choose <span className="text-[#033B32]">XentroX Labs</span>?
+  useEffect(() => {
+    const section = sectionRef.current;
+    if (!section) return;
+
+    const elements = section.querySelectorAll('.why-reveal');
+
+    const reduceMotion = window.matchMedia(
+      '(prefers-reduced-motion: reduce)'
+    ).matches;
+
+    if (reduceMotion || !('IntersectionObserver' in window)) {
+      elements.forEach((element) => {
+        element.classList.add('why-visible');
+      });
+      return;
+    }
+
+    const observer = new IntersectionObserver(
+      (entries) => {
+        entries.forEach((entry) => {
+          if (entry.isIntersecting) {
+            entry.target.classList.add('why-visible');
+            observer.unobserve(entry.target);
+          }
+        });
+      },
+      { threshold: 0.08, rootMargin: '0px 0px -30px 0px' }
+    );
+
+    elements.forEach((element) => observer.observe(element));
+
+    return () => observer.disconnect();
+  }, []);
+
+  return (
+    <section
+      ref={sectionRef}
+      className="why-section relative isolate overflow-hidden"
+      aria-labelledby="why-heading"
+    >
+      {/* Soft transition from the dark hero */}
+      <div
+        aria-hidden="true"
+        className="why-top-blend pointer-events-none absolute inset-x-0 top-0 -z-10"
+      />
+
+      {/* Subtle green background lighting */}
+      <div
+        aria-hidden="true"
+        className="why-orb why-orb-one pointer-events-none absolute -z-10"
+      />
+      <div
+        aria-hidden="true"
+        className="why-orb why-orb-two pointer-events-none absolute -z-10"
+      />
+
+      <div className="why-container mx-auto w-full max-w-[1440px] px-4 xs:px-5 sm:px-8 lg:px-12 xl:px-16">
+
+        {/* Heading */}
+        <div className="why-reveal why-up why-header mb-8 sm:mb-12">
+          <div className="max-w-3xl">
+            <h2
+              id="why-heading"
+              className="font-heading text-xl xs:text-2xl sm:text-3xl lg:text-[32px] font-bold leading-tight tracking-tight text-slate-900"
+            >
+              Why Choose{' '}
+              <span className="text-[#003831]">
+                XentroX Labs?
+              </span>
             </h2>
-            <p className="text-base sm:text-lg text-slate-600 mt-4 leading-relaxed">
-              We focus strictly on job readiness. Our training model replaces dry lectures with direct participation in active software and marketing projects.
+
+            <p className="mt-2 text-xs sm:text-sm leading-relaxed text-slate-600">
+              Think creatively. Build confidently. Grow your tech skills with hands-on practice.
             </p>
           </div>
-          <div className="flex items-center gap-3">
-            <Link
-              to="/why-xentrox"
-              className="btn-outline text-xs sm:text-sm py-3 px-5 rounded-xl font-bold inline-flex items-center gap-2 shrink-0 no-underline"
-            >
-              Compare with Bootcamps <ArrowRight className="w-4 h-4" />
-            </Link>
-          </div>
         </div>
 
-        {/* 4 Pillars Grid */}
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-5 mb-12">
-          {pillars.map(pillar => {
-            const Icon = pillar.icon;
-            return (
-              <div
-                key={pillar.id}
-                className="group p-6 rounded-2xl bg-white border border-[#D4E8DC] hover:border-lime-500 hover:shadow-lg transition-all duration-300 flex flex-col"
-              >
-                <div className="flex items-center justify-between mb-5">
-                  <div className={`w-12 h-12 rounded-xl flex items-center justify-center border ${pillar.accent}`}>
-                    <Icon className="w-6 h-6" />
-                  </div>
-                  <span className="text-xs font-mono font-bold text-slate-300 group-hover:text-lime-500 transition-colors">
-                    {pillar.number}
-                  </span>
-                </div>
-                <h3 className="text-lg font-bold text-slate-900 font-heading mb-3 leading-snug">
-                  {pillar.title}
-                </h3>
-                <p className="text-sm text-slate-600 leading-relaxed mb-5 flex-1">
-                  {pillar.description}
-                </p>
-                <div className="space-y-2 pt-4 border-t border-[#EEF3F0]">
-                  {pillar.points.map((pt, i) => (
-                    <div key={i} className="flex items-start gap-2">
-                      <CheckCircle2 className="w-3.5 h-3.5 text-lime-600 shrink-0 mt-0.5" />
-                      <span className="text-xs font-medium text-slate-700 leading-snug">{pt}</span>
-                    </div>
-                  ))}
-                </div>
-              </div>
-            );
-          })}
-        </div>
+        {/* Image and feature cards */}
+        <div className="grid grid-cols-1 items-stretch gap-5 sm:gap-6 lg:grid-cols-5 lg:gap-8">
 
-        {/* Visual Training Studio Banner Callout */}
-        <div className="relative rounded-3xl overflow-hidden bg-[#033B32] p-8 sm:p-10 text-white shadow-xl">
-          <div className="absolute inset-0 opacity-20 pointer-events-none">
+          {/* Featured image */}
+          <div className="why-reveal why-left relative min-h-[260px] xs:min-h-[300px] overflow-hidden rounded-2xl border border-[#E2EBE5] bg-emerald-50 shadow-[0_12px_32px_rgba(3,59,50,0.06)] sm:min-h-[380px] lg:col-span-2 lg:min-h-[440px]">
             <img
-              src="https://images.unsplash.com/photo-1531482615713-2afd69097998?w=1600&auto=format&fit=crop&q=80"
-              alt="Practical software studio learning session"
-              className="w-full h-full object-cover"
+              src="/why-us.png"
+              alt="Students collaborating on creative technology and software projects"
+              loading="lazy"
+              className="why-feature-image absolute inset-0 h-full w-full object-cover object-center"
             />
-          </div>
-          <div className="absolute inset-0 bg-gradient-to-r from-[#033B32] via-[#033B32]/90 to-transparent pointer-events-none" />
 
-          <div className="relative z-10 grid grid-cols-1 lg:grid-cols-12 gap-8 items-center">
-            <div className="lg:col-span-8 space-y-3">
-              <span className="text-xs font-mono text-lime-400 font-bold uppercase tracking-wider block">
-                Studio-Driven Learning Experience
-              </span>
-              <h3 className="text-2xl sm:text-3xl font-black font-heading leading-tight text-white">
-                Train inside the same studio that ships software to global clients.
+            {/* Blend the image into the card */}
+            <div
+              aria-hidden="true"
+              className="absolute inset-0 bg-gradient-to-t from-[#022620]/90 via-[#022620]/25 to-transparent"
+            />
+
+            <div className="absolute inset-x-0 bottom-0 p-6 sm:p-7">
+              <h3 className="max-w-sm font-heading text-xl font-bold leading-tight tracking-tight text-white sm:text-2xl">
+                Ideas become real solutions.
               </h3>
-              <p className="text-sm sm:text-base text-slate-200 max-w-2xl leading-relaxed">
-                Rather than working in isolation on theoretical homework, our trainees pair-program with active software architects, review git diffs, and deploy real microservices.
+
+              <p className="mt-2 max-w-xs text-xs sm:text-sm leading-6 text-white/85">
+                Learn together. Build what matters.
               </p>
             </div>
+          </div>
 
-            <div className="lg:col-span-4 flex flex-col sm:flex-row lg:flex-col gap-3 justify-center">
-              <button
-                onClick={() => onOpenEnroll ? onOpenEnroll() : null}
-                className="btn-primary py-3 px-6 text-xs sm:text-sm rounded-xl font-extrabold cursor-pointer text-center"
-              >
-                Apply for Next Batch
-              </button>
-              <Link
-                to="/about"
-                className="py-3 px-6 text-xs sm:text-sm rounded-xl font-bold bg-white/10 hover:bg-white/20 border border-white/20 text-white transition-colors text-center no-underline"
-              >
-                Learn About Our Studio
-              </Link>
-            </div>
+          {/* Feature cards */}
+          <div className="grid grid-cols-1 gap-4 sm:grid-cols-2 lg:col-span-3 lg:gap-5">
+            {pillars.map((pillar, index) => {
+              return (
+                <article
+                  key={pillar.id}
+                  className="why-reveal why-up why-card group flex min-w-0 flex-col rounded-2xl border border-[#E2EBE5] bg-white p-5 sm:p-6 transition-all duration-300 hover:border-lime-500/60 hover:shadow-[0_14px_36px_rgba(3,59,50,0.08)] hover:-translate-y-1"
+                  style={{
+                    transitionDelay: `${index * 70}ms`,
+                  }}
+                >
+                  <h3 className="font-heading text-base font-bold leading-snug text-slate-900">
+                    {pillar.title}
+                  </h3>
+
+                  <p className="mt-2 text-xs sm:text-sm leading-6 text-slate-600 flex-1">
+                    {pillar.description}
+                  </p>
+
+                  <div className="mt-5 space-y-2.5 border-t border-[#EEF4F0] pt-4">
+                    {pillar.points.map((point) => (
+                      <div
+                        key={point}
+                        className="flex items-start gap-2.5 text-xs text-slate-700"
+                      >
+                        <CheckCircle2
+                          size={15}
+                          className="mt-0.5 shrink-0 text-lime-600"
+                        />
+                        <span className="font-medium">{point}</span>
+                      </div>
+                    ))}
+                  </div>
+                </article>
+              );
+            })}
           </div>
         </div>
-
       </div>
+
+      <style>{`
+        .why-section {
+          width: 100%;
+          background: #FFFFFF;
+          padding: 72px 0;
+          color: #0f172a;
+        }
+
+        .why-top-blend {
+          height: 100px;
+          background: linear-gradient(
+            180deg,
+            rgba(187, 225, 202, 0.2) 0%,
+            rgba(240, 250, 244, 0.35) 45%,
+            transparent 100%
+          );
+        }
+
+        .why-container {
+          position: relative;
+          z-index: 1;
+        }
+
+        .why-brand-text {
+          color: #076747;
+          background: linear-gradient(
+            100deg,
+            #087653,
+            #075b43
+          );
+          -webkit-background-clip: text;
+          background-clip: text;
+          -webkit-text-fill-color: transparent;
+        }
+
+        .why-orb {
+          width: 260px;
+          height: 260px;
+          border-radius: 50%;
+          filter: blur(90px);
+          opacity: 0.15;
+        }
+
+        .why-orb-one {
+          top: 15%;
+          left: -180px;
+          background: #a3e635;
+        }
+
+        .why-orb-two {
+          right: -180px;
+          bottom: 5%;
+          background: #34d399;
+        }
+
+        .why-header {
+          min-width: 0;
+        }
+
+        .why-feature-image {
+          transition: transform 700ms cubic-bezier(.2,.7,.2,1);
+        }
+
+        .why-section .why-reveal {
+          opacity: 0;
+          transition:
+            opacity 550ms ease,
+            transform 550ms cubic-bezier(.2,.7,.2,1),
+            border-color 250ms ease,
+            box-shadow 250ms ease;
+        }
+
+        .why-section .why-up {
+          transform: translateY(16px);
+        }
+
+        .why-section .why-left {
+          transform: translateX(-16px);
+        }
+
+        .why-section .why-visible {
+          opacity: 1;
+          transform: translate(0, 0);
+        }
+
+        .why-card {
+          box-shadow: 0 4px 18px rgba(7, 80, 55, 0.025);
+        }
+
+        .why-card:hover {
+          border-color: #b5e4cb;
+          box-shadow: 0 12px 28px rgba(7, 80, 55, 0.07);
+          transform: translateY(-3px);
+        }
+
+        .why-apply-btn {
+          background: linear-gradient(110deg, #087653, #075b43);
+          box-shadow: 0 5px 14px rgba(7, 94, 65, 0.12);
+        }
+
+        .why-apply-btn:hover {
+          box-shadow: 0 8px 20px rgba(7, 94, 65, 0.2);
+        }
+
+        @media (min-width: 1024px) {
+          .why-section {
+            padding-top: 58px;
+            padding-bottom: 48px;
+          }
+
+          .why-header {
+            margin-bottom: 32px;
+          }
+        }
+
+        @media (max-width: 640px) {
+          .why-section {
+            padding-top: 38px;
+            padding-bottom: 32px;
+          }
+
+          .why-header h2 {
+            font-size: clamp(1.7rem, 6vw, 2.1rem);
+          }
+
+          .why-card {
+            padding: 16px;
+          }
+        }
+
+        @media (prefers-reduced-motion: reduce) {
+          .why-section .why-reveal,
+          .why-card,
+          .why-feature-image,
+          .why-icon-box,
+          .why-apply-btn {
+            opacity: 1;
+            transform: none;
+            transition: none;
+          }
+        }
+      `}</style>
     </section>
   );
 }

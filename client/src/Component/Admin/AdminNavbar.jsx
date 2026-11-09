@@ -37,7 +37,7 @@ export default function AdminNavbar({
               placeholder={`Search in ${title}...`}
               value={searchQuery}
               onChange={(e) => setSearchQuery(e.target.value)}
-              className="w-full bg-slate-100 dark:bg-slate-950 border border-slate-200 dark:border-slate-800 rounded-xl px-3.5 py-2 pl-9 pr-8 text-xs text-slate-900 dark:text-white placeholder-slate-400 dark:placeholder-slate-500 focus:outline-none focus:border-blue-500 dark:focus:border-cyan-500 transition-colors"
+              className="w-full bg-slate-100 dark:bg-slate-950 border border-slate-200 dark:border-slate-800 rounded-xl px-3.5 py-2 pl-9 pr-8 text-xs text-slate-900 dark:text-white placeholder-slate-400 dark:placeholder-slate-500 focus:outline-none focus:border-lime-500 dark:focus:border-lime-500 transition-colors"
             />
             <Search className="w-3.5 h-3.5 absolute left-3 top-3 text-slate-400 dark:text-slate-500" />
             {searchQuery && (
@@ -68,12 +68,12 @@ export default function AdminNavbar({
 
         {/* User Card */}
         <div className="flex items-center gap-2.5 px-3 py-1.5 rounded-xl bg-slate-100 dark:bg-slate-950 border border-slate-200 dark:border-slate-800">
-          <div className="w-7 h-7 rounded-lg bg-blue-600 text-white dark:bg-blue-600/30 dark:text-cyan-400 border border-blue-500/40 flex items-center justify-center text-xs font-bold shadow-xs">
+          <div className="w-7 h-7 rounded-lg bg-lime-400 text-[#022620] dark:bg-lime-500/30 dark:text-lime-400 border border-lime-500/40 flex items-center justify-center text-xs font-bold shadow-xs">
             {user?.name ? user.name.charAt(0).toUpperCase() : 'A'}
           </div>
           <div className="hidden sm:block text-left">
             <p className="text-xs font-bold text-slate-900 dark:text-white leading-none">{user?.name || 'XentroX Admin'}</p>
-            <p className="text-[10px] text-blue-600 dark:text-cyan-400 mt-0.5 font-mono">{user?.email || 'admin@xentroxlabs.com'}</p>
+            <p className="text-[10px] text-lime-600 dark:text-lime-400 mt-0.5 font-mono">{user?.email || 'admin@xentroxlabs.com'}</p>
           </div>
         </div>
       </div>

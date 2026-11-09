@@ -1,4 +1,4 @@
-﻿import React from 'react';
+import React from 'react';
 import { Code, Database, Globe, Cpu, Layers, Terminal, Sparkles, Smartphone, Shield } from 'lucide-react';
 
 const techStack = [
@@ -16,10 +16,10 @@ const techStack = [
 
 export default function TechStackBanner() {
   return (
-    <div id="techstack" className="py-10 border-y border-slate-200 overflow-hidden relative z-10 transition-colors duration-300">
+    <div id="techstack" className="py-7 xs:py-8 sm:py-10 border-y border-slate-200 overflow-hidden relative z-10 transition-colors duration-300">
       
-      <div className="max-w-[1440px] mx-auto px-4 sm:px-6 lg:px-8 mb-5 text-center">
-        <p className="text-xs font-mono font-bold tracking-widest text-slate-500 uppercase">
+      <div className="max-w-[1440px] mx-auto px-4 sm:px-6 lg:px-8 mb-4 xs:mb-5 text-center">
+        <p className="text-[10.5px] xs:text-xs font-mono font-bold tracking-widest text-slate-500 uppercase">
           Master Tools & Tech Demanded By Top Companies
         </p>
       </div>
@@ -27,16 +27,16 @@ export default function TechStackBanner() {
       <div className="flex overflow-hidden relative">
         
         {/* Marquee Loop Track */}
-        <div className="marquee-track flex gap-6 items-center py-2">
+        <div className="marquee-track flex gap-4 xs:gap-6 items-center py-2">
           {[...techStack, ...techStack, ...techStack].map((item, idx) => {
             const Icon = item.icon;
             return (
               <div
                 key={idx}
-                className="flex items-center gap-3 px-5 py-2.5 rounded-full bg-white border border-slate-200 hover:border-blue-500 transition-all flex-shrink-0 shadow-sm"
+                className="flex items-center gap-2.5 xs:gap-3 px-3.5 xs:px-5 py-2 xs:py-2.5 rounded-full bg-white border border-slate-200 hover:border-blue-500 transition-all flex-shrink-0 shadow-sm"
               >
-                <Icon className={`w-4 h-4 ${item.color}`} />
-                <span className="text-xs font-bold text-slate-800">
+                <Icon className={`w-3.5 xs:w-4 h-3.5 xs:h-4 ${item.color}`} />
+                <span className="text-[11px] xs:text-xs font-bold text-slate-800">
                   {item.name}
                 </span>
               </div>

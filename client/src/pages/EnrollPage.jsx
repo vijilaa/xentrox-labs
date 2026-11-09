@@ -3,7 +3,6 @@ import { Link, useSearchParams } from 'react-router-dom';
 import { createEnquiry } from '../services/api';
 import { courseCategories, headerInfo } from '../data/coursesData';
 import {
-  Sparkles,
   CheckCircle2,
   AlertCircle,
   ArrowRight,
@@ -98,25 +97,20 @@ export default function EnrollPage() {
   );
 
   return (
-    <div className="pt-24 pb-20">
-      {/* 1. Page Hero */}
-      <section className="py-14 sm:py-18 bg-[#F8FAF8] border-b border-[#E2ECE6] transition-colors">
-        <div className="max-w-[1440px] w-full mx-auto px-4 sm:px-6 lg:px-10">
-          <div className="text-xs font-mono font-bold text-lime-600 mb-3 flex items-center gap-2">
-            <Link to="/" className="hover:underline text-slate-500">Home</Link>
-            <span>/</span>
-            <span>Enroll Now</span>
+    <div className="pt-20 bg-white">
+      {/* 1. Page Hero Banner */}
+      <section className="relative py-12 sm:py-20 lg:py-24 overflow-hidden page-banner">
+        <div className="absolute inset-0 bg-gradient-to-r from-[#032D27] via-[#063C33]/95 to-[#075044]/90 pointer-events-none" />
+        <div className="max-w-[1440px] w-full mx-auto px-4 xs:px-5 sm:px-8 lg:px-12 xl:px-16 relative z-10">
+          <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-white/10 border border-white/15 text-lime-300 text-[10.5px] xs:text-xs font-bold tracking-wide uppercase mb-3.5 sm:mb-5 backdrop-blur-xs">
+            Online &amp; Classroom Admissions • 2026 Batches
           </div>
 
           <div className="max-w-3xl">
-            <span className="institute-badge mb-4">
-              <Sparkles className="w-3.5 h-3.5" />
-              ADMISSIONS OPEN 2026
-            </span>
-            <h1 className="text-3xl sm:text-5xl font-black font-heading tracking-tight text-slate-900 leading-tight mb-4">
+            <h1 className="text-xl xs:text-2xl sm:text-4xl lg:text-[42px] font-bold font-heading tracking-tight text-white leading-[1.18] mb-3 sm:mb-4">
               Apply for Upcoming Training Batches
             </h1>
-            <p className="text-base sm:text-lg text-slate-600 leading-relaxed font-normal">
+            <p className="text-xs sm:text-base lg:text-lg text-slate-200 leading-relaxed font-normal">
               Join South India's premier hands-on tech training institution. Free career counseling, zero upfront registration fee, and flexible batch timings in Marthandam &amp; Trivandrum.
             </p>
           </div>
@@ -124,27 +118,29 @@ export default function EnrollPage() {
       </section>
 
       {/* 2. Main Enrollment Application Form + Sidebar */}
-      <section className="py-16 sm:py-20 bg-white transition-colors">
-        <div className="max-w-[1440px] w-full mx-auto px-4 sm:px-6 lg:px-10">
-          <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 items-start">
+      <section className="py-12 sm:py-20 lg:py-24 bg-[#F7FAF8]">
+        <div className="max-w-[1440px] w-full mx-auto px-4 xs:px-5 sm:px-8 lg:px-12 xl:px-16">
+          <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-14 items-start">
 
             {/* Left 7 Cols: Application Form */}
-            <div className="lg:col-span-7">
-              <div className="p-8 sm:p-10 rounded-3xl bg-[#F7FCF9] border border-[#D3E8DE] shadow-xl">
+            <div data-anim="fade-right" data-delay="100" className="lg:col-span-7">
+              <div className="p-4 xs:p-6 sm:p-8 lg:p-10 rounded-2xl bg-white border border-[#E2EBE5] shadow-xs">
                 <div className="mb-8">
-                  <span className="cyber-badge text-xs mb-2">APPLICATION FORM</span>
-                  <h2 className="text-2xl font-black font-heading text-slate-900">
+                  <span className="text-xs font-bold tracking-wider text-lime-700 uppercase">
+                    Admissions Form
+                  </span>
+                  <h2 className="text-2xl font-bold font-heading text-slate-900 tracking-tight mt-1">
                     Candidate Enrollment Details
                   </h2>
-                  <p className="text-xs sm:text-sm text-slate-600 mt-1">
+                  <p className="text-xs sm:text-sm text-slate-600 mt-1.5 leading-relaxed">
                     Please provide accurate information so our admissions team can schedule your counseling sprint.
                   </p>
                 </div>
 
                 {submitted ? (
-                  <div className="py-12 text-center space-y-4 animate-fadeIn">
-                    <div className="w-16 h-16 rounded-full bg-lime-500/20 text-lime-500 flex items-center justify-center mx-auto">
-                      <CheckCircle2 className="w-10 h-10" />
+                  <div className="py-12 text-center space-y-4 animate-fade-in">
+                    <div className="w-16 h-16 rounded-full bg-lime-100 text-lime-700 flex items-center justify-center mx-auto border border-lime-200">
+                      <CheckCircle2 className="w-9 h-9" />
                     </div>
                     <h3 className="text-2xl font-black font-heading text-slate-900">
                       Enrollment Application Submitted!
@@ -157,12 +153,13 @@ export default function EnrollPage() {
                         href={`https://wa.me/91${headerInfo.phone}?text=Hi%20XentroX%20Labs%2C%20I%20just%20submitted%20my%20enrollment%20for%20${encodeURIComponent(formData.selectedTrack)}.`}
                         target="_blank"
                         rel="noopener noreferrer"
-                        className="btn-primary text-xs py-2.5 px-6 rounded-full font-bold inline-flex items-center gap-2"
+                        className="btn-primary text-xs py-2.5 px-6 rounded-full font-bold inline-flex items-center gap-2 shadow-xs"
                       >
                         <span>Chat With Advisor on WhatsApp</span>
                         <ArrowRight className="w-3.5 h-3.5" />
                       </a>
                       <button
+                        type="button"
                         onClick={() => setSubmitted(false)}
                         className="btn-outline text-xs py-2.5 px-5 rounded-full font-bold cursor-pointer"
                       >
@@ -182,7 +179,7 @@ export default function EnrollPage() {
                     {/* Candidate Name */}
                     <div>
                       <label className="block text-xs font-bold text-slate-700 mb-1.5 uppercase tracking-wider">
-                        Full Name <span className="text-lime-500">*</span>
+                        Full Name <span className="text-lime-600">*</span>
                       </label>
                       <input
                         type="text"
@@ -190,7 +187,7 @@ export default function EnrollPage() {
                         placeholder="e.g. Alex Johnson"
                         value={formData.fullName}
                         onChange={(e) => setFormData({ ...formData, fullName: e.target.value })}
-                        className="w-full px-4 py-3 rounded-xl bg-white border border-[#D3E8DE] text-slate-900 text-xs sm:text-sm focus:outline-none focus:ring-2 focus:ring-lime-500"
+                        className="w-full px-4 py-3 rounded-xl bg-[#F7FAF8] border border-[#E2EBE5] text-slate-900 text-xs sm:text-sm focus:outline-none focus:ring-2 focus:ring-lime-500/20 focus:border-lime-500 transition-all"
                       />
                     </div>
 
@@ -198,7 +195,7 @@ export default function EnrollPage() {
                     <div className="grid grid-cols-1 sm:grid-cols-2 gap-5">
                       <div>
                         <label className="block text-xs font-bold text-slate-700 mb-1.5 uppercase tracking-wider">
-                          Email Address <span className="text-lime-500">*</span>
+                          Email Address <span className="text-lime-600">*</span>
                         </label>
                         <input
                           type="email"
@@ -206,13 +203,13 @@ export default function EnrollPage() {
                           placeholder="e.g. alex@example.com"
                           value={formData.email}
                           onChange={(e) => setFormData({ ...formData, email: e.target.value })}
-                          className="w-full px-4 py-3 rounded-xl bg-white border border-[#D3E8DE] text-slate-900 text-xs sm:text-sm focus:outline-none focus:ring-2 focus:ring-lime-500"
+                          className="w-full px-4 py-3 rounded-xl bg-[#F7FAF8] border border-[#E2EBE5] text-slate-900 text-xs sm:text-sm focus:outline-none focus:ring-2 focus:ring-lime-500/20 focus:border-lime-500 transition-all"
                         />
                       </div>
 
                       <div>
                         <label className="block text-xs font-bold text-slate-700 mb-1.5 uppercase tracking-wider">
-                          10-Digit Mobile <span className="text-lime-500">*</span>
+                          10-Digit Mobile <span className="text-lime-600">*</span>
                         </label>
                         <input
                           type="tel"
@@ -221,7 +218,7 @@ export default function EnrollPage() {
                           value={formData.phone}
                           onChange={handlePhoneChange}
                           maxLength={10}
-                          className="w-full px-4 py-3 rounded-xl bg-white border border-[#D3E8DE] text-slate-900 text-xs sm:text-sm focus:outline-none focus:ring-2 focus:ring-lime-500"
+                          className="w-full px-4 py-3 rounded-xl bg-[#F7FAF8] border border-[#E2EBE5] text-slate-900 text-xs sm:text-sm focus:outline-none focus:ring-2 focus:ring-lime-500/20 focus:border-lime-500 transition-all"
                         />
                         {phoneError && (
                           <p className="text-[11px] text-red-500 font-semibold mt-1">
@@ -234,12 +231,12 @@ export default function EnrollPage() {
                     {/* Course Track */}
                     <div>
                       <label className="block text-xs font-bold text-slate-700 mb-1.5 uppercase tracking-wider">
-                        Select Specialized Track <span className="text-lime-500">*</span>
+                        Select Specialized Track <span className="text-lime-600">*</span>
                       </label>
                       <select
                         value={formData.selectedTrack}
                         onChange={(e) => setFormData({ ...formData, selectedTrack: e.target.value })}
-                        className="w-full px-4 py-3 rounded-xl bg-white border border-[#D3E8DE] text-slate-900 text-xs sm:text-sm focus:outline-none focus:ring-2 focus:ring-lime-500 cursor-pointer"
+                        className="w-full px-4 py-3 rounded-xl bg-[#F7FAF8] border border-[#E2EBE5] text-slate-900 text-xs sm:text-sm focus:outline-none focus:ring-2 focus:ring-lime-500/20 focus:border-lime-500 cursor-pointer transition-all"
                       >
                         {allAvailableCourses.map((c, i) => (
                           <option key={i} value={c.name}>
@@ -258,7 +255,7 @@ export default function EnrollPage() {
                         <select
                           value={formData.mode}
                           onChange={(e) => setFormData({ ...formData, mode: e.target.value })}
-                          className="w-full px-4 py-3 rounded-xl bg-white border border-[#D3E8DE] text-slate-900 text-xs sm:text-sm focus:outline-none focus:ring-2 focus:ring-lime-500 cursor-pointer"
+                          className="w-full px-4 py-3 rounded-xl bg-[#F7FAF8] border border-[#E2EBE5] text-slate-900 text-xs sm:text-sm focus:outline-none focus:ring-2 focus:ring-lime-500/20 focus:border-lime-500 cursor-pointer transition-all"
                         >
                           <option value="Classroom Lab (Marthandam)">Classroom Lab (Marthandam, TN)</option>
                           <option value="Classroom Lab (Trivandrum)">Classroom Lab (Trivandrum, KL)</option>
@@ -274,7 +271,7 @@ export default function EnrollPage() {
                         <select
                           value={formData.batchTime}
                           onChange={(e) => setFormData({ ...formData, batchTime: e.target.value })}
-                          className="w-full px-4 py-3 rounded-xl bg-white border border-[#D3E8DE] text-slate-900 text-xs sm:text-sm focus:outline-none focus:ring-2 focus:ring-lime-500 cursor-pointer"
+                          className="w-full px-4 py-3 rounded-xl bg-[#F7FAF8] border border-[#E2EBE5] text-slate-900 text-xs sm:text-sm focus:outline-none focus:ring-2 focus:ring-lime-500/20 focus:border-lime-500 cursor-pointer transition-all"
                         >
                           <option value="Morning Cohort (9:30 AM – 12:30 PM)">Morning Cohort (9:30 AM – 12:30 PM)</option>
                           <option value="Evening Cohort (6:00 PM – 8:00 PM)">Evening Cohort (6:00 PM – 8:00 PM)</option>
@@ -291,7 +288,7 @@ export default function EnrollPage() {
                       <select
                         value={formData.experience}
                         onChange={(e) => setFormData({ ...formData, experience: e.target.value })}
-                        className="w-full px-4 py-3 rounded-xl bg-white border border-[#D3E8DE] text-slate-900 text-xs sm:text-sm focus:outline-none focus:ring-2 focus:ring-lime-500 cursor-pointer"
+                        className="w-full px-4 py-3 rounded-xl bg-[#F7FAF8] border border-[#E2EBE5] text-slate-900 text-xs sm:text-sm focus:outline-none focus:ring-2 focus:ring-lime-500/20 focus:border-lime-500 cursor-pointer transition-all"
                       >
                         <option value="College Student (Pre-final / Final Year)">College Student (Pre-final / Final Year)</option>
                         <option value="Recent College Graduate (2024–2026)">Recent College Graduate (2024–2026)</option>
@@ -310,7 +307,7 @@ export default function EnrollPage() {
                         placeholder="Tell us what you hope to achieve (e.g. MERN job placement, freelance skills, remote roles)..."
                         value={formData.message}
                         onChange={(e) => setFormData({ ...formData, message: e.target.value })}
-                        className="w-full px-4 py-3 rounded-xl bg-white border border-[#D3E8DE] text-slate-900 text-xs sm:text-sm focus:outline-none focus:ring-2 focus:ring-lime-500"
+                        className="w-full px-4 py-3 rounded-xl bg-[#F7FAF8] border border-[#E2EBE5] text-slate-900 text-xs sm:text-sm focus:outline-none focus:ring-2 focus:ring-lime-500/20 focus:border-lime-500 transition-all resize-none"
                       />
                     </div>
 
@@ -318,7 +315,7 @@ export default function EnrollPage() {
                     <button
                       type="submit"
                       disabled={loading}
-                      className="w-full btn-primary py-3.5 text-xs font-black rounded-xl justify-center shadow-lg shadow-lime-500/25 cursor-pointer disabled:opacity-50"
+                      className="w-full btn-primary h-11 py-2.5 text-xs sm:text-sm font-bold rounded-lg justify-center shadow-xs cursor-pointer disabled:opacity-50 active:scale-98 transition-all"
                     >
                       {loading ? (
                         <span>Submitting Application...</span>
@@ -339,58 +336,57 @@ export default function EnrollPage() {
             </div>
 
             {/* Right 5 Cols: What Happens Next & Benefits Sidebar */}
-            <div className="lg:col-span-5 space-y-6">
+            <div data-anim="fade-left" data-delay="150" className="lg:col-span-5 space-y-6">
               {/* Process timeline card */}
-              <div className="p-7 rounded-3xl bg-[#F7FCF9] border border-[#D3E8DE] shadow-sm space-y-5">
-                <span className="cyber-badge text-[10px]">NEXT STEPS</span>
-                <h3 className="text-xl font-bold font-heading text-slate-900">
+              <div className="p-6 sm:p-8 rounded-2xl bg-white border border-[#E2EBE5] shadow-xs space-y-5">
+                <h3 className="text-xl font-bold font-heading text-slate-900 tracking-tight">
                   What Happens After You Apply?
                 </h3>
 
                 <div className="space-y-4 text-xs">
                   <div className="flex items-start gap-3">
-                    <div className="w-6 h-6 rounded-full bg-lime-500 text-[#022620] font-black text-[11px] flex items-center justify-center shrink-0 mt-0.5">
+                    <div className="w-6 h-6 rounded-full bg-lime-400 text-[#003831] font-black text-[11px] flex items-center justify-center shrink-0 mt-0.5">
                       1
                     </div>
                     <div>
                       <p className="font-bold text-slate-900">Advisor Connect Call</p>
-                      <p className="text-slate-600 mt-0.5">
+                      <p className="text-slate-600 mt-0.5 leading-relaxed">
                         Within 2 hours, a course mentor will contact you to understand your background and clarify questions.
                       </p>
                     </div>
                   </div>
 
                   <div className="flex items-start gap-3">
-                    <div className="w-6 h-6 rounded-full bg-lime-500 text-[#022620] font-black text-[11px] flex items-center justify-center shrink-0 mt-0.5">
+                    <div className="w-6 h-6 rounded-full bg-lime-400 text-[#003831] font-black text-[11px] flex items-center justify-center shrink-0 mt-0.5">
                       2
                     </div>
                     <div>
                       <p className="font-bold text-slate-900">Free Diagnostic &amp; Syllabus Review</p>
-                      <p className="text-slate-600 mt-0.5">
+                      <p className="text-slate-600 mt-0.5 leading-relaxed">
                         Receive detailed module breakdowns, live project previews, and curriculum milestones.
                       </p>
                     </div>
                   </div>
 
                   <div className="flex items-start gap-3">
-                    <div className="w-6 h-6 rounded-full bg-lime-500 text-[#022620] font-black text-[11px] flex items-center justify-center shrink-0 mt-0.5">
+                    <div className="w-6 h-6 rounded-full bg-lime-400 text-[#003831] font-black text-[11px] flex items-center justify-center shrink-0 mt-0.5">
                       3
                     </div>
                     <div>
                       <p className="font-bold text-slate-900">Studio Visit / Live Demo</p>
-                      <p className="text-slate-600 mt-0.5">
+                      <p className="text-slate-600 mt-0.5 leading-relaxed">
                         Visit our lab in Marthandam or Trivandrum, or attend a live online interactive demo session.
                       </p>
                     </div>
                   </div>
 
                   <div className="flex items-start gap-3">
-                    <div className="w-6 h-6 rounded-full bg-lime-500 text-[#022620] font-black text-[11px] flex items-center justify-center shrink-0 mt-0.5">
+                    <div className="w-6 h-6 rounded-full bg-lime-400 text-[#003831] font-black text-[11px] flex items-center justify-center shrink-0 mt-0.5">
                       4
                     </div>
                     <div>
                       <p className="font-bold text-slate-900">Cohort Onboarding</p>
-                      <p className="text-slate-600 mt-0.5">
+                      <p className="text-slate-600 mt-0.5 leading-relaxed">
                         Set up your development sandbox, join the Discord/Slack studio channel, and start coding.
                       </p>
                     </div>
@@ -399,29 +395,29 @@ export default function EnrollPage() {
               </div>
 
               {/* Guarantees Box */}
-              <div className="p-7 rounded-3xl bg-[#EEF8F2] border border-[#D3E8DE] space-y-3">
-                <div className="flex items-center gap-2 text-lime-700 font-bold text-sm">
-                  <ShieldCheck className="w-5 h-5 text-lime-500" />
+              <div className="p-6 sm:p-8 rounded-2xl bg-[#F0FDF4] border border-[#BDE8CA] space-y-3">
+                <div className="flex items-center gap-2 text-[#003831] font-bold text-sm">
+                  <ShieldCheck className="w-5 h-5 text-lime-600" />
                   <span>The XentroX Labs Guarantee</span>
                 </div>
                 <ul className="space-y-2 text-xs text-slate-700">
                   <li className="flex items-center gap-2">
-                    <CheckCircle2 className="w-4 h-4 text-lime-500 shrink-0" />
+                    <CheckCircle2 className="w-4 h-4 text-lime-600 shrink-0" />
                     <span>100% active code on real production repositories</span>
                   </li>
                   <li className="flex items-center gap-2">
-                    <CheckCircle2 className="w-4 h-4 text-lime-500 shrink-0" />
+                    <CheckCircle2 className="w-4 h-4 text-lime-600 shrink-0" />
                     <span>1-on-1 code reviews with working software engineers</span>
                   </li>
                   <li className="flex items-center gap-2">
-                    <CheckCircle2 className="w-4 h-4 text-lime-500 shrink-0" />
+                    <CheckCircle2 className="w-4 h-4 text-lime-600 shrink-0" />
                     <span>Complete resume, LinkedIn &amp; placement referrals</span>
                   </li>
                 </ul>
               </div>
 
               {/* Instant WhatsApp Connect */}
-              <div className="p-6 rounded-3xl bg-white border border-[#D3E8DE] text-center space-y-3">
+              <div className="p-6 rounded-2xl bg-white border border-[#E2EBE5] text-center space-y-3 shadow-xs">
                 <p className="text-xs font-bold text-slate-900">
                   Want an instant answer right now?
                 </p>
@@ -429,7 +425,7 @@ export default function EnrollPage() {
                   href={`https://wa.me/91${headerInfo.phone}?text=Hello%20XentroX%20Labs%2C%20I%20have%20a%20question%20about%20course%20enrollment.`}
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="btn-dark-green text-xs py-2.5 px-6 rounded-full font-bold inline-flex items-center gap-2 shadow-sm"
+                  className="btn-dark-green text-xs py-2.5 px-6 rounded-xl font-bold inline-flex items-center gap-2 shadow-xs cursor-pointer"
                 >
                   <Phone className="w-3.5 h-3.5 text-lime-400" />
                   <span>Chat With Advisor on WhatsApp</span>

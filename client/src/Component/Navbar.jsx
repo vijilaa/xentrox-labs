@@ -100,26 +100,30 @@ export default function Navbar({ onOpenEnroll, onSelectCourse }) {
   return (
     <>
       <header
-        className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 glass-header ${
-          scrolled ? 'shadow-sm py-2.5' : 'py-3.5'
+        className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${
+          mobileOpen
+            ? 'bg-white shadow-md py-2.5 border-b border-[#E2EBE5]'
+            : scrolled
+            ? 'shadow-xs py-2 bg-white/95 backdrop-blur-md border-b border-[#E2EBE5]'
+            : 'py-2.5 bg-white/90 backdrop-blur-md border-b border-[#E2EBE5]/50'
         }`}
       >
-        <div className="max-w-[1440px] w-full mx-auto px-4 sm:px-6 lg:px-10 flex items-center justify-between gap-3">
+        <div className="max-w-[1440px] w-full mx-auto px-3.5 sm:px-8 lg:px-12 xl:px-16 flex items-center justify-between gap-2 sm:gap-3">
 
           {/* Logo with official Dark Teal + Lime theme */}
-          <div className="shrink-0 max-w-[210px] sm:max-w-none">
+          <div className="shrink-0 max-w-[160px] xs:max-w-[210px] sm:max-w-none">
             <Logo size="md" href="/" />
           </div>
 
           {/* Desktop Nav */}
-          <nav className="hidden lg:flex items-center gap-5 xl:gap-7" aria-label="Main Navigation">
+          <nav className="hidden lg:flex items-center gap-4 xl:gap-6" aria-label="Main Navigation">
             {navLinks.map((link) => (
               <NavLink
                 key={link.path}
                 to={link.path}
                 className={({ isActive }) =>
-                  `relative py-1.5 text-sm font-semibold no-underline transition-colors group ${
-                    isActive ? 'text-[#003831] font-bold' : 'text-slate-700 hover:text-lime-700'
+                  `relative py-1 text-[13px] tracking-normal no-underline transition-colors group ${
+                    isActive ? 'text-[#003831] font-semibold' : 'text-slate-600 hover:text-[#003831] font-medium'
                   }`
                 }
               >
@@ -127,7 +131,7 @@ export default function Navbar({ onOpenEnroll, onSelectCourse }) {
                   <>
                     <span>{link.label}</span>
                     <span
-                      className={`absolute -bottom-1 left-0 h-[2.5px] rounded-full bg-lime-500 transition-all duration-300 ${
+                      className={`absolute -bottom-1 left-0 h-[2px] rounded-full bg-[#84CC16] transition-all duration-300 ${
                         isActive ? 'w-full' : 'w-0 group-hover:w-full'
                       }`}
                     />
@@ -138,9 +142,9 @@ export default function Navbar({ onOpenEnroll, onSelectCourse }) {
           </nav>
 
           {/* Desktop Right: Search + Enroll */}
-          <div className="hidden lg:flex items-center gap-3 shrink-0">
+          <div className="hidden lg:flex items-center gap-2.5 shrink-0">
             <div ref={searchRef} className="relative">
-              <Search size={14} className="absolute left-3 top-1/2 -translate-y-1/2 text-slate-400 pointer-events-none" />
+              <Search size={13} className="absolute left-3 top-1/2 -translate-y-1/2 text-slate-400 pointer-events-none" />
               <form onSubmit={handleSearchSubmit}>
                 <input
                   type="search"
@@ -149,7 +153,7 @@ export default function Navbar({ onOpenEnroll, onSelectCourse }) {
                   value={searchQuery}
                   onFocus={() => setShowDrop(true)}
                   onChange={(e) => { setSearchQuery(e.target.value); setShowDrop(true); }}
-                  className="w-40 xl:w-52 rounded-full py-2 pl-9 pr-7 text-xs bg-[#F4F9F6] border border-[#DCEBE2] text-slate-800 placeholder-slate-400 focus:outline-none focus:ring-2 focus:ring-lime-500/40"
+                  className="w-36 xl:w-48 h-9 rounded-lg pl-8 pr-7 text-[12px] bg-[#F4F9F6] border border-[#E2EBE5] text-slate-800 placeholder-slate-400 focus:outline-none focus:border-[#84CC16] focus:ring-1 focus:ring-[#84CC16]/30 transition-all"
                 />
               </form>
               {searchQuery && (
@@ -164,7 +168,7 @@ export default function Navbar({ onOpenEnroll, onSelectCourse }) {
               )}
 
               {showDrop && searchQuery.trim().length > 0 && (
-                <div className="absolute top-full mt-2 left-0 min-w-[300px] bg-white border border-[#DCEBE2] rounded-2xl shadow-xl overflow-hidden z-50 animate-scale-in">
+                <div className="absolute top-full mt-2 left-0 min-w-[300px] bg-white border border-[#E2EBE5] rounded-2xl shadow-xl overflow-hidden z-50 animate-scale-in">
                   <div className="px-3.5 py-2.5 border-b border-slate-100 text-[11px] font-bold uppercase tracking-wider text-slate-500 flex justify-between">
                     <span>Matching Courses</span>
                     <span className="text-lime-600">{liveResults.length} found</span>
@@ -197,25 +201,25 @@ export default function Navbar({ onOpenEnroll, onSelectCourse }) {
               )}
             </div>
 
-            {/* Enroll Now with Logo Theme & Click Animation */}
+            {/* Enroll Now with Sleek Compact Button */}
             <button
               type="button"
               onClick={handleEnrollClick}
-              className={`btn-primary text-sm font-extrabold px-5 py-2.5 whitespace-nowrap cursor-pointer btn-interactive shadow-sm ${
+              className={`inline-flex items-center justify-center gap-1.5 h-9 px-3.5 text-xs font-bold rounded-lg bg-[#84CC16] hover:bg-[#92dc1d] active:bg-[#78ba14] text-[#003831] shadow-xs hover:shadow-sm transition-all duration-200 whitespace-nowrap cursor-pointer select-none border border-[#72b513]/30 active:scale-95 ${
                 isEnrolling ? 'scale-95' : ''
               }`}
             >
               <span>Enroll Now</span>
-              <ArrowRight size={15} />
+              <ArrowRight size={13} className="stroke-[2.5]" />
             </button>
           </div>
 
           {/* Mobile: Hamburger Button (Visible on all screens < lg) */}
-          <div className="flex lg:hidden items-center gap-2 shrink-0 z-50">
+          <div className="flex lg:hidden items-center gap-1.5 xs:gap-2 shrink-0 z-50">
             <button
               type="button"
               onClick={handleEnrollClick}
-              className="px-3 py-1.5 text-xs font-black rounded-lg bg-lime-400 text-[#003831] shadow-xs active:scale-95 transition-transform cursor-pointer"
+              className="px-2.5 xs:px-3 py-1 h-8 text-[11px] font-bold rounded-lg bg-[#84CC16] text-[#003831] shadow-xs active:scale-95 transition-transform cursor-pointer"
             >
               Enroll
             </button>
@@ -225,20 +229,20 @@ export default function Navbar({ onOpenEnroll, onSelectCourse }) {
               onClick={() => setMobileOpen((p) => !p)}
               aria-label={mobileOpen ? 'Close menu' : 'Open menu'}
               aria-expanded={mobileOpen}
-              className={`w-9.5 h-9.5 flex items-center justify-center rounded-xl border transition-all cursor-pointer ${
+              className={`w-8.5 h-8.5 flex items-center justify-center rounded-lg border transition-all cursor-pointer ${
                 mobileOpen
-                  ? 'bg-lime-400 text-[#003831] border-lime-500'
-                  : 'bg-[#EEF8F2] border-[#D0E8DC] text-slate-800'
+                  ? 'bg-[#84CC16] text-[#003831] border-lime-500'
+                  : 'bg-[#F4F9F6] border-[#E2EBE5] text-slate-800'
               } active:scale-90`}
             >
-              {mobileOpen ? <X size={20} className="animate-scale-in" /> : <Menu size={20} />}
+              {mobileOpen ? <X size={18} className="animate-scale-in" /> : <Menu size={18} />}
             </button>
           </div>
         </div>
 
-        {/* Mobile Full-Width Drawer with Backdrop Overlay & Zero Overlap */}
+        {/* Mobile Full-Width Drawer with Solid 100% Opaque Background */}
         {mobileOpen && (
-          <div className="lg:hidden absolute top-full left-0 right-0 z-50 bg-white/98 backdrop-blur-xl border-b border-[#DDE9E4] px-5 py-6 shadow-2xl max-h-[calc(100vh-70px)] overflow-y-auto animate-drawer">
+          <div className="lg:hidden absolute top-full left-0 right-0 z-50 bg-white border-b border-[#E2EBE5] px-4 sm:px-5 py-4 sm:py-5 shadow-2xl max-h-[calc(100dvh-60px)] overflow-y-auto animate-drawer overscroll-contain">
             <form onSubmit={handleSearchSubmit} className="mb-4">
               <div className="relative">
                 <Search size={15} className="absolute left-3.5 top-1/2 -translate-y-1/2 text-slate-400 pointer-events-none" />
@@ -247,22 +251,22 @@ export default function Navbar({ onOpenEnroll, onSelectCourse }) {
                   placeholder="Search 50+ courses..."
                   value={searchQuery}
                   onChange={(e) => setSearchQuery(e.target.value)}
-                  className="w-full rounded-xl py-2.5 pl-10 pr-3 text-sm bg-[#F0F8F3] border border-[#D0E8DC] text-slate-800 placeholder-slate-400 focus:outline-none focus:ring-2 focus:ring-lime-500/40"
+                  className="w-full rounded-xl py-2.5 pl-10 pr-3 text-sm bg-[#F4F9F6] border border-[#E2EBE5] text-slate-800 placeholder-slate-400 focus:outline-none focus:ring-2 focus:ring-lime-500/40"
                 />
               </div>
             </form>
 
-            <div className="flex flex-col space-y-1.5 mb-5">
+            <div className="flex flex-col space-y-1 mb-5">
               {navLinks.map((link) => (
                 <NavLink
                   key={link.path}
                   to={link.path}
                   onClick={() => setMobileOpen(false)}
                   className={({ isActive }) =>
-                    `px-3.5 py-3 rounded-xl text-base font-semibold transition-colors flex items-center justify-between ${
+                    `px-4 py-3 rounded-xl text-[15px] font-semibold transition-all flex items-center justify-between ${
                       isActive
-                        ? 'bg-lime-50 text-[#003831] border border-lime-300 font-bold'
-                        : 'text-slate-800 hover:bg-slate-50'
+                        ? 'bg-[#EBF7EE] text-[#003831] border border-[#BDE8CA] font-bold shadow-xs'
+                        : 'text-slate-800 hover:bg-[#F4F9F6] hover:text-[#003831] bg-white border border-transparent'
                     }`
                   }
                 >
@@ -292,7 +296,7 @@ export default function Navbar({ onOpenEnroll, onSelectCourse }) {
       {/* Backdrop overlay on phone view */}
       {mobileOpen && (
         <div
-          className="fixed inset-0 z-40 bg-slate-950/40 backdrop-blur-xs lg:hidden animate-fade-in"
+          className="fixed inset-0 z-40 bg-slate-950/60 backdrop-blur-sm lg:hidden animate-fade-in"
           onClick={() => setMobileOpen(false)}
           aria-hidden="true"
         />

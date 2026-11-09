@@ -9,9 +9,9 @@ const enquirySchema = new mongoose.Schema(
     },
     email: {
       type: String,
-      required: [true, 'Email address is required'],
       lowercase: true,
-      trim: true
+      trim: true,
+      default: ''
     },
     phone: {
       type: String,

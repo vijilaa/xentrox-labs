@@ -196,3 +196,22 @@ export const deleteEnquiry = (id) =>
 // System Health API Check
 export const checkServerHealth = () =>
   fetchAPI('/health', 'GET').catch(() => fetchAPI('/', 'GET'));
+
+// Chatbot Knowledge Base & Question Logging APIs
+export const askChatbotQuestion = (query, source = 'web_chatbot', sessionId = null) =>
+  fetchAPI('/chatbot/ask', 'POST', { query, source, sessionId });
+
+export const getChatbotQuestions = () =>
+  fetchAPI('/chatbot/questions', 'GET');
+
+export const logChatbotQuestion = (data) =>
+  fetchAPI('/chatbot/log-question', 'POST', data);
+
+export const getChatbotUserQuestions = () =>
+  fetchAPI('/chatbot/user-questions', 'GET');
+
+export const clearChatbotUserQuestions = () =>
+  fetchAPI('/chatbot/user-questions', 'DELETE');
+
+export const addChatbotFaq = (data) =>
+  fetchAPI('/chatbot/questions', 'POST', data);

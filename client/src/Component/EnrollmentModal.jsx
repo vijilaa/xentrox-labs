@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import ReactDOM from 'react-dom';
-import { X, Send, CheckCircle2, Phone, Mail, User, BookOpen, Sparkles, AlertCircle, ArrowRight } from 'lucide-react';
+import { X, Send, CheckCircle2, Phone, Mail, User, BookOpen, AlertCircle, ArrowRight } from 'lucide-react';
 import { posterCategories } from './CourseCategories';
 import { createEnquiry } from '../services/api';
 
@@ -100,29 +100,29 @@ export default function EnrollmentModal({ isOpen, onClose, initialCourse = '' })
 
   const modalJSX = (
     <div
-      className="fixed inset-0 z-[9999] flex items-center justify-center p-4 bg-slate-950/75 backdrop-blur-md animate-backdrop"
+      className="fixed inset-0 z-[9999] flex items-center justify-center p-3 sm:p-4 bg-slate-950/70 backdrop-blur-sm animate-backdrop"
       onClick={onClose}
       aria-modal="true"
       role="dialog"
     >
       <div
-        className="relative w-full max-w-lg bg-white border-2 border-lime-500/30 rounded-3xl p-6 sm:p-8 shadow-2xl overflow-hidden max-h-[92vh] overflow-y-auto z-[10000] animate-modal-pop"
+        className="relative w-full max-w-[calc(100vw-1.5rem)] xs:max-w-[440px] bg-white border border-[#E2EBE5] rounded-2xl p-4 xs:p-5 sm:p-6 shadow-2xl overflow-hidden max-h-[92vh] overflow-y-auto z-[10000] animate-modal-pop"
         onClick={(e) => e.stopPropagation()}
       >
         {/* Close Button */}
         <button
           onClick={onClose}
-          className="absolute top-5 right-5 w-9 h-9 rounded-full bg-[#F4F9F6] border border-[#DCEBE2] text-slate-500 hover:text-[#003831] hover:bg-lime-50 flex items-center justify-center transition-colors cursor-pointer z-10"
+          className="absolute top-4 right-4 w-7.5 h-7.5 rounded-full bg-[#F7FAF8] hover:bg-slate-100 border border-[#E2EBE5] text-slate-400 hover:text-slate-700 flex items-center justify-center transition-all duration-200 hover:rotate-90 cursor-pointer z-10"
           aria-label="Close modal"
         >
-          <X className="w-5 h-5" />
+          <X className="w-4 h-4" />
         </button>
 
         {submitted ? (
           /* Animated Success State */
-          <div className="text-center py-8 sm:py-10 space-y-4 animate-fade-in">
-            <div className="relative w-20 h-20 mx-auto">
-              <svg className="w-20 h-20" viewBox="0 0 64 64">
+          <div className="text-center py-6 space-y-3 animate-fade-in">
+            <div className="relative w-16 h-16 mx-auto">
+              <svg className="w-16 h-16" viewBox="0 0 64 64">
                 <circle
                   className="svg-checkmark-circle text-lime-500 stroke-current"
                   strokeWidth="4"
@@ -133,7 +133,7 @@ export default function EnrollmentModal({ isOpen, onClose, initialCourse = '' })
                 />
                 <polyline
                   className="svg-checkmark-check text-[#003831] stroke-current"
-                  strokeWidth="4.5"
+                  strokeWidth="4"
                   strokeLinecap="round"
                   strokeLinejoin="round"
                   fill="none"
@@ -143,29 +143,25 @@ export default function EnrollmentModal({ isOpen, onClose, initialCourse = '' })
             </div>
 
             <div>
-              <span className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-lime-100 text-[#003831] text-xs font-extrabold uppercase tracking-wider mb-2">
-                <Sparkles className="w-3.5 h-3.5 text-lime-600" />
-                Application Confirmed
-              </span>
-              <h3 className="text-2xl sm:text-3xl font-black text-[#003831] font-heading">
+              <h3 className="text-xl sm:text-2xl font-bold text-[#003831] font-heading">
                 Welcome to XentroX Labs!
               </h3>
             </div>
 
-            <p className="text-sm sm:text-base text-slate-600 max-w-sm mx-auto leading-relaxed">
-              Thank you <strong className="text-[#003831] font-bold">{formData.fullName}</strong>. An admissions mentor will call you at <strong className="text-lime-700 font-bold">{formData.phone}</strong> to guide you through your batch schedule and studio workstation setup.
+            <p className="text-xs sm:text-sm text-slate-600 max-w-xs mx-auto leading-relaxed">
+              Thank you <strong className="text-[#003831] font-semibold">{formData.fullName}</strong>. An admissions mentor will call you at <strong className="text-lime-700 font-semibold">{formData.phone}</strong>.
             </p>
 
-            <div className="p-3.5 rounded-2xl bg-[#F4F9F6] border border-[#DCEBE2] text-xs text-slate-700 max-w-sm mx-auto">
-              <span className="font-bold text-[#003831]">Program Track: </span>
+            <div className="p-2.5 rounded-lg bg-[#F7FAF8] border border-[#E2EBE5] text-[11px] text-slate-700 max-w-xs mx-auto">
+              <span className="font-semibold text-[#003831]">Track: </span>
               {formData.selectedTrack} • {formData.mode}
             </div>
 
-            <div className="pt-2 flex justify-center">
+            <div className="pt-1 flex justify-center">
               <button
                 type="button"
                 onClick={onClose}
-                className="btn-primary py-2.5 px-8 text-sm font-extrabold rounded-xl cursor-pointer shadow-md"
+                className="py-2 px-6 text-xs font-bold rounded-lg bg-[#84CC16] hover:bg-[#92dc1d] text-[#003831] transition-all cursor-pointer shadow-xs"
               >
                 Back to Website
               </button>
@@ -174,51 +170,48 @@ export default function EnrollmentModal({ isOpen, onClose, initialCourse = '' })
         ) : (
           /* Enrollment Form */
           <div>
-            <div className="mb-6 pr-8">
-              <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-lime-50 border border-lime-200 text-[#003831] text-xs font-bold uppercase tracking-wider mb-2.5">
-                <Sparkles className="w-3.5 h-3.5 text-lime-600" />
-                Admissions · 2026 Batch
-              </div>
-              <h3 className="text-2xl sm:text-3xl font-black text-[#003831] font-heading leading-tight">
+            <div className="mb-4 pr-7">
+              <h3 className="text-lg sm:text-xl font-bold text-[#003831] font-heading leading-tight tracking-tight">
                 Enroll at XentroX Labs
               </h3>
-              <p className="text-sm text-slate-600 mt-1 leading-relaxed">
+              <p className="text-xs text-slate-500 mt-0.5 leading-normal">
                 Learn from professionals. Work on real projects. Build your future.
               </p>
             </div>
 
             {errorMsg && (
-              <div className="mb-4 p-3.5 rounded-xl bg-red-50 border border-red-200 text-red-700 text-xs sm:text-sm flex items-center gap-2">
-                <AlertCircle className="w-4 h-4 shrink-0 text-red-600" />
+              <div className="mb-3 p-2.5 rounded-lg bg-red-50 border border-red-200 text-red-700 text-xs flex items-center gap-2">
+                <AlertCircle className="w-3.5 h-3.5 shrink-0 text-red-600" />
                 <span>{errorMsg}</span>
               </div>
             )}
 
-            <form onSubmit={handleSubmit} className="space-y-4">
+            <form onSubmit={handleSubmit} className="space-y-3">
               {/* Full Name */}
               <div>
-                <label className="block text-xs sm:text-sm font-bold text-slate-800 mb-1.5">
-                  Full Name <span className="text-lime-600">*</span>
+                <label className="block text-[11px] font-semibold text-slate-700 mb-1">
+                  Full Name <span className="text-[#84CC16] font-bold">*</span>
                 </label>
-                <div className="relative">
+                <div className="relative flex items-center">
+                  <User className="w-4 h-4 absolute left-3 top-1/2 -translate-y-1/2 text-slate-400 pointer-events-none" />
                   <input
                     type="text"
                     required
                     placeholder="Enter your name"
                     value={formData.fullName}
                     onChange={(e) => setFormData({ ...formData, fullName: e.target.value })}
-                    className="w-full bg-[#F4F9F6] border border-[#DCEBE2] rounded-xl px-4 py-3 pl-10 text-sm text-slate-900 placeholder-slate-400 focus:outline-none focus:border-lime-500 focus:bg-white transition-colors"
+                    className="w-full bg-[#F9FBFA] border border-[#DCE7E0] rounded-lg py-2.5 pl-10 pr-3 text-xs sm:text-[13px] text-slate-900 placeholder:text-slate-400 placeholder:text-xs sm:placeholder:text-[13px] focus:outline-none focus:border-lime-500 focus:ring-2 focus:ring-lime-500/15 focus:bg-white transition-all"
                   />
-                  <User className="w-4 h-4 absolute left-3.5 top-3.5 text-slate-400" />
                 </div>
               </div>
 
               {/* Phone */}
               <div>
-                <label className="block text-xs sm:text-sm font-bold text-slate-800 mb-1.5">
-                  Mobile Number <span className="text-lime-600">*</span>
+                <label className="block text-[11px] font-semibold text-slate-700 mb-1">
+                  Mobile Number <span className="text-[#84CC16] font-bold">*</span>
                 </label>
-                <div className="relative">
+                <div className="relative flex items-center">
+                  <Phone className={`w-4 h-4 absolute left-3 top-1/2 -translate-y-1/2 pointer-events-none ${phoneError ? 'text-red-500' : 'text-slate-400'}`} />
                   <input
                     type="tel"
                     required
@@ -228,15 +221,14 @@ export default function EnrollmentModal({ isOpen, onClose, initialCourse = '' })
                     maxLength={10}
                     inputMode="numeric"
                     pattern="[0-9]{10}"
-                    className={`w-full bg-[#F4F9F6] border rounded-xl px-4 py-3 pl-10 text-sm text-slate-900 placeholder-slate-400 focus:outline-none focus:bg-white transition-colors ${
+                    className={`w-full bg-[#F9FBFA] border rounded-lg py-2.5 pl-10 pr-14 text-xs sm:text-[13px] text-slate-900 placeholder:text-slate-400 placeholder:text-xs sm:placeholder:text-[13px] focus:outline-none focus:bg-white transition-all ${
                       phoneError
-                        ? 'border-red-400 focus:border-red-500'
-                        : 'border-[#DCEBE2] focus:border-lime-500'
+                        ? 'border-red-400 focus:border-red-500 focus:ring-2 focus:ring-red-400/20'
+                        : 'border-[#DCE7E0] focus:border-lime-500 focus:ring-2 focus:ring-lime-500/15'
                     }`}
                   />
-                  <Phone className={`w-4 h-4 absolute left-3.5 top-3.5 ${phoneError ? 'text-red-500' : 'text-slate-400'}`} />
                   {formData.phone && (
-                    <span className={`absolute right-3.5 top-3.5 text-xs font-bold ${
+                    <span className={`absolute right-3 top-1/2 -translate-y-1/2 text-[10.5px] font-semibold pointer-events-none ${
                       formData.phone.length === 10 ? 'text-lime-600' : 'text-slate-400'
                     }`}>
                       {formData.phone.length}/10
@@ -244,8 +236,8 @@ export default function EnrollmentModal({ isOpen, onClose, initialCourse = '' })
                   )}
                 </div>
                 {phoneError && (
-                  <p className="mt-1 text-xs text-red-600 flex items-center gap-1">
-                    <AlertCircle className="w-3.5 h-3.5 shrink-0" />
+                  <p className="mt-1 text-[11px] text-red-600 flex items-center gap-1">
+                    <AlertCircle className="w-3 h-3 shrink-0" />
                     {phoneError}
                   </p>
                 )}
@@ -253,32 +245,33 @@ export default function EnrollmentModal({ isOpen, onClose, initialCourse = '' })
 
               {/* Email */}
               <div>
-                <label className="block text-xs sm:text-sm font-bold text-slate-800 mb-1.5">
-                  Email Address <span className="text-lime-600">*</span>
+                <label className="block text-[11px] font-semibold text-slate-700 mb-1">
+                  Email Address <span className="text-[#84CC16] font-bold">*</span>
                 </label>
-                <div className="relative">
+                <div className="relative flex items-center">
+                  <Mail className="w-4 h-4 absolute left-3 top-1/2 -translate-y-1/2 text-slate-400 pointer-events-none" />
                   <input
                     type="email"
                     required
                     placeholder="name@example.com"
                     value={formData.email}
                     onChange={(e) => setFormData({ ...formData, email: e.target.value })}
-                    className="w-full bg-[#F4F9F6] border border-[#DCEBE2] rounded-xl px-4 py-3 pl-10 text-sm text-slate-900 placeholder-slate-400 focus:outline-none focus:border-lime-500 focus:bg-white transition-colors"
+                    className="w-full bg-[#F9FBFA] border border-[#DCE7E0] rounded-lg py-2.5 pl-10 pr-3 text-xs sm:text-[13px] text-slate-900 placeholder:text-slate-400 placeholder:text-xs sm:placeholder:text-[13px] focus:outline-none focus:border-lime-500 focus:ring-2 focus:ring-lime-500/15 focus:bg-white transition-all"
                   />
-                  <Mail className="w-4 h-4 absolute left-3.5 top-3.5 text-slate-400" />
                 </div>
               </div>
 
               {/* Selected Track */}
               <div>
-                <label className="block text-xs sm:text-sm font-bold text-slate-800 mb-1.5">
+                <label className="block text-[11px] font-semibold text-slate-700 mb-1">
                   Select Training Track
                 </label>
-                <div className="relative">
+                <div className="relative flex items-center">
+                  <BookOpen className="w-4 h-4 absolute left-3 top-1/2 -translate-y-1/2 text-slate-400 pointer-events-none" />
                   <select
                     value={formData.selectedTrack}
                     onChange={(e) => setFormData({ ...formData, selectedTrack: e.target.value })}
-                    className="w-full bg-[#F4F9F6] border border-[#DCEBE2] rounded-xl px-4 py-3 pl-10 text-sm text-slate-900 focus:outline-none focus:border-lime-500 focus:bg-white cursor-pointer transition-colors"
+                    className="w-full bg-[#F9FBFA] border border-[#DCE7E0] rounded-lg py-2.5 pl-10 pr-9 text-xs sm:text-[13px] text-slate-900 focus:outline-none focus:border-lime-500 focus:ring-2 focus:ring-lime-500/15 focus:bg-white cursor-pointer transition-all appearance-none"
                   >
                     {posterCategories.map((cat) => (
                       <optgroup key={cat.id} label={cat.title}>
@@ -290,25 +283,29 @@ export default function EnrollmentModal({ isOpen, onClose, initialCourse = '' })
                       </optgroup>
                     ))}
                   </select>
-                  <BookOpen className="w-4 h-4 absolute left-3.5 top-3.5 text-slate-400 pointer-events-none" />
+                  <div className="absolute right-3 top-1/2 -translate-y-1/2 pointer-events-none text-slate-400">
+                    <svg className="w-3.5 h-3.5 fill-none stroke-current" viewBox="0 0 24 24" strokeWidth="2.5">
+                      <path strokeLinecap="round" strokeLinejoin="round" d="M19 9l-7 7-7-7" />
+                    </svg>
+                  </div>
                 </div>
               </div>
 
               {/* Learning Mode */}
               <div>
-                <label className="block text-xs sm:text-sm font-bold text-slate-800 mb-1.5">
+                <label className="block text-[11px] font-semibold text-slate-700 mb-1">
                   Learning Mode
                 </label>
-                <div className="grid grid-cols-3 gap-2">
+                <div className="grid grid-cols-3 gap-1.5 p-1 bg-[#F1F5F3] rounded-xl border border-[#DCE7E0]">
                   {['Classroom Lab', 'Online Live', 'Studio Hybrid'].map((m) => (
                     <button
                       key={m}
                       type="button"
                       onClick={() => setFormData({ ...formData, mode: m })}
-                      className={`py-2.5 rounded-xl text-xs sm:text-sm font-bold border transition-all cursor-pointer ${
+                      className={`py-1.5 px-1.5 rounded-lg text-[11px] font-semibold transition-all duration-200 cursor-pointer text-center ${
                         formData.mode === m
-                          ? 'bg-[#003831] text-lime-400 border-[#003831] shadow-sm'
-                          : 'bg-[#F4F9F6] border-[#DCEBE2] text-slate-700 hover:bg-white hover:border-lime-500'
+                          ? 'bg-[#003831] text-[#84CC16] shadow-xs'
+                          : 'text-slate-600 hover:text-slate-900 hover:bg-white/80'
                       }`}
                     >
                       {m}
@@ -319,15 +316,15 @@ export default function EnrollmentModal({ isOpen, onClose, initialCourse = '' })
 
               {/* Message */}
               <div>
-                <label className="block text-xs sm:text-sm font-bold text-slate-800 mb-1.5">
-                  Questions or Notes (Optional)
+                <label className="block text-[11px] font-semibold text-slate-700 mb-1">
+                  Questions or Notes <span className="text-slate-400 font-normal">(Optional)</span>
                 </label>
                 <textarea
                   rows={2}
                   placeholder="Any questions about batches or mentorship?"
                   value={formData.message}
                   onChange={(e) => setFormData({ ...formData, message: e.target.value })}
-                  className="w-full bg-[#F4F9F6] border border-[#DCEBE2] rounded-xl px-4 py-2.5 text-sm text-slate-900 placeholder-slate-400 focus:outline-none focus:border-lime-500 focus:bg-white transition-colors"
+                  className="w-full bg-[#F9FBFA] border border-[#DCE7E0] rounded-lg px-3 py-1.5 text-xs sm:text-[13px] text-slate-900 placeholder-slate-400 focus:outline-none focus:border-lime-500 focus:ring-2 focus:ring-lime-500/15 focus:bg-white transition-all resize-none"
                 />
               </div>
 
@@ -335,23 +332,23 @@ export default function EnrollmentModal({ isOpen, onClose, initialCourse = '' })
               <button
                 type="submit"
                 disabled={loading}
-                className="w-full btn-primary py-3.5 rounded-xl text-sm font-extrabold justify-center shadow-lg cursor-pointer disabled:opacity-50 btn-interactive"
+                className="w-full py-2.5 px-4 rounded-xl text-xs sm:text-sm font-bold bg-[#84CC16] hover:bg-[#92dc1d] active:scale-[0.99] text-[#003831] flex items-center justify-center gap-1.5 shadow-xs hover:shadow-sm transition-all duration-200 cursor-pointer disabled:opacity-50 mt-1"
               >
                 {loading ? (
                   <span className="flex items-center gap-2">
-                    <span className="w-4 h-4 rounded-full border-2 border-[#003831] border-t-transparent animate-spin" />
+                    <span className="w-3.5 h-3.5 rounded-full border-2 border-[#003831] border-t-transparent animate-spin" />
                     Submitting Application...
                   </span>
                 ) : (
                   <>
                     <span>Confirm Enrollment Reservation</span>
-                    <ArrowRight className="w-4 h-4 ml-1" />
+                    <ArrowRight className="w-3.5 h-3.5 ml-0.5" />
                   </>
                 )}
               </button>
 
-              <p className="text-xs text-center text-slate-500 pt-1">
-                🔒 Strictly confidential. Direct admission counseling from working engineers.
+              <p className="text-[10.5px] text-center text-slate-400 pt-0.5">
+                🔒 Strictly confidential • Free career counseling session
               </p>
             </form>
           </div>

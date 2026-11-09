@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from 'react';
+import { useLocation, useNavigate } from 'react-router-dom';
 import AdminLogin from './AdminLogin';
 import AdminSidebar from './AdminSidebar';
 import AdminNavbar from './AdminNavbar';
@@ -8,6 +9,7 @@ import CourseManagement from './CourseManagement';
 import PortfolioManagement from './PortfolioManagement';
 import BlogManagement from './BlogManagement';
 import EnquiryManagement from './EnquiryManagement';
+import ChatbotManagement from './ChatbotManagement';
 
 import {
   getAdminProfile,
@@ -36,9 +38,48 @@ export default function AdminLayout({ onBackToSite, theme = 'dark', toggleTheme 
   const [user, setUser] = useState(null);
   const [isAuthenticated, setIsAuthenticated] = useState(false);
   const [loading, setLoading] = useState(true);
-  const [activeTab, setActiveTab] = useState('dashboard');
+
+  const location = useLocation();
+  const navigate = useNavigate();
+
+  // Resolve active tab from nested admin path e.g. /XentroXadmin/courses or hash
+  const getTabFromPath = () => {
+    const segments = location.pathname.split('/').filter(Boolean);
+    if (segments.length >= 2 && segments[0].toLowerCase() === 'xentroxadmin') {
+      const sub = segments[1].toLowerCase();
+      const validTabs = ['dashboard', 'categories', 'courses', 'portfolio', 'blogs', 'enquiries', 'chatbot'];
+      if (validTabs.includes(sub)) {
+        return sub;
+      }
+    }
+    const hash = window.location.hash.replace(/^#/, '').toLowerCase();
+    const validTabs = ['dashboard', 'categories', 'courses', 'portfolio', 'blogs', 'enquiries', 'chatbot'];
+    if (validTabs.includes(hash)) {
+      return hash;
+    }
+    return 'dashboard';
+  };
+
+  const [activeTab, setActiveTabState] = useState(getTabFromPath);
   const [mobileSidebarOpen, setMobileSidebarOpen] = useState(false);
   const [searchQuery, setSearchQuery] = useState('');
+
+  // Keep tab in sync with browser navigation (back/forward)
+  useEffect(() => {
+    const tabFromUrl = getTabFromPath();
+    if (tabFromUrl && tabFromUrl !== activeTab) {
+      setActiveTabState(tabFromUrl);
+    }
+  }, [location.pathname]);
+
+  const handleTabChange = (tab) => {
+    setActiveTabState(tab);
+    setSearchQuery('');
+    const targetPath = tab === 'dashboard' ? '/XentroXadmin' : `/XentroXadmin/${tab}`;
+    if (location.pathname.toLowerCase() !== targetPath.toLowerCase()) {
+      navigate(targetPath, { replace: false });
+    }
+  };
 
   // Data states
   const [categories, setCategories] = useState([]);
@@ -209,7 +250,7 @@ export default function AdminLayout({ onBackToSite, theme = 'dark', toggleTheme 
     return (
       <div className="min-h-screen bg-slate-50 dark:bg-[#030712] flex items-center justify-center text-slate-900 dark:text-white transition-colors duration-300">
         <div className="text-center space-y-3">
-          <div className="w-10 h-10 border-4 border-blue-600 dark:border-cyan-400 border-t-transparent rounded-full animate-spin mx-auto" />
+          <div className="w-10 h-10 border-4 border-lime-500 dark:border-lime-400 border-t-transparent rounded-full animate-spin mx-auto" />
           <p className="text-xs font-bold text-slate-500 dark:text-slate-400">Loading XentroX Admin Portal...</p>
         </div>
       </div>
@@ -239,10 +280,7 @@ export default function AdminLayout({ onBackToSite, theme = 'dark', toggleTheme 
       <div className="hidden lg:block">
         <AdminSidebar
           activeTab={activeTab}
-          setActiveTab={(tab) => {
-            setActiveTab(tab);
-            setSearchQuery('');
-          }}
+          setActiveTab={handleTabChange}
           onLogout={handleLogout}
           onBackToSite={onBackToSite}
           enquiriesCount={totalEnquiriesCount}
@@ -258,8 +296,7 @@ export default function AdminLayout({ onBackToSite, theme = 'dark', toggleTheme 
             <AdminSidebar
               activeTab={activeTab}
               setActiveTab={(tab) => {
-                setActiveTab(tab);
-                setSearchQuery('');
+                handleTabChange(tab);
                 setMobileSidebarOpen(false);
               }}
               onLogout={handleLogout}
@@ -283,15 +320,12 @@ export default function AdminLayout({ onBackToSite, theme = 'dark', toggleTheme 
           toggleTheme={toggleTheme}
         />
 
-        <main className="p-4 sm:p-6 lg:p-8 flex-1 max-w-[1550px] w-full mx-auto">
+        <main className="p-3 xs:p-4 sm:p-6 lg:p-8 flex-1 max-w-[1550px] w-full mx-auto">
           {activeTab === 'dashboard' && (
             <AdminDashboard
               stats={stats}
               recentEnquiries={enquiries}
-              onNavigateTab={(tab) => {
-                setActiveTab(tab);
-                setSearchQuery('');
-              }}
+              onNavigateTab={handleTabChange}
               onUpdateEnquiryStatus={handleUpdateEnquiryStatus}
             />
           )}
@@ -349,6 +383,10 @@ export default function AdminLayout({ onBackToSite, theme = 'dark', toggleTheme 
               onUpdateStatus={handleUpdateEnquiryStatus}
               onDeleteEnquiry={handleDeleteEnquiry}
             />
+          )}
+
+          {activeTab === 'chatbot' && (
+            <ChatbotManagement />
           )}
         </main>
       </div>

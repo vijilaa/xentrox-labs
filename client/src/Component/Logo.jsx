@@ -19,10 +19,10 @@ export function LogoSymbol({ size = 38, className = '' }) {
 export default function Logo({ size = 'md', className = '', href = '/' }) {
   // Size mapping for logo symbol and typography
   const sizeMap = {
-    sm: { symbol: 28, title: 'text-lg', sub: 'text-[8px] tracking-[3px]' },
-    md: { symbol: 38, title: 'text-xl sm:text-2xl', sub: 'text-[9px] sm:text-[10px] tracking-[4px]' },
-    lg: { symbol: 48, title: 'text-2xl sm:text-3xl', sub: 'text-[10px] sm:text-[11px] tracking-[5px]' },
-    xl: { symbol: 56, title: 'text-3xl sm:text-4xl', sub: 'text-[11px] sm:text-[12px] tracking-[6px]' }
+    sm: { symbol: 26, title: 'text-base sm:text-lg', sub: 'text-[7.5px] sm:text-[8px] tracking-[2.5px]' },
+    md: { symbol: 32, title: 'text-lg xs:text-xl sm:text-2xl', sub: 'text-[8.5px] sm:text-[10px] tracking-[3px] sm:tracking-[4px]' },
+    lg: { symbol: 40, title: 'text-xl sm:text-3xl', sub: 'text-[9px] sm:text-[11px] tracking-[4px] sm:tracking-[5px]' },
+    xl: { symbol: 48, title: 'text-2xl sm:text-4xl', sub: 'text-[10px] sm:text-[12px] tracking-[5px] sm:tracking-[6px]' }
   };
 
   const currentSize = sizeMap[size] || sizeMap.md;

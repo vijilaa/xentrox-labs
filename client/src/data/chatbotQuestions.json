@@ -1,0 +1,1997 @@
+[
+  {
+    "id": "comp-overview",
+    "category": "Company & Overview",
+    "question": "What is XentroX Labs and what do you do?",
+    "keywords": [
+      "xentrox",
+      "xentrox labs",
+      "about",
+      "company",
+      "what is xentrox",
+      "who are you",
+      "overview",
+      "introduction",
+      "mission"
+    ],
+    "alternateQuestions": [
+      "Tell me about XentroX Labs",
+      "Who is XentroX?",
+      "What does XentroX do?",
+      "What is your company background?",
+      "What is XentroX finishing school?"
+    ],
+    "answer": "XentroX Labs is an industry-oriented tech and marketing finishing school powered by XentroX Solutions (founded July 3, 2026). Our motto is **LEARN • BUILD • GROW**.\n\nUnlike traditional institutes that teach dry theory, we train developers, designers, and marketers by having them work alongside working engineers on production-grade client codebases. We bridge the gap between academic qualifications and high-growth industry careers.",
+    "suggestedActions": [
+      {
+        "label": "Explore Courses",
+        "action": "route",
+        "target": "/courses"
+      },
+      {
+        "label": "About XentroX",
+        "action": "route",
+        "target": "/about"
+      },
+      {
+        "label": "Talk to Counselor",
+        "action": "whatsapp"
+      }
+    ]
+  },
+  {
+    "id": "comp-solutions-relationship",
+    "category": "Company & Overview",
+    "question": "What is the relationship between XentroX Labs and XentroX Solutions?",
+    "keywords": [
+      "xentrox solutions",
+      "parent company",
+      "relationship",
+      "difference",
+      "sister company",
+      "software studio"
+    ],
+    "alternateQuestions": [
+      "Is XentroX Labs part of XentroX Solutions?",
+      "What is XentroX Solutions?",
+      "Who is the parent company?",
+      "How is the training lab connected to the studio?"
+    ],
+    "answer": "• **XentroX Solutions** is our parent technology studio that designs and builds custom software, SaaS web applications, mobile apps, and performance marketing engines for enterprise and global clients.\n• **XentroX Labs** is the specialized finishing school and talent incubation arm. Students at Labs gain direct access to real client projects, production git workflows, and mentorship from active engineers working at XentroX Solutions.",
+    "suggestedActions": [
+      {
+        "label": "View Live Projects",
+        "action": "route",
+        "target": "/projects"
+      },
+      {
+        "label": "About Us",
+        "action": "route",
+        "target": "/about"
+      }
+    ]
+  },
+  {
+    "id": "comp-founders",
+    "category": "Company & Overview",
+    "question": "Who are the founders and leadership team of XentroX?",
+    "keywords": [
+      "founder",
+      "founders",
+      "ceo",
+      "leadership",
+      "team",
+      "who started",
+      "management",
+      "subin",
+      "priya",
+      "shahaban",
+      "sherin"
+    ],
+    "alternateQuestions": [
+      "Who owns XentroX?",
+      "Who is the CEO of XentroX?",
+      "Who runs XentroX Labs?",
+      "Tell me about the founders",
+      "Who is behind XentroX Solutions?"
+    ],
+    "answer": "XentroX is led by an experienced team of industry practitioners:\n• **Subin S** – Founder & CEO (Drives company vision, strategic partnerships, and studio growth).\n• **Dr. S. Priya Vasanth** – Founder (Directs academic rigor, student success programs, and operational excellence).\n• **Shahaban B** – Founder (Leads client delivery, marketing science, and creative practice).\n• **Sherin Singh S R** – Founder (Oversees engineering architecture, code review standards, and hands-on lab curricula).",
+    "suggestedActions": [
+      {
+        "label": "Meet the Team",
+        "action": "route",
+        "target": "/about"
+      }
+    ]
+  },
+  {
+    "id": "contact-locations",
+    "category": "Locations & Contact",
+    "question": "Where are your training labs and offices located?",
+    "keywords": [
+      "location",
+      "locations",
+      "address",
+      "office",
+      "branch",
+      "where",
+      "marthandam",
+      "trivandrum",
+      "kerala",
+      "tamil nadu",
+      "technopark",
+      "kanyakumari"
+    ],
+    "alternateQuestions": [
+      "Where is XentroX located?",
+      "Do you have branches in Trivandrum?",
+      "What is the address of Marthandam lab?",
+      "Can I visit your office in person?",
+      "Where can I find your studio?"
+    ],
+    "answer": "We have two strategic physical innovation hubs:\n\n📍 **Marthandam Studio & Training Lab**:\nXentroX Solutions, Marthandam, Kanyakumari District, Tamil Nadu – 629165.\n\n📍 **Trivandrum Tech Hub & Development Studio**:\nXentroX Solutions, Kazhakkoottam / Technopark corridor, Trivandrum, Kerala – 695581.\n\n🕒 Visitors are welcome Monday to Saturday between 9:00 AM and 6:30 PM for a free campus tour and counselor consultation.",
+    "suggestedActions": [
+      {
+        "label": "Contact Page",
+        "action": "route",
+        "target": "/contact"
+      },
+      {
+        "label": "Call Us Now",
+        "action": "call"
+      },
+      {
+        "label": "Get Directions on WhatsApp",
+        "action": "whatsapp"
+      }
+    ]
+  },
+  {
+    "id": "contact-details",
+    "category": "Locations & Contact",
+    "question": "How can I contact XentroX Labs for admissions or queries?",
+    "keywords": [
+      "contact",
+      "phone",
+      "mobile",
+      "call",
+      "email",
+      "whatsapp",
+      "reach",
+      "support",
+      "helpline",
+      "inquiry",
+      "number"
+    ],
+    "alternateQuestions": [
+      "What is your phone number?",
+      "How to call XentroX?",
+      "What is your official email address?",
+      "How do I reach out to admissions?",
+      "Can I talk to someone right now?"
+    ],
+    "answer": "You can connect with our admissions and technical advisory desk directly:\n\n📞 **Phone**: +91 9940727614\n💬 **WhatsApp**: +91 9940727614\n✉️ **Email**: xentroxsolutions@gmail.com\n🌐 **Official Website**: www.xentroxsolutions.com\n\nFeel free to tap the WhatsApp button on the bottom of this screen for immediate assistance!",
+    "suggestedActions": [
+      {
+        "label": "Chat on WhatsApp",
+        "action": "whatsapp"
+      },
+      {
+        "label": "Call +91 9940727614",
+        "action": "call"
+      },
+      {
+        "label": "Leave an Enquiry",
+        "action": "enroll_modal"
+      }
+    ]
+  },
+  {
+    "id": "courses-all",
+    "category": "Courses & Curriculum",
+    "question": "What courses and tech programs do you offer?",
+    "keywords": [
+      "courses",
+      "all courses",
+      "programs",
+      "tracks",
+      "what can i learn",
+      "curriculum",
+      "subjects",
+      "training",
+      "options",
+      "list"
+    ],
+    "alternateQuestions": [
+      "List all courses available",
+      "What tracks do you teach?",
+      "Which tech courses can I learn?",
+      "What programs are offered at XentroX Labs?",
+      "Give me a list of all your training programs"
+    ],
+    "answer": "We offer 50+ industry-curated courses across 5 premier domains:\n\n1. **Software Development**: MERN Stack, Python Full Stack, Java Full Stack, React.js, Node.js, Frontend, Backend, Django, Mobile Apps, QA & Testing, Git & GitHub.\n2. **Programming & CS**: Python, Java, C & C++, Data Structures & Algorithms (DSA), Problem Solving.\n3. **Digital Marketing & Growth**: Performance Marketing, Technical SEO, Meta & Google Ads, Social Media Strategy.\n4. **Design & Creative**: UI/UX Design in Figma, Wireframing, Graphic Design, Brand Identity.\n5. **Data & AI**: Data Analytics with Power BI & SQL, Python for Data Science, Machine Learning, Generative AI.",
+    "suggestedActions": [
+      {
+        "label": "Browse All Courses",
+        "action": "route",
+        "target": "/courses"
+      },
+      {
+        "label": "Enroll in a Track",
+        "action": "enroll_modal"
+      }
+    ]
+  },
+  {
+    "id": "course-mern",
+    "category": "Courses & Curriculum",
+    "question": "Tell me about the MERN Stack Development course.",
+    "keywords": [
+      "mern",
+      "mern stack",
+      "mongodb",
+      "express",
+      "react",
+      "node",
+      "full stack javascript",
+      "web development",
+      "javascript"
+    ],
+    "alternateQuestions": [
+      "What is in the MERN stack course?",
+      "Do you teach React and Node?",
+      "MERN course syllabus and duration",
+      "How long is MERN stack training?",
+      "Can I learn full stack with React and Node?"
+    ],
+    "answer": "Our **MERN Stack Development Track** is a 4-month intensive, production-focused program:\n\n• **Frontend**: React 19, Modern JavaScript (ES6+), Hooks, Tailwind CSS, State Management (Redux/Zustand), Responsive UI.\n• **Backend**: Node.js, Express.js RESTful APIs, JWT Authentication, WebSockets, Security Best Practices.\n• **Database**: MongoDB with Mongoose, Aggregations, Indexing, and Cloud Atlas deployment.\n• **DevOps & Tooling**: Git/GitHub workflows, Docker fundamentals, Vercel & Render deployments.\n• **Live Capstone Project**: Build and deploy an end-to-end SaaS application with live client specs.",
+    "suggestedActions": [
+      {
+        "label": "View MERN Course",
+        "action": "course_modal",
+        "target": "MERN Stack Development"
+      },
+      {
+        "label": "Enroll in MERN",
+        "action": "enroll_modal",
+        "target": "MERN Stack Development"
+      }
+    ]
+  },
+  {
+    "id": "course-python",
+    "category": "Courses & Curriculum",
+    "question": "Tell me about the Python Full Stack Development course.",
+    "keywords": [
+      "python",
+      "python full stack",
+      "django",
+      "fastapi",
+      "flask",
+      "python web development",
+      "backend python"
+    ],
+    "alternateQuestions": [
+      "What is in the Python Full Stack program?",
+      "Do you teach Django and FastAPI?",
+      "Python web development course details",
+      "Duration of Python full stack",
+      "Python programming with web development"
+    ],
+    "answer": "Our **Python Full Stack Program** (5 Months) takes you from core fundamentals to senior developer architecture:\n\n• **Core & OOPs Python**: Data structures, decorators, generators, algorithms, and clean coding standards.\n• **Backend Frameworks**: Django 5 and FastAPI for high-performance REST APIs.\n• **Databases**: PostgreSQL and SQLite with ORMs (Django ORM, SQLAlchemy).\n• **Frontend Integration**: HTML5, CSS3, JavaScript, and React.js single-page applications.\n• **Real Projects**: E-commerce backend, CRM system, and automated scraping/analytics pipeline.",
+    "suggestedActions": [
+      {
+        "label": "View Python Course",
+        "action": "course_modal",
+        "target": "Python Full Stack Development"
+      },
+      {
+        "label": "Enroll in Python",
+        "action": "enroll_modal",
+        "target": "Python Full Stack Development"
+      }
+    ]
+  },
+  {
+    "id": "course-java",
+    "category": "Courses & Curriculum",
+    "question": "Tell me about the Java Full Stack Development course.",
+    "keywords": [
+      "java",
+      "java full stack",
+      "spring",
+      "spring boot",
+      "hibernate",
+      "microservices",
+      "jpa"
+    ],
+    "alternateQuestions": [
+      "Do you teach Spring Boot and Microservices?",
+      "Java full stack course syllabus and duration",
+      "Enterprise Java training details",
+      "Can I learn Java with React frontend?"
+    ],
+    "answer": "Our **Java Full Stack Track** (5 Months) prepares you for enterprise engineering roles in top product and IT firms:\n\n• **Modern Java 21**: OOP concepts, Collections Framework, Multithreading, Streams API, and Lambdas.\n• **Enterprise Backend**: Spring Boot 3, Spring Security, Hibernate ORM, and Spring Data JPA.\n• **Microservices Architecture**: RESTful API design, Eureka service discovery, API Gateway, Docker.\n• **Frontend & Database**: React.js client integration with MySQL / PostgreSQL relational databases.\n• **Portfolio**: Banking/Fintech platform capstone project.",
+    "suggestedActions": [
+      {
+        "label": "View Java Course",
+        "action": "course_modal",
+        "target": "Java Full Stack Development"
+      },
+      {
+        "label": "Enroll in Java",
+        "action": "enroll_modal",
+        "target": "Java Full Stack Development"
+      }
+    ]
+  },
+  {
+    "id": "course-digital-marketing",
+    "category": "Courses & Curriculum",
+    "question": "Tell me about the Digital Marketing & Growth course.",
+    "keywords": [
+      "digital marketing",
+      "seo",
+      "google ads",
+      "meta ads",
+      "social media",
+      "growth marketing",
+      "sem",
+      "smo",
+      "instagram ads"
+    ],
+    "alternateQuestions": [
+      "Do you offer digital marketing training?",
+      "Learn SEO and Paid Ads at XentroX",
+      "Digital marketing course duration and syllabus",
+      "What is covered in digital marketing?"
+    ],
+    "answer": "Our **Advanced Digital Marketing Program** (3-4 Months) is led by practicing growth marketers at XentroX Solutions:\n\n• **Search Engine Optimization (SEO)**: On-Page, Off-Page, Technical SEO, Keyword Research, Search Console & SEMrush.\n• **Performance Advertising**: Google Search & Display Ads, Meta (Instagram/Facebook) Ads Manager, ROAS optimization.\n• **Social Media & Content Strategy**: Viral copywriting, Canva design, short-form video strategies.\n• **Analytics**: Google Analytics 4 (GA4), Conversion Rate Optimization (CRO), Google Tag Manager.\n• **Live Budget Experience**: Run real advertising campaigns with dedicated studio ad spend.",
+    "suggestedActions": [
+      {
+        "label": "View Marketing Tracks",
+        "action": "route",
+        "target": "/courses"
+      },
+      {
+        "label": "Talk to Marketing Mentor",
+        "action": "whatsapp"
+      }
+    ]
+  },
+  {
+    "id": "course-uiux",
+    "category": "Courses & Curriculum",
+    "question": "Tell me about the UI/UX Design course.",
+    "keywords": [
+      "ui",
+      "ux",
+      "ui/ux",
+      "figma",
+      "design",
+      "wireframing",
+      "prototyping",
+      "user experience",
+      "product design"
+    ],
+    "alternateQuestions": [
+      "Can I learn UI/UX design at XentroX?",
+      "Do you teach Figma and wireframing?",
+      "UI/UX design course details and duration",
+      "How to become a product designer?"
+    ],
+    "answer": "Our **UI/UX Design Masterclass** (3 Months) equips you to design high-converting, modern digital products:\n\n• **Design Thinking & UX**: User personas, wireframing, information architecture, and empathy mapping.\n• **Figma Mastery**: Auto-layout, component design systems, variants, interactive prototypes, and micro-animations.\n• **Visual Design**: Typography hierarchy, color psychology, accessibility (WCAG), and responsive mobile/web grids.\n• **Portfolio**: 3 production case studies deployed to Behance and Dribbble.",
+    "suggestedActions": [
+      {
+        "label": "View UI/UX Details",
+        "action": "course_modal",
+        "target": "UI/UX Design"
+      },
+      {
+        "label": "Enroll in UI/UX",
+        "action": "enroll_modal",
+        "target": "UI/UX Design"
+      }
+    ]
+  },
+  {
+    "id": "course-data-ai",
+    "category": "Courses & Curriculum",
+    "question": "Tell me about Data Analytics & AI courses.",
+    "keywords": [
+      "data analytics",
+      "data science",
+      "ai",
+      "machine learning",
+      "power bi",
+      "tableau",
+      "generative ai",
+      "chatgpt",
+      "sql"
+    ],
+    "alternateQuestions": [
+      "Do you offer Data Analytics training?",
+      "Power BI and SQL course details",
+      "Artificial Intelligence and Machine Learning courses",
+      "How to learn AI and Data Science?"
+    ],
+    "answer": "We offer future-ready data and AI specializations:\n\n• **Data Analytics with Power BI & SQL** (3 Months): Advanced Excel, SQL queries, Power BI data modeling, interactive dashboards, DAX, and Tableau.\n• **Python for Data Science & ML** (4 Months): NumPy, Pandas, Matplotlib, Scikit-Learn, and predictive modeling algorithms.\n• **Generative AI & LLM Integration**: Prompt engineering, OpenAI API, LangChain basics, and AI-assisted software engineering.",
+    "suggestedActions": [
+      {
+        "label": "Explore Data & AI Tracks",
+        "action": "route",
+        "target": "/courses"
+      },
+      {
+        "label": "Consult Mentor on WhatsApp",
+        "action": "whatsapp"
+      }
+    ]
+  },
+  {
+    "id": "differentiator-why",
+    "category": "Company & Overview",
+    "question": "What makes XentroX Labs different from other training institutes?",
+    "keywords": [
+      "why xentrox",
+      "different",
+      "advantage",
+      "why choose",
+      "compare",
+      "special",
+      "unique",
+      "benefits"
+    ],
+    "alternateQuestions": [
+      "Why should I join XentroX Labs?",
+      "What is special about XentroX?",
+      "How are you better than other coaching centers?",
+      "What advantages do I get at XentroX?"
+    ],
+    "answer": "XentroX Labs is NOT a conventional coaching center with passive lectures. We operate as an authentic tech finishing school:\n\n1. **Live Software Studio**: You work on real client software built by XentroX Solutions.\n2. **Working Engineers as Mentors**: Learn from active architects and full-stack developers.\n3. **Production Git Workflows**: Experience code reviews, pull requests, and CI/CD pipelines.\n4. **Small Cohorts**: 1:1 mentorship ensures personalized pacing and zero doubts.\n5. **98% Placement Success**: 6-stage placement sprint with 100+ partner referrals.",
+    "suggestedActions": [
+      {
+        "label": "About XentroX",
+        "action": "route",
+        "target": "/about"
+      },
+      {
+        "label": "Student Projects",
+        "action": "route",
+        "target": "/projects"
+      }
+    ]
+  },
+  {
+    "id": "practical-live-projects",
+    "category": "Internships & Live Projects",
+    "question": "Will I get to work on real live client projects?",
+    "keywords": [
+      "live project",
+      "client project",
+      "real project",
+      "practical",
+      "hands on",
+      "experience",
+      "client codebase",
+      "projects"
+    ],
+    "alternateQuestions": [
+      "Do students work on live client projects?",
+      "What kind of projects will I build?",
+      "Can I put client projects on my resume?",
+      "Is practical lab work guaranteed?"
+    ],
+    "answer": "Yes, 100%! Every student writes code for genuine studio projects handled by XentroX Solutions. Some recent examples:\n\n• **Flowline Logistics**: Real-time vehicle telematics dashboard tracking 15,000+ daily location pings.\n• **GreenRoots Organics**: Headless MERN e-commerce engine with payment gateway integration.\n• **MedPulse Healthcare**: Telehealth appointment portal & electronic prescriptions.\n• **EduFlow LMS**: Interactive modular learning platform with video streaming.\n\nYou graduate with live deployed links and verifiable GitHub repositories!",
+    "suggestedActions": [
+      {
+        "label": "View Portfolio Projects",
+        "action": "route",
+        "target": "/projects"
+      },
+      {
+        "label": "Enroll for Live Project",
+        "action": "enroll_modal"
+      }
+    ]
+  },
+  {
+    "id": "internship-certificate",
+    "category": "Internships & Live Projects",
+    "question": "Do you provide internship certificates and experience letters?",
+    "keywords": [
+      "internship",
+      "internship certificate",
+      "experience letter",
+      "intern",
+      "experience",
+      "proof of work"
+    ],
+    "alternateQuestions": [
+      "Will I get an internship letter?",
+      "Is an internship included in the course?",
+      "Do you provide work experience proof?",
+      "Does the certificate count as genuine work experience?"
+    ],
+    "answer": "Yes! When you complete the live client project phase at XentroX Labs, you receive an **Official Internship Experience Letter & Project Completion Certificate** issued by **XentroX Solutions**.\n\nThis certifies your contribution to production software systems, specific tech stack proficiencies, and sprint deliverables — making your resume dramatically more compelling to recruiters.",
+    "suggestedActions": [
+      {
+        "label": "Check Career Assistance",
+        "action": "route",
+        "target": "/career-assistance"
+      },
+      {
+        "label": "Talk to Counselor",
+        "action": "whatsapp"
+      }
+    ]
+  },
+  {
+    "id": "placements-support",
+    "category": "Placements & Career Support",
+    "question": "Do you offer placement assistance and job guarantee?",
+    "keywords": [
+      "placement",
+      "job",
+      "career",
+      "hiring",
+      "interview",
+      "guarantee",
+      "recruitment",
+      "support",
+      "placement assistance"
+    ],
+    "alternateQuestions": [
+      "Do you provide job placement support?",
+      "How is your placement assistance?",
+      "Will I get a job after the course?",
+      "What is your placement process?",
+      "Is placement guaranteed?"
+    ],
+    "answer": "We provide end-to-end **Career Placement Assistance** with a **98% track record**! Our 6-Stage Placement Sprint includes:\n\n1. **Skill Gap Audit**: Benchmark your technical proficiency.\n2. **Production Portfolio & GitHub Polish**: Clean architecture and deployed apps.\n3. **ATS-Compliant Resume & LinkedIn**: Tailored to score 90+ on recruiter screening tools.\n4. **Technical Mock Rounds**: DSA, live coding, and system design whiteboarding.\n5. **HR & Behavioral Prep**: STAR methodology and salary negotiation.\n6. **Direct Partner Referrals**: Fast-tracked interview invites across 100+ partner tech companies.",
+    "suggestedActions": [
+      {
+        "label": "Explore Career Sprint",
+        "action": "route",
+        "target": "/career-assistance"
+      },
+      {
+        "label": "Talk to Placement Lead",
+        "action": "whatsapp"
+      }
+    ]
+  },
+  {
+    "id": "placements-salary",
+    "category": "Placements & Career Support",
+    "question": "What is the average salary package for XentroX graduates?",
+    "keywords": [
+      "salary",
+      "package",
+      "ctc",
+      "fresher salary",
+      "average package",
+      "highest package",
+      "lpa",
+      "earning"
+    ],
+    "alternateQuestions": [
+      "What salary can I expect after graduating?",
+      "What is the starting package for freshers?",
+      "How much CTC will I get?",
+      "What is the highest package achieved?"
+    ],
+    "answer": "• **Freshers & College Graduates**: Typically secure starting packages ranging from **₹3.5 LPA to ₹7.5 LPA** depending on the tech domain (Full Stack, MERN, or Python) and interview score.\n• **Career Switchers & Upskilling Candidates**: Working professionals transitioning into modern software roles have secured packages between **₹8 LPA and ₹14 LPA**.\n\nOur focus on live projects gives our students a decisive edge in package negotiations.",
+    "suggestedActions": [
+      {
+        "label": "Career Assistance",
+        "action": "route",
+        "target": "/career-assistance"
+      }
+    ]
+  },
+  {
+    "id": "placements-companies",
+    "category": "Placements & Career Support",
+    "question": "Which companies hire from XentroX Labs?",
+    "keywords": [
+      "companies",
+      "hiring partners",
+      "recruiters",
+      "who hires",
+      "partner companies",
+      "tie ups",
+      "campus drive"
+    ],
+    "alternateQuestions": [
+      "Which companies recruit from XentroX?",
+      "Do MNCs hire your students?",
+      "List of hiring partner companies",
+      "Where are your alumni working?"
+    ],
+    "answer": "Our graduates are placed across leading product startups, IT service MNCs, and technology agencies located in:\n• **Trivandrum** (Technopark Phase 1, 2, 3)\n• **Kochi** (Infopark)\n• **Chennai & Bangalore** tech corridors\n• **Remote Software Companies**\n\nOur active partner network spans 100+ tech employers in logistics, healthtech, e-commerce, and enterprise SaaS.",
+    "suggestedActions": [
+      {
+        "label": "View Hiring Network",
+        "action": "route",
+        "target": "/career-assistance"
+      },
+      {
+        "label": "Contact Admissions",
+        "action": "whatsapp"
+      }
+    ]
+  },
+  {
+    "id": "fees-structure",
+    "category": "Fees & Admissions",
+    "question": "What is the fee structure for courses at XentroX Labs?",
+    "keywords": [
+      "fee",
+      "fees",
+      "cost",
+      "price",
+      "how much",
+      "charges",
+      "tuition",
+      "affordable",
+      "fee structure"
+    ],
+    "alternateQuestions": [
+      "What is the course fee?",
+      "How much do you charge for MERN stack?",
+      "What are the fees for full stack web development?",
+      "Is the training expensive?",
+      "Can you share the price list?"
+    ],
+    "answer": "Our fees are structured to be accessible, highly competitive, and offer exceptional ROI:\n\n• Course fees depend on the track duration (ranging from 2-month modular frameworks to 6-month intensive full-stack programs).\n• We offer **flexible installment payments (no-cost EMI)** spread across monthly milestones.\n• Early bird discounts and merit scholarships are available for eligible students.\n\nFor the exact fee breakdown and currently active discounts for your preferred course, please ping our counselor on WhatsApp at **+91 9940727614**!",
+    "suggestedActions": [
+      {
+        "label": "Ask Fee on WhatsApp",
+        "action": "whatsapp"
+      },
+      {
+        "label": "Submit Fee Enquiry",
+        "action": "enroll_modal"
+      }
+    ]
+  },
+  {
+    "id": "fees-emi",
+    "category": "Fees & Admissions",
+    "question": "Do you offer EMI or installment payment options?",
+    "keywords": [
+      "emi",
+      "installment",
+      "monthly payment",
+      "part payment",
+      "pay later",
+      "flexible payment",
+      "split"
+    ],
+    "alternateQuestions": [
+      "Can I pay the fees in installments?",
+      "Is monthly EMI available?",
+      "Do I have to pay the entire fee upfront?",
+      "Can I split the tuition payment?"
+    ],
+    "answer": "Yes! We do not believe financial constraints should block ambitious learners:\n\n• **Zero-Interest Monthly Installments**: Spread payments evenly across your course duration.\n• **Milestone-Based Split**: Pay in 2 to 4 convenient installments.\n• **Transparent Terms**: No hidden fees, extra interest, or sudden charges.",
+    "suggestedActions": [
+      {
+        "label": "Discuss EMI Plan",
+        "action": "whatsapp"
+      }
+    ]
+  },
+  {
+    "id": "fees-scholarships",
+    "category": "Fees & Admissions",
+    "question": "Are there any scholarships or discounts available?",
+    "keywords": [
+      "scholarship",
+      "discount",
+      "offer",
+      "concession",
+      "merit",
+      "fee waiver",
+      "financial aid"
+    ],
+    "alternateQuestions": [
+      "Do you provide student scholarships?",
+      "Are there discounts for college graduates?",
+      "How can I get a fee waiver?",
+      "Any ongoing discount offers?"
+    ],
+    "answer": "Yes! We offer multiple financial support initiatives:\n\n• **Early Bird Concession**: Up to 15% fee waiver for early enrollments in upcoming cohorts.\n• **College Freshers & Final Year Aid**: Special fee concessions for 2024, 2025, and 2026 graduates.\n• **Women in Tech Grant**: Financial aid for aspiring female engineers and designers.\n• **Merit Waiver**: Based on academic performance or technical aptitude test.",
+    "suggestedActions": [
+      {
+        "label": "Check Scholarship Eligibility",
+        "action": "whatsapp"
+      },
+      {
+        "label": "Apply for Aid",
+        "action": "enroll_modal"
+      }
+    ]
+  },
+  {
+    "id": "admissions-eligibility",
+    "category": "Fees & Admissions",
+    "question": "Who is eligible to join XentroX Labs courses?",
+    "keywords": [
+      "eligibility",
+      "qualification",
+      "who can join",
+      "degree",
+      "non it",
+      "arts",
+      "fresher",
+      "working professional",
+      "prerequisites"
+    ],
+    "alternateQuestions": [
+      "Can non-IT students join your courses?",
+      "Do I need a computer science degree?",
+      "Can B.Com / B.Sc students learn coding?",
+      "Am I eligible if I have a career gap?"
+    ],
+    "answer": "Anyone with the passion to build software and learn is eligible! Our cohorts include:\n\n• **College Freshers & Final-Year Students** (B.Tech, B.E, BCA, B.Sc CS, MCA).\n• **Non-IT Graduates** (Mechanical, Civil, Arts, Commerce, Science) transitioning into tech.\n• **Working Professionals** wanting to upgrade to modern frameworks for promotions or salary leaps.\n• **Career Gap Candidates** seeking a fresh, portfolio-backed career restart.\n\nNo prior coding experience is required — we begin every track from the foundational fundamentals!",
+    "suggestedActions": [
+      {
+        "label": "Start Your Application",
+        "action": "enroll_modal"
+      },
+      {
+        "label": "Ask Questions on WhatsApp",
+        "action": "whatsapp"
+      }
+    ]
+  },
+  {
+    "id": "admissions-timings",
+    "category": "Fees & Admissions",
+    "question": "What are the class timings and batch options?",
+    "keywords": [
+      "timings",
+      "batch",
+      "schedule",
+      "weekend",
+      "weekday",
+      "time",
+      "shift",
+      "evening",
+      "morning",
+      "batches"
+    ],
+    "alternateQuestions": [
+      "What are the batch timings?",
+      "Do you have weekend classes for working professionals?",
+      "Can I attend evening batches?",
+      "What days are classes held?"
+    ],
+    "answer": "We offer flexible scheduling to accommodate both full-time students and working professionals:\n\n• **Weekday Batches**: Monday to Friday (Morning: 9:30 AM – 1:00 PM | Afternoon: 2:00 PM – 5:30 PM with open lab hours until 7:00 PM).\n• **Weekend Intensive Batches**: Saturday & Sunday (4-hour practical labs tailored for working professionals and college students).\n• **Self-Paced Hybrid**: Recorded lab walkthroughs paired with live 1:1 code review slots.",
+    "suggestedActions": [
+      {
+        "label": "Choose Your Batch",
+        "action": "enroll_modal"
+      },
+      {
+        "label": "Inquire Batch Dates",
+        "action": "whatsapp"
+      }
+    ]
+  },
+  {
+    "id": "admissions-mode",
+    "category": "Fees & Admissions",
+    "question": "Are classes conducted online or offline?",
+    "keywords": [
+      "online",
+      "offline",
+      "classroom",
+      "remote",
+      "mode",
+      "hybrid",
+      "in person",
+      "virtual"
+    ],
+    "alternateQuestions": [
+      "Is the training online or offline?",
+      "Can I attend classes from home?",
+      "Do you have in-person classroom training in Marthandam?",
+      "Do you provide online classes for students outside Kerala and Tamil Nadu?"
+    ],
+    "answer": "We provide both learning modes with the exact same curriculum and live project standards:\n\n• **Offline Classroom Labs**: At our Marthandam and Trivandrum centers. Benefit from peer programming, high-speed workstations, and face-to-face mentor guidance.\n• **Live Interactive Online**: Conducted via live interactive sessions, shared coding sandboxes, and dedicated 1:1 screen-share debugging. Perfect for learners across India and abroad.",
+    "suggestedActions": [
+      {
+        "label": "Visit Our Centers",
+        "action": "route",
+        "target": "/contact"
+      },
+      {
+        "label": "Book Free Online Demo",
+        "action": "enroll_modal"
+      }
+    ]
+  },
+  {
+    "id": "admissions-demo",
+    "category": "Fees & Admissions",
+    "question": "Can I attend a free demo class before enrolling?",
+    "keywords": [
+      "demo",
+      "free demo",
+      "trial",
+      "sample class",
+      "demo session",
+      "try first",
+      "free session"
+    ],
+    "alternateQuestions": [
+      "Is a demo class available?",
+      "Can I attend a free trial session?",
+      "How to book a demo class?",
+      "Can I see how you teach before paying?"
+    ],
+    "answer": "Yes, absolutely! We encourage you to experience our teaching approach firsthand.\n\nYou can book a **Free 1-on-1 Demo & Career Mentorship Session** with one of our lead engineers. You can ask technical questions, review the syllabus, and inspect student project codebases before making any commitment.",
+    "suggestedActions": [
+      {
+        "label": "Book Free Demo on WhatsApp",
+        "action": "whatsapp"
+      },
+      {
+        "label": "Register for Demo",
+        "action": "enroll_modal"
+      }
+    ]
+  },
+  {
+    "id": "admissions-laptop",
+    "category": "Fees & Admissions",
+    "question": "Do I need my own laptop for the classes?",
+    "keywords": [
+      "laptop",
+      "computer",
+      "system",
+      "pc",
+      "specification",
+      "requirements",
+      "hardware"
+    ],
+    "alternateQuestions": [
+      "Is a laptop compulsory?",
+      "What laptop configuration do I need?",
+      "Do you provide computers in the lab?",
+      "Can I practice on your lab computers?"
+    ],
+    "answer": "• **Recommended Setup**: Having a personal laptop (minimum 8GB RAM, Core i3/i5 or AMD Ryzen 3/5 with 256GB SSD) is ideal so you can write and commit code at home.\n• **Lab Workstations**: If you don't have a personal laptop initially, our physical labs in Marthandam and Trivandrum are equipped with high-speed computers that you can freely use during lab hours.",
+    "suggestedActions": [
+      {
+        "label": "Ask Hardware Specs",
+        "action": "whatsapp"
+      }
+    ]
+  },
+  {
+    "id": "certifications-credentials",
+    "category": "Certifications & Credentials",
+    "question": "What certificates will I receive upon completing the course?",
+    "keywords": [
+      "certificate",
+      "certification",
+      "credentials",
+      "recognized",
+      "accreditation",
+      "certificate value",
+      "validity"
+    ],
+    "alternateQuestions": [
+      "Will I get a certificate after completion?",
+      "Is your certificate recognized by companies?",
+      "What credentials do you provide?",
+      "Do I get a project certificate?"
+    ],
+    "answer": "Upon course completion, you will be awarded:\n\n1. **Official Course Completion Certificate** from XentroX Labs with unique verifiable credential code.\n2. **Live Project Internship Certificate** from XentroX Solutions confirming your hands-on contribution to production client codebases.\n3. **GitHub Portfolio Verification Badge** that you can showcase on LinkedIn and tech resumes.",
+    "suggestedActions": [
+      {
+        "label": "View Highlights",
+        "action": "route",
+        "target": "/about"
+      }
+    ]
+  },
+  {
+    "id": "services-software-dev",
+    "category": "Software & Marketing Services",
+    "question": "Does XentroX build custom software for businesses?",
+    "keywords": [
+      "services",
+      "hire",
+      "client services",
+      "software development",
+      "web design",
+      "custom software",
+      "build app",
+      "development company",
+      "agency"
+    ],
+    "alternateQuestions": [
+      "Can I hire XentroX to build my web application?",
+      "What services does XentroX Solutions offer to clients?",
+      "Do you build mobile apps for startups?",
+      "Do you provide software outsourcing services?"
+    ],
+    "answer": "Yes! Through our parent studio **XentroX Solutions**, we deliver end-to-end engineering and digital services:\n\n• **Custom Web Applications & SaaS**: Built with Next.js, React, Node.js, and cloud microservices.\n• **Mobile App Development**: Cross-platform iOS & Android apps using Flutter and React Native.\n• **E-Commerce & Headless Stores**: High-converting stores with custom checkout and ERP sync.\n• **Enterprise Digital Transformation**: API architectures, database migrations, and cloud hosting.",
+    "suggestedActions": [
+      {
+        "label": "View Studio Portfolio",
+        "action": "route",
+        "target": "/projects"
+      },
+      {
+        "label": "Request Project Quote",
+        "action": "whatsapp"
+      }
+    ]
+  },
+  {
+    "id": "services-digital-marketing",
+    "category": "Software & Marketing Services",
+    "question": "Does XentroX provide digital marketing and SEO services for businesses?",
+    "keywords": [
+      "digital marketing services",
+      "seo agency",
+      "hire for marketing",
+      "meta ads service",
+      "branding agency",
+      "business marketing"
+    ],
+    "alternateQuestions": [
+      "Can XentroX manage my company's social media and ad campaigns?",
+      "Do you offer SEO services for businesses?",
+      "How can XentroX grow my business online?",
+      "Do you run Google and Meta ads for clients?"
+    ],
+    "answer": "Yes! XentroX Solutions operates a dedicated growth marketing pod:\n\n• **Search Engine Optimization (SEO)**: Guaranteed Google keyword rankings and sustainable organic traffic.\n• **Paid Ad Management**: High-ROAS Google Ads, YouTube Ads, and Meta (Instagram/Facebook) campaigns.\n• **Brand Identity & Creative**: Logo systems, brand guidelines, UI mockups, and high-impact social media creatives.",
+    "suggestedActions": [
+      {
+        "label": "Talk to Marketing Team",
+        "action": "whatsapp"
+      }
+    ]
+  },
+  {
+    "id": "admissions-how-to-enroll",
+    "category": "Fees & Admissions",
+    "question": "How do I enroll in a course at XentroX Labs?",
+    "keywords": [
+      "enroll",
+      "admission",
+      "how to join",
+      "registration",
+      "apply",
+      "sign up",
+      "get started",
+      "admission procedure"
+    ],
+    "alternateQuestions": [
+      "How to register for a course?",
+      "What are the steps to join XentroX Labs?",
+      "How do I apply for admission?",
+      "Can I enroll online right now?"
+    ],
+    "answer": "Enrolling takes less than 2 minutes:\n\n1. Tap the **'Enroll Now'** button anywhere on this website.\n2. Enter your Name, Phone Number, Email, and preferred course.\n3. Our academic counselor will call you within 2 hours to confirm batch schedules and fee details.\n4. Alternatively, message us on WhatsApp at **+91 9940727614** for instant seat booking!",
+    "suggestedActions": [
+      {
+        "label": "Enroll Now",
+        "action": "enroll_modal"
+      },
+      {
+        "label": "Chat with Counselor",
+        "action": "whatsapp"
+      }
+    ]
+  },
+  {
+    "id": "course-react-next",
+    "category": "Courses & Curriculum",
+    "question": "Do you teach React.js and Next.js?",
+    "keywords": [
+      "react",
+      "react.js",
+      "next.js",
+      "frontend",
+      "javascript framework",
+      "ssr",
+      "tailwind"
+    ],
+    "alternateQuestions": [
+      "Is React included in the curriculum?",
+      "Do you teach Next.js and Tailwind?",
+      "Can I learn React separately?",
+      "React.js course syllabus"
+    ],
+    "answer": "Yes! React.js and modern frontend engineering are core specialties at XentroX:\n\n• **React 19 Core**: Functional components, Hooks (useState, useEffect, useMemo, custom hooks).\n• **Ecosystem**: Tailwind CSS, React Router 7, Lucide Icons, Framer Motion animations.\n• **State Management**: Redux Toolkit, Zustand, Context API.\n• **Next.js**: Server Components, Server-Side Rendering (SSR), Static Site Generation (SSG), and API Routes.",
+    "suggestedActions": [
+      {
+        "label": "View React Track",
+        "action": "course_modal",
+        "target": "React.js Development"
+      },
+      {
+        "label": "Enroll in React",
+        "action": "enroll_modal",
+        "target": "React.js Development"
+      }
+    ]
+  },
+  {
+    "id": "course-node-backend",
+    "category": "Courses & Curriculum",
+    "question": "Do you teach Node.js and Express.js backend development?",
+    "keywords": [
+      "node",
+      "node.js",
+      "express",
+      "backend",
+      "api",
+      "rest api",
+      "backend engineering",
+      "server"
+    ],
+    "alternateQuestions": [
+      "Can I learn only backend with Node.js?",
+      "What backend topics are covered in Node.js?",
+      "Do you teach REST APIs and JWT authentication?",
+      "Node.js course duration"
+    ],
+    "answer": "Yes! Our backend engineering curriculum thoroughly covers:\n\n• Node.js Event Loop, asynchronous programming, streams, and file system.\n• Express.js routing, controller architecture, and custom error middleware.\n• JWT (JSON Web Tokens) authentication, bcrypt hashing, and role-based permissions.\n• MongoDB & PostgreSQL database modeling.\n• WebSockets for real-time chat/notification features, and cloud deployment.",
+    "suggestedActions": [
+      {
+        "label": "View Backend Track",
+        "action": "course_modal",
+        "target": "Back-End Development"
+      },
+      {
+        "label": "Enroll in Backend",
+        "action": "enroll_modal",
+        "target": "Back-End Development"
+      }
+    ]
+  },
+  {
+    "id": "course-beginners",
+    "category": "Courses & Curriculum",
+    "question": "What programming languages do you recommend for beginners?",
+    "keywords": [
+      "beginner",
+      "programming language",
+      "start coding",
+      "c",
+      "c++",
+      "python",
+      "java",
+      "first language",
+      "new to coding"
+    ],
+    "alternateQuestions": [
+      "I am new to coding, what should I learn first?",
+      "Which language is best for freshers?",
+      "Do you teach foundational C and C++?",
+      "Where should I start if I don't know anything about programming?"
+    ],
+    "answer": "For absolute beginners, we recommend:\n\n• **Python**: Easiest syntax to learn, highly versatile for web development, automation, and AI.\n• **C / C++**: Best for understanding core computer science logic, memory pointers, and algorithmic thinking.\n• **JavaScript**: Ideal if your immediate goal is building dynamic websites and full-stack web apps.\n\nOur instructors guide you through 1:1 problem-solving sessions from your very first line of code!",
+    "suggestedActions": [
+      {
+        "label": "Consult Mentor on WhatsApp",
+        "action": "whatsapp"
+      },
+      {
+        "label": "Explore Beginner Courses",
+        "action": "route",
+        "target": "/courses"
+      }
+    ]
+  },
+  {
+    "id": "admissions-working-professionals",
+    "category": "Fees & Admissions",
+    "question": "Can working professionals join XentroX courses for career transition?",
+    "keywords": [
+      "working professional",
+      "job",
+      "career change",
+      "switch",
+      "it career switch",
+      "night class",
+      "weekend batch",
+      "upskilling"
+    ],
+    "alternateQuestions": [
+      "Can I learn while working in a job?",
+      "I have a non-IT job, can I switch to software development?",
+      "How do working professionals manage the time?",
+      "Do you offer weekend batches for employees?"
+    ],
+    "answer": "Yes! Many of our most successful alumni were working in non-IT domains (civil, mechanical, BPO, sales) who successfully transitioned to software engineering!\n\n• Dedicated **Saturday & Sunday cohorts**.\n• Recorded video walkthroughs and flexible mentor review slots.\n• Production-grade capstone projects that prove your real coding capability to hiring managers.",
+    "suggestedActions": [
+      {
+        "label": "Discuss Transition Plan",
+        "action": "whatsapp"
+      },
+      {
+        "label": "Enroll in Weekend Batch",
+        "action": "enroll_modal"
+      }
+    ]
+  },
+  {
+    "id": "hire-talent",
+    "category": "Placements & Career Support",
+    "question": "Can companies hire developers or interns from XentroX Labs?",
+    "keywords": [
+      "hire developers",
+      "hire students",
+      "recruitment partner",
+      "corporate hiring",
+      "hire talent",
+      "campus drive",
+      "hire freshers"
+    ],
+    "alternateQuestions": [
+      "How can my company hire from XentroX?",
+      "Recruiting graduates from XentroX Labs",
+      "Do you charge companies for hiring?",
+      "How to partner with XentroX for recruitment?"
+    ],
+    "answer": "Yes! Companies and tech agencies can hire pre-vetted, job-ready Full Stack Developers, Designers, and Growth Marketers from XentroX Labs with **Zero Recruitment Fees**!\n\nOur candidates have hands-on experience in production git workflows, modern tech stacks, and real client systems.\n\n✉️ Email our corporate placement desk at **xentroxsolutions@gmail.com** or call **+91 9940727614** to receive curated candidate portfolios and schedule interviews.",
+    "suggestedActions": [
+      {
+        "label": "Contact Placement Desk",
+        "action": "whatsapp"
+      },
+      {
+        "label": "Call +91 9940727614",
+        "action": "call"
+      }
+    ]
+  },
+  {
+    "id": "course-flutter",
+    "category": "Courses & Curriculum",
+    "question": "Tell me about Flutter and Mobile App Development courses",
+    "keywords": [
+      "flutter",
+      "mobile app",
+      "app development",
+      "android",
+      "ios",
+      "dart",
+      "hybrid app",
+      "cross platform",
+      "react native"
+    ],
+    "alternateQuestions": [
+      "Do you teach Flutter and Dart?",
+      "Can I learn mobile app development at XentroX?",
+      "Android and iOS app development course",
+      "Flutter course syllabus and duration",
+      "How to build mobile apps?"
+    ],
+    "answer": "Our **Flutter & Cross-Platform Mobile Development Track** (4 Months) trains you to build native iOS and Android apps with a single Dart codebase:\n\n• **Dart Core**: Object-oriented programming, asynchronous streams, futures, and memory management.\n• **Flutter Framework**: Custom widgets, state management (Riverpod / Bloc / Provider), responsive design.\n• **Hardware & Device APIs**: Camera, GPS/Geolocation, push notifications (Firebase Cloud Messaging), local SQLite & Hive storage.\n• **Backend & Cloud**: REST API integration, Firebase Auth, Firestore, and payments.\n• **Store Publishing**: App store & Google Play deployment pipelines with fast CI/CD.",
+    "suggestedActions": [
+      {
+        "label": "View Mobile Courses",
+        "action": "route",
+        "target": "/courses"
+      },
+      {
+        "label": "Talk to Flutter Mentor",
+        "action": "whatsapp"
+      },
+      {
+        "label": "Enroll in Flutter",
+        "action": "enroll_modal",
+        "target": "Mobile App Development"
+      }
+    ]
+  },
+  {
+    "id": "course-devops-cloud",
+    "category": "Courses & Curriculum",
+    "question": "Do you teach DevOps, Docker, CI/CD, and AWS Cloud?",
+    "keywords": [
+      "devops",
+      "docker",
+      "aws",
+      "cloud",
+      "ci/cd",
+      "kubernetes",
+      "linux",
+      "nginx",
+      "deployment",
+      "server setup"
+    ],
+    "alternateQuestions": [
+      "Is DevOps included in the training?",
+      "Do you teach Docker and AWS Cloud?",
+      "Can I learn server deployment and Linux commands?",
+      "DevOps course details and syllabus"
+    ],
+    "answer": "Yes! DevOps and modern cloud practices are integrated directly into our Full-Stack tracks and available as an advanced module:\n\n• **Linux & Shell**: Command-line power, bash scripting, SSH keys, user permissions, and cron jobs.\n• **Containerization**: Docker, Docker Compose, multi-stage production builds, and image optimization.\n• **Cloud Platforms**: AWS (EC2, S3, RDS, CloudFront), Vercel, Render, and DigitalOcean droplets.\n• **CI/CD Pipelines**: Automated GitHub Actions testing, linting, build verification, and zero-downtime deployment.\n• **Web Servers**: Nginx reverse proxy configuration, SSL certificates (Let's Encrypt), and firewall setup.",
+    "suggestedActions": [
+      {
+        "label": "Explore DevOps Tracks",
+        "action": "route",
+        "target": "/courses"
+      },
+      {
+        "label": "Consult on WhatsApp",
+        "action": "whatsapp"
+      }
+    ]
+  },
+  {
+    "id": "course-cybersecurity",
+    "category": "Courses & Curriculum",
+    "question": "Do you offer Cyber Security and Ethical Hacking training?",
+    "keywords": [
+      "cyber security",
+      "cybersecurity",
+      "ethical hacking",
+      "penetration testing",
+      "infosec",
+      "network security",
+      "bug bounty"
+    ],
+    "alternateQuestions": [
+      "Can I learn Cyber Security at XentroX Labs?",
+      "Do you offer Ethical Hacking courses?",
+      "Network security and penetration testing details",
+      "How to get started in cyber security?"
+    ],
+    "answer": "Yes! Our **Cyber Security & Application Defense Fundamentals** covers essential defensive and offensive security principles:\n\n• **Network Security**: TCP/IP protocols, Wireshark packet analysis, port scanning (Nmap), and firewall topologies.\n• **Web App Security (OWASP Top 10)**: SQL Injection, Cross-Site Scripting (XSS), CSRF, broken access control, and API vulnerabilities.\n• **Ethical Hacking**: Linux security labs, vulnerability assessment, cryptography fundamentals, and secure coding practices.\n• **Compliance & Defensive Ops**: Hardening servers, secrets management, and security headers.",
+    "suggestedActions": [
+      {
+        "label": "Explore Security Tracks",
+        "action": "route",
+        "target": "/courses"
+      },
+      {
+        "label": "Chat on WhatsApp",
+        "action": "whatsapp"
+      }
+    ]
+  },
+  {
+    "id": "career-gap",
+    "category": "Fees & Admissions",
+    "question": "I have a career gap or education gap. Can I still get placed in an IT job?",
+    "keywords": [
+      "career gap",
+      "education gap",
+      "gap year",
+      "years gap",
+      "break",
+      "restart career",
+      "can i get job with gap",
+      "after gap",
+      "gap"
+    ],
+    "alternateQuestions": [
+      "Can I get placed if I have a 2 to 5 year gap?",
+      "I have a gap after graduation, am I eligible?",
+      "How does XentroX help students with career gaps?",
+      "Do IT companies hire candidates with gaps?"
+    ],
+    "answer": "Yes, absolutely! Career gaps are very common, and modern product companies care about **what you can build right now**, not gaps on your paper.\n\nHere is how XentroX Labs bridges your gap:\n1. **Verifiable Studio Experience**: You work on actual XentroX Solutions client projects, giving you legitimate, recent project experience.\n2. **Production GitHub Portfolio**: Live deployed SaaS products that prove your hands-on code competence.\n3. **Interview Justification Coaching**: We guide you on how to present your gap confidently during HR and technical interviews.\n4. **Partner Referrals**: Many of our 100+ hiring partners evaluate candidates purely on portfolio submissions and coding assessments.",
+    "suggestedActions": [
+      {
+        "label": "Talk to Career Advisor",
+        "action": "whatsapp"
+      },
+      {
+        "label": "Book Free Counseling",
+        "action": "enroll_modal"
+      }
+    ]
+  },
+  {
+    "id": "admissions-non-it",
+    "category": "Fees & Admissions",
+    "question": "I am from a non-IT / Arts / Commerce / Mechanical background. Can I learn coding?",
+    "keywords": [
+      "non it",
+      "arts",
+      "commerce",
+      "mechanical",
+      "civil",
+      "bcom",
+      "ba",
+      "bsc",
+      "no coding background",
+      "zero coding",
+      "biology",
+      "without cs"
+    ],
+    "alternateQuestions": [
+      "Can a B.Com or B.A student become a software developer?",
+      "I have zero coding experience, can I join?",
+      "Can Mechanical or Civil engineering graduates switch to IT?",
+      "Is coding difficult for non-CS students?"
+    ],
+    "answer": "Over 40% of our successful alumni come from non-IT backgrounds (Mechanical, Civil, B.Com, B.Sc Physics/Maths, B.A, and Management)!\n\n• **Zero Assumption Teaching**: We start from absolute scratch — how code works, logic building, and syntax basics.\n• **Dedicated 1-on-1 Mentors**: When you get stuck, a working engineer sits with you to debug and explain concepts until clear.\n• **Practical-First Approach**: Rather than complex mathematical theory, you learn by building real visual web pages and apps right from week one.\n• **High Industry Demand**: Tech companies hire based on skills and problem-solving, not your college degree title.",
+    "suggestedActions": [
+      {
+        "label": "Book Free Beginner Session",
+        "action": "whatsapp"
+      },
+      {
+        "label": "Apply Now",
+        "action": "enroll_modal"
+      }
+    ]
+  },
+  {
+    "id": "admissions-missed-classes",
+    "category": "Fees & Admissions",
+    "question": "What if I miss a class or have doubts? Do you provide backup or recorded sessions?",
+    "keywords": [
+      "missed class",
+      "miss a class",
+      "absent",
+      "recorded sessions",
+      "recording",
+      "backup",
+      "doubts",
+      "doubt clearing",
+      "revision",
+      "catch up"
+    ],
+    "answer": "You will never fall behind at XentroX Labs! We have a complete backup system in place:\n\n• **Session Recordings**: All live lectures and technical demonstrations are recorded and accessible in high definition.\n• **1-on-1 Mentor Doubt Clearing**: Schedule personal doubt-clearing slots with instructors between 9:00 AM and 7:00 PM.\n• **Peer Learning Community**: Active Discord and WhatsApp dev rooms where mentors and peers answer questions 24/7.\n• **Batch Transfer Flexibility**: If an emergency occurs, you can pause and rejoin the subsequent cohort at zero extra fee.",
+    "suggestedActions": [
+      {
+        "label": "Inquire on WhatsApp",
+        "action": "whatsapp"
+      },
+      {
+        "label": "Visit Lab Campus",
+        "action": "route",
+        "target": "/contact"
+      }
+    ]
+  },
+  {
+    "id": "admissions-duration",
+    "category": "Fees & Admissions",
+    "question": "What is the typical duration of courses at XentroX Labs?",
+    "keywords": [
+      "duration",
+      "how long",
+      "course duration",
+      "months",
+      "weeks",
+      "how many months",
+      "fast track",
+      "crash course",
+      "time period"
+    ],
+    "alternateQuestions": [
+      "How many months is the training?",
+      "What is the duration of full stack courses?",
+      "Are there fast-track 2-month courses available?",
+      "How long does it take to get a job?"
+    ],
+    "answer": "Course durations are tailored according to the depth of specialization:\n\n• **Intensive Full-Stack Mastertracks** (MERN, Python, Java): 4 to 5 Months (includes 1 month dedicated client project internship).\n• **Specialized Tech Tracks** (React/Next.js, Node.js Backend, Flutter): 3 Months.\n• **Design & Marketing** (UI/UX Design, Performance Marketing): 3 Months.\n• **Fast-Track Bootcamp**: 6 to 8 weeks for experienced developers or quick skill upskilling.\n\nPlacement drives and portfolio preparation start at Month 3 so you are ready to interview upon graduation!",
+    "suggestedActions": [
+      {
+        "label": "Browse Course Durations",
+        "action": "route",
+        "target": "/courses"
+      },
+      {
+        "label": "Consult on WhatsApp",
+        "action": "whatsapp"
+      }
+    ]
+  },
+  {
+    "id": "admissions-weekend",
+    "category": "Fees & Admissions",
+    "question": "Do you have weekend batches for working professionals or college students?",
+    "keywords": [
+      "weekend",
+      "weekend batch",
+      "saturday sunday",
+      "working professional",
+      "part time",
+      "evening batch",
+      "after office",
+      "flexible timing"
+    ],
+    "alternateQuestions": [
+      "Can I learn on Saturdays and Sundays?",
+      "Are there weekend classes available?",
+      "I have a day job, do you have weekend batches?",
+      "Weekend training options"
+    ],
+    "answer": "Yes! We run dedicated **Weekend Professional Batches** specifically tailored for college students and working individuals:\n\n• **Schedule**: Saturdays & Sundays (4 practical hours per day with structured weekly assignments).\n• **Weekday Async Support**: Access to recorded video recaps, coding tasks, and mentor WhatsApp/Discord desk throughout the week.\n• **Full Placement Support**: Weekend cohort students receive the exact same 100% placement support and client project experience as weekday learners.",
+    "suggestedActions": [
+      {
+        "label": "Register for Weekend Batch",
+        "action": "enroll_modal"
+      },
+      {
+        "label": "Check Weekend Dates",
+        "action": "whatsapp"
+      }
+    ]
+  },
+  {
+    "id": "placements-interviews",
+    "category": "Placements & Career Support",
+    "question": "How do you prepare students for technical interviews and resume screening?",
+    "keywords": [
+      "interview",
+      "mock interview",
+      "resume",
+      "cv",
+      "technical interview",
+      "hr interview",
+      "ats resume",
+      "interview prep",
+      "preparation",
+      "aptitude"
+    ],
+    "alternateQuestions": [
+      "Do you conduct mock interviews?",
+      "Will you help build my resume?",
+      "How do you prepare candidates for tech rounds?",
+      "Do you train for HR and behavioral questions?"
+    ],
+    "answer": "Our placement cell conducts a rigorous 4-step interview accelerator:\n\n1. **ATS-Compliant Resume Engineering**: We build modern, single-page, ATS-optimized developer resumes highlighting real project metrics.\n2. **1-on-1 Mock Tech Interviews**: Conducted by senior architects simulating actual corporate rounds (Data structures, System design, Code debugging).\n3. **Live Coding Challenges**: Timed algorithmic tests on LeetCode, HackerRank, and live pair-programming tests.\n4. **HR & Salary Negotiation**: Soft skills coaching, STAR-method behavioral question mastery, and package negotiation techniques.",
+    "suggestedActions": [
+      {
+        "label": "Explore Career Support",
+        "action": "route",
+        "target": "/career-assistance"
+      },
+      {
+        "label": "Talk to Placement Head",
+        "action": "whatsapp"
+      }
+    ]
+  },
+  {
+    "id": "practical-github-portfolio",
+    "category": "Internships & Live Projects",
+    "question": "Will I build a GitHub profile and live deployed portfolio websites?",
+    "keywords": [
+      "github",
+      "portfolio",
+      "live link",
+      "deployed",
+      "git",
+      "profile",
+      "showcase",
+      "resume project",
+      "personal website"
+    ],
+    "alternateQuestions": [
+      "Do I get a portfolio website?",
+      "Will I have active GitHub repositories?",
+      "Can recruiters see my live projects?",
+      "Do you help build a developer portfolio?"
+    ],
+    "answer": "Yes! Every single graduate leaves with an impressive digital presence:\n\n• **Personal Developer Portfolio**: A custom-designed portfolio website showcasing your bio, tech stack, deployed projects, and contact info.\n• **Green GitHub Contribution Graph**: Master professional Git workflows — branches, PR reviews, meaningful commit messages, and Markdown READMEs.\n• **Live Production URLs**: All projects are deployed to production cloud platforms (Vercel, Render, AWS, Netlify) with custom domains or subdomains so recruiters can test them live.",
+    "suggestedActions": [
+      {
+        "label": "View Student Portfolios",
+        "action": "route",
+        "target": "/projects"
+      },
+      {
+        "label": "Enroll in Program",
+        "action": "enroll_modal"
+      }
+    ]
+  },
+  {
+    "id": "campus-facilities",
+    "category": "Locations & Contact",
+    "question": "What facilities and infrastructure are provided at the physical labs in Marthandam & Trivandrum?",
+    "keywords": [
+      "facilities",
+      "infrastructure",
+      "lab facilities",
+      "wifi",
+      "computers",
+      "ac",
+      "workstations",
+      "campus",
+      "parking",
+      "environment"
+    ],
+    "alternateQuestions": [
+      "What facilities are available at Marthandam lab?",
+      "What is the Trivandrum center like?",
+      "Is high-speed Wi-Fi provided?",
+      "Are workstations and power backup available?"
+    ],
+    "answer": "Our physical innovation hubs in **Marthandam** and **Trivandrum** feature world-class developer environments:\n\n• ⚡ **Dual High-Speed Gigabit Fiber Internet** with automatic failover.\n• 💻 **Modern Development Workstations** with dual-monitor setups for coding.\n• ❄️ **Fully Air-Conditioned Co-Working Spaces** fostering quiet concentration and teamwork.\n• 🔋 **100% Uninterrupted Power Backup (UPS & Generator)**.\n• ☕ **Pantry & Relaxation Lounge** for coffee, snacks, and tech discussions.\n• 🚗 **Ample Dedicated Parking** for two-wheelers and four-wheelers.",
+    "suggestedActions": [
+      {
+        "label": "Visit Campus",
+        "action": "route",
+        "target": "/contact"
+      },
+      {
+        "label": "Book Campus Tour on WhatsApp",
+        "action": "whatsapp"
+      }
+    ]
+  },
+  {
+    "id": "fees-refund-policy",
+    "category": "Fees & Admissions",
+    "question": "What is the refund or cancellation policy at XentroX Labs?",
+    "keywords": [
+      "refund",
+      "cancellation",
+      "money back",
+      "drop out",
+      "refund policy",
+      "cancel admission",
+      "terms"
+    ],
+    "alternateQuestions": [
+      "Can I get a refund if I cannot continue?",
+      "What is the cancellation policy?",
+      "Is there a money-back guarantee?",
+      "What happens if I need to leave mid-way?"
+    ],
+    "answer": "We maintain transparent, student-centric policies:\n\n• **Free Demo Session**: We invite you to attend demo sessions and review curricula prior to payment so you are 100% confident.\n• **7-Day Trial Window**: If you enroll and decide within the first 7 days that the course is not for you, you can request a cancellation subject to nominal processing fees.\n• **Cohort Pause Guarantee**: If unexpected personal or health reasons arise, you do not lose your money — you can freeze your admission and resume in any future cohort within 12 months at no extra cost.",
+    "suggestedActions": [
+      {
+        "label": "Read Terms on WhatsApp",
+        "action": "whatsapp"
+      },
+      {
+        "label": "Contact Admissions Desk",
+        "action": "call"
+      }
+    ]
+  },
+  {
+    "id": "placements-direct-hire",
+    "category": "Placements & Career Support",
+    "question": "Can top-performing students get hired directly by XentroX Solutions?",
+    "keywords": [
+      "direct hire",
+      "xentrox solutions hiring",
+      "work at xentrox",
+      "internal hiring",
+      "join xentrox",
+      "absorption",
+      "job at studio"
+    ],
+    "alternateQuestions": [
+      "Does XentroX hire its own students?",
+      "Can I get a job at XentroX Solutions after the course?",
+      "How do I qualify for direct hiring at XentroX?",
+      "Internal placement opportunities at XentroX"
+    ],
+    "answer": "Yes! High-performing students who demonstrate exceptional problem-solving, code quality, and dedication are routinely offered full-time software developer or paid intern roles directly at **XentroX Solutions**!\n\n• Selected candidates work on client software contracts, SaaS tools, and international customer projects.\n• Competitive salary packages, PF, and rapid appraisal cycles based on code delivery.",
+    "suggestedActions": [
+      {
+        "label": "Apply for Incubation",
+        "action": "enroll_modal"
+      },
+      {
+        "label": "Talk to Founders on WhatsApp",
+        "action": "whatsapp"
+      }
+    ]
+  },
+  {
+    "id": "corporate-college-workshops",
+    "category": "Software & Marketing Services",
+    "question": "Do you conduct corporate training or college technical workshops?",
+    "keywords": [
+      "college workshop",
+      "corporate training",
+      "guest lecture",
+      "campus workshop",
+      "mou",
+      "seminar",
+      "bootcamp for colleges",
+      "institutional training"
+    ],
+    "alternateQuestions": [
+      "Can XentroX conduct a workshop at our engineering college?",
+      "Do you provide corporate upskilling for tech teams?",
+      "College MOUs and industrial visits",
+      "How to invite XentroX speakers to our campus?"
+    ],
+    "answer": "Yes! We collaborate actively with colleges, universities, and enterprise companies across Kerala and Tamil Nadu:\n\n• **1-Day to 3-Day Hands-on Bootcamps**: MERN Stack, AI Engineering, Cloud Deployments, or Flutter.\n• **Industrial Visits (IV)**: College batches can visit our Marthandam or Trivandrum labs to interact with engineers.\n• **Institutional MOUs**: Faculty development programs (FDP), student incubation centers, and campus recruitment drives.\n\n✉️ Institutional coordinators can email **xentroxsolutions@gmail.com** or call **+91 9940727614**.",
+    "suggestedActions": [
+      {
+        "label": "Partner with Us",
+        "action": "whatsapp"
+      },
+      {
+        "label": "Call +91 9940727614",
+        "action": "call"
+      }
+    ]
+  },
+  {
+    "id": "freelancing-guidance",
+    "category": "Placements & Career Support",
+    "question": "Do you provide guidance on freelancing, Upwork, and remote international jobs?",
+    "keywords": [
+      "freelance",
+      "freelancing",
+      "upwork",
+      "fiverr",
+      "remote work",
+      "client work",
+      "dollar earnings",
+      "international clients",
+      "work from home"
+    ],
+    "alternateQuestions": [
+      "Do you teach how to get freelance clients?",
+      "How to earn money freelancing as a web developer?",
+      "Can I get remote international jobs through XentroX?",
+      "Do you guide on Upwork and LinkedIn client outreach?"
+    ],
+    "answer": "Yes! In addition to corporate placement, we offer dedicated modules on **Freelance Engineering & Remote Work**:\n\n• **Profile Building**: Creating standout profiles on Upwork, Fiverr, Toptal, and Contra.\n• **Cold Outreach & Proposal Writing**: How to submit winning project proposals and quote accurate project pricing.\n• **Contract Management & Escrow**: Invoicing international clients, milestone payouts, and scope protection.\n• **International Remote Roles**: Applying for full-time US/Europe/Gulf remote positions paying in USD/EUR.",
+    "suggestedActions": [
+      {
+        "label": "Chat with Remote Mentor",
+        "action": "whatsapp"
+      },
+      {
+        "label": "Explore Career Programs",
+        "action": "route",
+        "target": "/career-assistance"
+      }
+    ]
+  },
+  {
+    "id": "tech-ai-tools",
+    "category": "Courses & Curriculum",
+    "question": "Do you teach AI tools like ChatGPT, GitHub Copilot, and Cursor for developers?",
+    "keywords": [
+      "ai tools",
+      "chatgpt",
+      "copilot",
+      "cursor",
+      "prompt engineering",
+      "v0",
+      "claude",
+      "ai for coding",
+      "ai developer"
+    ],
+    "alternateQuestions": [
+      "Do you teach coding with AI tools?",
+      "Is GitHub Copilot taught in class?",
+      "How do developers use AI at XentroX?",
+      "Will AI replace developers?"
+    ],
+    "answer": "We do not fear AI — we teach you to become a **10x AI-Augmented Developer**!\n\n• **Prompt Engineering for Code**: Writing precise architectural prompts, debugging complex errors with LLMs.\n• **GitHub Copilot & Cursor AI**: Integrating AI code completions into VS Code for faster, boilerplate-free coding.\n• **Building AI Applications**: Integrating OpenAI, Anthropic, and open-source HuggingFace models into React and Node.js web applications.\n• **Code Review & Security Auditing**: Using AI to find security vulnerabilities and unit test coverage gaps.",
+    "suggestedActions": [
+      {
+        "label": "Explore AI Tracks",
+        "action": "route",
+        "target": "/courses"
+      },
+      {
+        "label": "Ask on WhatsApp",
+        "action": "whatsapp"
+      }
+    ]
+  },
+  {
+    "id": "tech-databases",
+    "category": "Courses & Curriculum",
+    "question": "What databases are covered in your full stack development courses?",
+    "keywords": [
+      "database",
+      "databases",
+      "mongodb",
+      "postgresql",
+      "mysql",
+      "sql",
+      "nosql",
+      "redis",
+      "database design"
+    ],
+    "alternateQuestions": [
+      "Do you teach SQL or NoSQL databases?",
+      "What database technologies are included?",
+      "Do I learn MongoDB and PostgreSQL?",
+      "How deep is database training?"
+    ],
+    "answer": "Our curriculum covers both NoSQL document databases and relational SQL databases:\n\n• **MongoDB (NoSQL)**: Collections, document schemas, BSON, indexing, Aggregation Pipelines, and Atlas cloud clusters.\n• **PostgreSQL & MySQL (Relational SQL)**: Tables, primary/foreign keys, complex JOINs, ACID transactions, normalization, and indexing.\n• **Caching with Redis**: In-memory caching, session storage, rate limiting, and pub/sub messaging.\n• **Database Optimization**: Query profiling, connection pooling, and data backup routines.",
+    "suggestedActions": [
+      {
+        "label": "View Full Stack Tracks",
+        "action": "route",
+        "target": "/courses"
+      },
+      {
+        "label": "Enroll in Database Track",
+        "action": "enroll_modal"
+      }
+    ]
+  },
+  {
+    "id": "differentiator-vs-youtube",
+    "category": "Company & Overview",
+    "question": "Why should I join XentroX Labs instead of learning from free YouTube tutorials or Udemy?",
+    "keywords": [
+      "youtube",
+      "udemy",
+      "free tutorials",
+      "self learning",
+      "why join",
+      "worth it",
+      "comparison",
+      "tutorial hell",
+      "why pay"
+    ],
+    "alternateQuestions": [
+      "Can't I just learn everything from YouTube for free?",
+      "What is the advantage of XentroX over self-study?",
+      "How do you break out of tutorial hell?",
+      "Is an in-person finishing school worth the fee?"
+    ],
+    "answer": "YouTube and Udemy are wonderful for concepts, but 90% of self-learners get trapped in **'Tutorial Hell'**:\n\n1. **Zero Production Code**: Tutorials show toy apps with no client requirements, edge cases, or deployment issues.\n2. **No One to Review Your Code**: At XentroX, experienced engineers review every line of code, teaching you how to write clean, industry-grade software.\n3. **Accountability & Consistency**: High-energy peers and daily sprint deadlines keep you motivated.\n4. **Real Client Project Experience**: Recruiters want verifiable commercial experience, not another copied YouTube clone.\n5. **Guaranteed Placement Pipeline**: 100+ partner referrals, mock interviews, and direct employer introductions.",
+    "suggestedActions": [
+      {
+        "label": "About XentroX",
+        "action": "route",
+        "target": "/about"
+      },
+      {
+        "label": "Chat with Counselor",
+        "action": "whatsapp"
+      }
+    ]
+  },
+  {
+    "id": "placements-network",
+    "category": "Placements & Career Support",
+    "question": "How does XentroX's corporate placement and referral network work?",
+    "keywords": [
+      "placement network",
+      "referral",
+      "corporate network",
+      "companies",
+      "campus drives",
+      "hiring partners",
+      "technopark hiring",
+      "how placements work"
+    ],
+    "alternateQuestions": [
+      "How do students get placed at companies?",
+      "What companies are in your network?",
+      "Do companies visit campus for interviews?",
+      "How does the placement process work?"
+    ],
+    "answer": "Our placement cell operates a continuous 360-degree employer outreach engine:\n\n• **Direct Referral Network**: Over 100+ vetted tech studios, product startups, and IT enterprises across Trivandrum Technopark, Kochi Infopark, Chennai, Bangalore, and remote hubs.\n• **Curated Candidate Portfolios**: We send pre-screened portfolio links and assessment scores directly to CTOs and hiring managers, bypassing crowded job portals.\n• **Exclusive Recruitment Drives**: Dedicated on-campus and virtual hiring drives for our cohorts.\n• **Lifetime Placement Support**: Even after landing your first job, you remain part of our alumni network for mid-career referrals.",
+    "suggestedActions": [
+      {
+        "label": "Placement Statistics",
+        "action": "route",
+        "target": "/career-assistance"
+      },
+      {
+        "label": "Partner with Us on WhatsApp",
+        "action": "whatsapp"
+      }
+    ]
+  },
+  {
+    "id": "campus-accommodation",
+    "category": "Locations & Contact",
+    "question": "Do you provide hostel or PG accommodation assistance for outstation students?",
+    "keywords": [
+      "hostel",
+      "pg",
+      "accommodation",
+      "stay",
+      "room",
+      "food",
+      "outstation",
+      "living",
+      "dormitory"
+    ],
+    "alternateQuestions": [
+      "Is hostel facility available near Marthandam lab?",
+      "Can outstation students find PG accommodation in Trivandrum?",
+      "Do you provide food and stay?",
+      "Where can students stay during the course?"
+    ],
+    "answer": "Yes! We actively assist students traveling from other districts, states, or overseas:\n\n• **Verified PG & Hostel Network**: Clean, safe, and affordable student hostels and PG accommodations located within 5 to 10 minutes walking distance of both our **Marthandam** and **Trivandrum** campuses.\n• **Facilities**: High-speed Wi-Fi, hygienic home-style food (Veg & Non-Veg options), laundry, and 24/7 security.\n• **Cost**: Typical PG/hostel expenses range between ₹4,500 to ₹7,500/month including meals.",
+    "suggestedActions": [
+      {
+        "label": "Ask Hostel Details on WhatsApp",
+        "action": "whatsapp"
+      },
+      {
+        "label": "Visit Campus",
+        "action": "route",
+        "target": "/contact"
+      }
+    ]
+  },
+  {
+    "id": "admissions-age-limit",
+    "category": "Fees & Admissions",
+    "question": "Is there any age limit or prior coding knowledge required to join?",
+    "keywords": [
+      "age limit",
+      "minimum age",
+      "maximum age",
+      "am i too old",
+      "too young",
+      "prerequisites",
+      "requirements",
+      "who can study"
+    ],
+    "alternateQuestions": [
+      "Is there an age limit to join XentroX courses?",
+      "I am 30+ years old, can I learn coding and switch jobs?",
+      "Can school passouts or 18-year-olds join?",
+      "Do I need any previous technical certifications?"
+    ],
+    "answer": "There is **No Upper Age Limit** to learn technology! Passion and commitment are all you need:\n\n• Learners in our cohorts range from 18 to 38+ years old.\n• High school graduates (12th completed), polytechnic diploma holders, college graduates, and mid-career professionals are equally welcome.\n• All courses start with zero prerequisite assumptions and guide you progressively to expert mastery.",
+    "suggestedActions": [
+      {
+        "label": "Consult Career Mentor",
+        "action": "whatsapp"
+      },
+      {
+        "label": "Enroll Today",
+        "action": "enroll_modal"
+      }
+    ]
+  },
+  {
+    "id": "training-soft-skills",
+    "category": "Placements & Career Support",
+    "question": "Do you provide English communication and soft skills training for interviews?",
+    "keywords": [
+      "soft skills",
+      "english",
+      "communication",
+      "spoken english",
+      "personality development",
+      "presentation skills",
+      "confidence",
+      "speaking"
+    ],
+    "alternateQuestions": [
+      "Will you help improve my English communication?",
+      "I feel nervous speaking in interviews, do you help?",
+      "Do you have soft skills classes?",
+      "How to build confidence for corporate jobs?"
+    ],
+    "answer": "Yes! Technical skills get you the interview, but communication and confidence get you the offer letter:\n\n• **Daily Standup Practice**: Every morning, students present 2-minute updates in English, simulating real corporate Agile standups.\n• **Technical Presentation Sessions**: Pitch your project architecture in front of peers and mentors to conquer stage fear.\n• **Corporate Email & Slack Etiquette**: Writing professional emails, documentation, and client messages.\n• **Confidence & Accent Neutralization**: Practical workshops to speak clearly and confidently.",
+    "suggestedActions": [
+      {
+        "label": "View Career Support",
+        "action": "route",
+        "target": "/career-assistance"
+      },
+      {
+        "label": "Talk on WhatsApp",
+        "action": "whatsapp"
+      }
+    ]
+  },
+  {
+    "id": "course-capstone",
+    "category": "Internships & Live Projects",
+    "question": "What is the Capstone Project and how does the final evaluation work?",
+    "keywords": [
+      "capstone",
+      "final project",
+      "capstone project",
+      "project evaluation",
+      "graduation project",
+      "demo day",
+      "project defense"
+    ],
+    "alternateQuestions": [
+      "What is the capstone project at XentroX Labs?",
+      "How are final projects evaluated?",
+      "Do we present projects to industry judges?",
+      "What kind of capstone do full stack students build?"
+    ],
+    "answer": "The **Capstone Project** is the crowning achievement of your training:\n\n• **Enterprise-Grade Problem**: You build a comprehensive, production-ready system (e.g., an automated logistics dashboard, multi-vendor marketplace, or healthcare portal) based on genuine client specifications from XentroX Solutions.\n• **Full Architecture**: Complete database schema, backend API with authentication, dynamic frontend UI, and cloud deployment.\n• **Demo Day Presentation**: You present your live architecture and answer technical questions before a panel of senior software architects.\n• **Graduation Certificate**: Successful defense earns your official course credential and internship experience letter.",
+    "suggestedActions": [
+      {
+        "label": "Inspect Student Projects",
+        "action": "route",
+        "target": "/projects"
+      },
+      {
+        "label": "Enroll in Capstone Cohort",
+        "action": "enroll_modal"
+      }
+    ]
+  },
+  {
+    "id": "hackathons-events",
+    "category": "Company & Overview",
+    "question": "Does XentroX organize or participate in hackathons, coding challenges, and tech meetups?",
+    "keywords": [
+      "hackathon",
+      "hackathons",
+      "coding challenge",
+      "meetup",
+      "tech events",
+      "competitions",
+      "coding contest",
+      "community"
+    ],
+    "alternateQuestions": [
+      "Do you conduct internal hackathons?",
+      "Are there coding competitions for students?",
+      "Do you host tech meetups in Marthandam or Trivandrum?",
+      "Can students participate in external hackathons?"
+    ],
+    "answer": "Yes! We cultivate an exciting, high-energy builder culture:\n\n• **XentroX CodeSprint**: Monthly 24-hour hackathons where teams compete to build functioning MVPs from scratch.\n• **Weekly LeetCode Challenges**: Speed-coding problems with peer leaderboards and tech prizes.\n• **Tech Meetups & Guest Keynotes**: Active engineering directors from Technopark and top product firms deliver interactive masterclasses.\n• **External Hackathon Mentorship**: Our mentors coach student teams participating in state and national hackathons.",
+    "suggestedActions": [
+      {
+        "label": "Join Student Community",
+        "action": "whatsapp"
+      },
+      {
+        "label": "Visit Labs",
+        "action": "route",
+        "target": "/contact"
+      }
+    ]
+  },
+  {
+    "id": "admissions-counseling",
+    "category": "Fees & Admissions",
+    "question": "Can I get a free 1-on-1 career counseling session or syllabus walkthrough?",
+    "keywords": [
+      "counseling",
+      "career advice",
+      "guidance",
+      "free counseling",
+      "syllabus download",
+      "talk to expert",
+      "which course is right for me",
+      "consultation"
+    ],
+    "alternateQuestions": [
+      "Can I get free career guidance?",
+      "I don't know which course to choose, who can help me?",
+      "How to download the full syllabus?",
+      "Can I speak with a mentor before enrolling?"
+    ],
+    "answer": "Yes, 100% free with zero obligation!\n\nIf you are confused about whether MERN Stack, Python, Java, Data Analytics, or UI/UX is the best fit for your background and goals, our senior academic advisors are here for you:\n\n• Detailed 1-on-1 profile analysis.\n• Industry salary benchmark review.\n• Complete, transparent syllabus walkthrough.\n\n📲 Call **+91 9940727614** or tap WhatsApp below to book your free 15-minute consultation!",
+    "suggestedActions": [
+      {
+        "label": "Book Free Counseling on WhatsApp",
+        "action": "whatsapp"
+      },
+      {
+        "label": "Call +91 9940727614",
+        "action": "call"
+      },
+      {
+        "label": "Submit Enquiry Form",
+        "action": "enroll_modal"
+      }
+    ]
+  }
+]

@@ -1,5 +1,7 @@
 import React, { useState } from 'react';
 import { Plus, Edit2, Trash2, X, Search, Briefcase, ExternalLink, AlertCircle } from 'lucide-react';
+import ImageUploadInput from './ImageUploadInput';
+import { resolveImageUrl, DEFAULT_PORTFOLIO_FALLBACK } from '../../utils/imageHelper';
 
 export default function PortfolioManagement({
   portfolioItems,
@@ -102,22 +104,22 @@ export default function PortfolioManagement({
   return (
     <div className="space-y-6">
       {/* Action Header */}
-      <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-4 p-5 rounded-3xl bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-800 shadow-xl transition-colors">
+      <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-3.5 sm:gap-4 p-4 xs:p-5 rounded-2xl sm:rounded-3xl bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-800 shadow-xl transition-colors">
         <div>
-          <h3 className="text-lg font-black text-slate-900 dark:text-white">Portfolio Projects</h3>
-          <p className="text-xs text-slate-500 dark:text-slate-400">
+          <h3 className="text-base sm:text-lg font-black text-slate-900 dark:text-white">Portfolio Projects</h3>
+          <p className="text-[11px] sm:text-xs text-slate-500 dark:text-slate-400">
             Showcase student live projects & real-world client builds ({portfolioItems.length} total)
           </p>
         </div>
 
-        <div className="flex items-center gap-3">
-          <div className="relative w-48 sm:w-64">
+        <div className="flex flex-col xs:flex-row items-stretch xs:items-center gap-2.5 sm:gap-3">
+          <div className="relative w-full xs:w-48 sm:w-64">
             <input
               type="text"
               placeholder="Search portfolio..."
               value={activeSearch}
               onChange={(e) => handleSearchChange(e.target.value)}
-              className="w-full bg-slate-50 dark:bg-slate-950 border border-slate-200 dark:border-slate-800 rounded-xl px-3.5 py-2 pl-9 pr-8 text-xs text-slate-900 dark:text-white placeholder-slate-400 dark:placeholder-slate-500 focus:outline-none focus:border-blue-500 dark:focus:border-cyan-500 transition-colors"
+              className="w-full bg-slate-50 dark:bg-slate-950 border border-slate-200 dark:border-slate-800 rounded-xl px-3.5 py-2 pl-9 pr-8 text-xs text-slate-900 dark:text-white placeholder-slate-400 dark:placeholder-slate-500 focus:outline-none focus:border-lime-500 dark:focus:border-lime-400 transition-colors"
             />
             <Search className="w-3.5 h-3.5 absolute left-3 top-3 text-slate-400 dark:text-slate-500" />
             {activeSearch && (
@@ -152,7 +154,7 @@ export default function PortfolioManagement({
               </p>
               <button
                 onClick={handleClearSearch}
-                className="mt-4 px-4 py-1.5 rounded-xl bg-blue-50 dark:bg-cyan-500/10 text-blue-600 dark:text-cyan-400 border border-blue-200 dark:border-cyan-500/20 hover:bg-blue-600 hover:text-white dark:hover:bg-cyan-500 dark:hover:text-slate-950 text-xs font-bold transition-all"
+                className="mt-4 px-4 py-1.5 rounded-xl bg-lime-50 dark:bg-lime-500/10 text-lime-600 dark:text-lime-400 border border-lime-200 dark:border-lime-500/20 hover:bg-lime-400 hover:text-[#022620] dark:hover:bg-lime-400 dark:hover:text-slate-950 text-xs font-bold transition-all"
               >
                 Clear Search Filter
               </button>
@@ -175,14 +177,17 @@ export default function PortfolioManagement({
           {filteredItems.map((item) => (
             <div
               key={item._id}
-              className="p-5 rounded-3xl bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-800 shadow-xl flex flex-col justify-between group hover:border-blue-500/50 dark:hover:border-cyan-500/50 transition-all"
+              className="p-5 rounded-3xl bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-800 shadow-xl flex flex-col justify-between group hover:border-lime-500/50 dark:hover:border-lime-400/50 transition-all"
             >
               <div>
                 <div className="h-44 rounded-2xl overflow-hidden bg-slate-100 dark:bg-slate-950 mb-4 border border-slate-200 dark:border-slate-800 relative">
                   <img
-                    src={item.image || 'https://images.unsplash.com/photo-1555066931-4365d14bab8c?auto=format&fit=crop&w=800&q=80'}
+                    src={resolveImageUrl(item.image, DEFAULT_PORTFOLIO_FALLBACK)}
                     alt={item.title}
                     className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300"
+                    onError={(e) => {
+                      e.target.src = DEFAULT_PORTFOLIO_FALLBACK;
+                    }}
                   />
                   <span className="absolute top-3 left-3 cyber-badge text-[9px] px-2 py-0.5 bg-white/90 dark:bg-slate-950/80">
                     {item.category}
@@ -190,7 +195,7 @@ export default function PortfolioManagement({
                 </div>
 
                 <h4 className="text-base font-black text-slate-900 dark:text-white mb-1">{item.title}</h4>
-                <p className="text-[11px] text-blue-600 dark:text-cyan-400 font-semibold mb-2">Client: {item.client}</p>
+                <p className="text-[11px] text-lime-600 dark:text-lime-400 font-semibold mb-2">Client: {item.client}</p>
                 <p className="text-xs text-slate-600 dark:text-slate-300 line-clamp-2 leading-relaxed mb-3">{item.description}</p>
 
                 {item.outcomes && (
@@ -220,7 +225,7 @@ export default function PortfolioManagement({
                     href={item.liveUrl}
                     target="_blank"
                     rel="noreferrer"
-                    className="text-xs text-blue-600 dark:text-cyan-400 hover:underline flex items-center gap-1 font-bold"
+                    className="text-xs text-lime-600 dark:text-lime-400 hover:underline flex items-center gap-1 font-bold"
                   >
                     <span>Preview</span>
                     <ExternalLink className="w-3 h-3" />
@@ -232,7 +237,7 @@ export default function PortfolioManagement({
                 <div className="flex items-center gap-2">
                   <button
                     onClick={() => handleOpenEdit(item)}
-                    className="p-1.5 rounded-lg bg-blue-50 dark:bg-blue-600/20 text-blue-600 dark:text-cyan-300 hover:bg-blue-600 hover:text-white transition-colors"
+                    className="p-1.5 rounded-lg bg-lime-50 dark:bg-lime-500/20 text-lime-600 dark:text-lime-300 hover:bg-lime-400 hover:text-[#022620] transition-colors"
                     title="Edit Project"
                   >
                     <Edit2 className="w-3.5 h-3.5" />
@@ -253,8 +258,8 @@ export default function PortfolioManagement({
 
       {/* Create / Edit Modal */}
       {modalOpen && (
-        <div className="fixed inset-0 z-50 flex items-center justify-center p-4 bg-slate-950/80 backdrop-blur-md animate-fadeIn">
-          <div className="relative w-full max-w-lg bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-800 rounded-3xl p-6 shadow-2xl overflow-hidden transition-colors">
+        <div className="fixed inset-0 z-50 flex items-center justify-center p-3 xs:p-4 bg-slate-950/80 backdrop-blur-md animate-fadeIn">
+          <div className="relative w-full max-w-lg bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-800 rounded-2xl sm:rounded-3xl p-5 sm:p-6 shadow-2xl overflow-hidden transition-colors max-h-[92vh] overflow-y-auto">
             <button
               onClick={() => setModalOpen(false)}
               className="absolute top-5 right-5 p-2 rounded-full bg-slate-100 dark:bg-slate-800 text-slate-500 dark:text-slate-400 hover:text-slate-900 dark:hover:text-white transition-colors"
@@ -275,11 +280,11 @@ export default function PortfolioManagement({
                   placeholder="e.g. E-Commerce Microservices Platform"
                   value={formData.title}
                   onChange={(e) => setFormData({ ...formData, title: e.target.value })}
-                  className="w-full bg-slate-50 dark:bg-slate-950 border border-slate-200 dark:border-slate-800 rounded-xl px-3.5 py-2 text-slate-900 dark:text-white placeholder-slate-400 dark:placeholder-slate-500 focus:outline-none focus:border-blue-500 dark:focus:border-cyan-500"
+                  className="w-full bg-slate-50 dark:bg-slate-950 border border-slate-200 dark:border-slate-800 rounded-xl px-3.5 py-2 text-slate-900 dark:text-white placeholder-slate-400 dark:placeholder-slate-500 focus:outline-none focus:border-lime-500 dark:focus:border-lime-400"
                 />
               </div>
 
-              <div className="grid grid-cols-2 gap-3">
+              <div className="grid grid-cols-1 sm:grid-cols-2 gap-3">
                 <div>
                   <label className="block text-slate-700 dark:text-slate-300 font-bold mb-1">Category</label>
                   <input
@@ -288,7 +293,7 @@ export default function PortfolioManagement({
                     placeholder="e.g. Full Stack Development"
                     value={formData.category}
                     onChange={(e) => setFormData({ ...formData, category: e.target.value })}
-                    className="w-full bg-slate-50 dark:bg-slate-950 border border-slate-200 dark:border-slate-800 rounded-xl px-3.5 py-2 text-slate-900 dark:text-white placeholder-slate-400 dark:placeholder-slate-500 focus:outline-none focus:border-blue-500 dark:focus:border-cyan-500"
+                    className="w-full bg-slate-50 dark:bg-slate-950 border border-slate-200 dark:border-slate-800 rounded-xl px-3.5 py-2 text-slate-900 dark:text-white placeholder-slate-400 dark:placeholder-slate-500 focus:outline-none focus:border-lime-500 dark:focus:border-lime-400"
                   />
                 </div>
 
@@ -299,7 +304,7 @@ export default function PortfolioManagement({
                     placeholder="e.g. Retail Tech Corp"
                     value={formData.client}
                     onChange={(e) => setFormData({ ...formData, client: e.target.value })}
-                    className="w-full bg-slate-50 dark:bg-slate-950 border border-slate-200 dark:border-slate-800 rounded-xl px-3.5 py-2 text-slate-900 dark:text-white placeholder-slate-400 dark:placeholder-slate-500 focus:outline-none focus:border-blue-500 dark:focus:border-cyan-500"
+                    className="w-full bg-slate-50 dark:bg-slate-950 border border-slate-200 dark:border-slate-800 rounded-xl px-3.5 py-2 text-slate-900 dark:text-white placeholder-slate-400 dark:placeholder-slate-500 focus:outline-none focus:border-lime-500 dark:focus:border-lime-400"
                   />
                 </div>
               </div>
@@ -312,20 +317,17 @@ export default function PortfolioManagement({
                   placeholder="Describe the application architecture and features"
                   value={formData.description}
                   onChange={(e) => setFormData({ ...formData, description: e.target.value })}
-                  className="w-full bg-slate-50 dark:bg-slate-950 border border-slate-200 dark:border-slate-800 rounded-xl px-3.5 py-2 text-slate-900 dark:text-white placeholder-slate-400 dark:placeholder-slate-500 focus:outline-none focus:border-blue-500 dark:focus:border-cyan-500"
+                  className="w-full bg-slate-50 dark:bg-slate-950 border border-slate-200 dark:border-slate-800 rounded-xl px-3.5 py-2 text-slate-900 dark:text-white placeholder-slate-400 dark:placeholder-slate-500 focus:outline-none focus:border-lime-500 dark:focus:border-lime-400"
                 />
               </div>
 
-              <div>
-                <label className="block text-slate-700 dark:text-slate-300 font-bold mb-1">Image URL</label>
-                <input
-                  type="text"
-                  placeholder="https://images.unsplash.com/..."
-                  value={formData.image}
-                  onChange={(e) => setFormData({ ...formData, image: e.target.value })}
-                  className="w-full bg-slate-50 dark:bg-slate-950 border border-slate-200 dark:border-slate-800 rounded-xl px-3.5 py-2 text-slate-900 dark:text-white placeholder-slate-400 dark:placeholder-slate-500 focus:outline-none focus:border-blue-500 dark:focus:border-cyan-500"
-                />
-              </div>
+              <ImageUploadInput
+                label="Project Thumbnail / Screenshot"
+                value={formData.image}
+                onChange={(img) => setFormData({ ...formData, image: img })}
+                fallbackUrl={DEFAULT_PORTFOLIO_FALLBACK}
+                recommendedText="Upload a screenshot or mockup from your files or paste a direct image URL. Recommended: 1200×800px."
+              />
 
               <div>
                 <label className="block text-slate-700 dark:text-slate-300 font-bold mb-1">Tech Stack Tags (Comma separated)</label>
@@ -334,7 +336,7 @@ export default function PortfolioManagement({
                   placeholder="React, Node.js, MongoDB, Docker"
                   value={formData.tagsStr}
                   onChange={(e) => setFormData({ ...formData, tagsStr: e.target.value })}
-                  className="w-full bg-slate-50 dark:bg-slate-950 border border-slate-200 dark:border-slate-800 rounded-xl px-3.5 py-2 text-slate-900 dark:text-white placeholder-slate-400 dark:placeholder-slate-500 focus:outline-none focus:border-blue-500 dark:focus:border-cyan-500"
+                  className="w-full bg-slate-50 dark:bg-slate-950 border border-slate-200 dark:border-slate-800 rounded-xl px-3.5 py-2 text-slate-900 dark:text-white placeholder-slate-400 dark:placeholder-slate-500 focus:outline-none focus:border-lime-500 dark:focus:border-lime-400"
                 />
               </div>
 
@@ -345,7 +347,7 @@ export default function PortfolioManagement({
                   placeholder="e.g. 99.98% uptime, 40% speed boost, handling 15,000+ daily telemetry pings"
                   value={formData.outcomes}
                   onChange={(e) => setFormData({ ...formData, outcomes: e.target.value })}
-                  className="w-full bg-slate-50 dark:bg-slate-950 border border-slate-200 dark:border-slate-800 rounded-xl px-3.5 py-2 text-slate-900 dark:text-white placeholder-slate-400 dark:placeholder-slate-500 focus:outline-none focus:border-blue-500 dark:focus:border-cyan-500"
+                  className="w-full bg-slate-50 dark:bg-slate-950 border border-slate-200 dark:border-slate-800 rounded-xl px-3.5 py-2 text-slate-900 dark:text-white placeholder-slate-400 dark:placeholder-slate-500 focus:outline-none focus:border-lime-500 dark:focus:border-lime-400"
                 />
               </div>
 

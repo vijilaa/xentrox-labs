@@ -24,20 +24,10 @@ const createEnquiry = async (req, res) => {
     const { fullName, name, email, phone, course, message } = req.body;
     const studentName = (fullName || name || '').trim();
 
-    if (!studentName || !email || !phone) {
+    if (!studentName || !phone) {
       return res.status(400).json({
         success: false,
-        message: 'Please provide your full name, email address, and phone number.'
-      });
-    }
-
-    // Email format validation
-    const cleanEmail = email.trim().toLowerCase();
-    const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
-    if (!emailRegex.test(cleanEmail)) {
-      return res.status(400).json({
-        success: false,
-        message: 'Please enter a valid email address.'
+        message: 'Please provide your name and phone number.'
       });
     }
 
@@ -54,6 +44,20 @@ const createEnquiry = async (req, res) => {
         success: false,
         message: 'Phone number must be at least 10 digits. Please enter a valid mobile number.'
       });
+    }
+
+    // Email format validation (optional, generate default if omitted from quick fee chatbot form)
+    let cleanEmail = (email || '').trim().toLowerCase();
+    if (cleanEmail) {
+      const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+      if (!emailRegex.test(cleanEmail)) {
+        return res.status(400).json({
+          success: false,
+          message: 'Please enter a valid email address.'
+        });
+      }
+    } else {
+      cleanEmail = `${phoneDigits}@lead.xentrox.com`;
     }
 
     const enquiry = await Enquiry.create({

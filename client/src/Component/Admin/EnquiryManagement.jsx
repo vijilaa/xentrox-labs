@@ -45,7 +45,7 @@ export default function EnquiryManagement({
       case 'enrolled':
         return 'bg-emerald-50 dark:bg-emerald-500/10 text-emerald-700 dark:text-emerald-400 border border-emerald-300 dark:border-emerald-500/30';
       case 'contacted':
-        return 'bg-blue-50 dark:bg-blue-500/10 text-blue-700 dark:text-cyan-400 border border-blue-300 dark:border-blue-500/30';
+        return 'bg-lime-50 dark:bg-lime-500/10 text-lime-700 dark:text-lime-400 border border-lime-300 dark:border-lime-500/30';
       case 'closed':
         return 'bg-slate-100 dark:bg-slate-800 text-slate-600 dark:text-slate-400 border border-slate-200 dark:border-slate-700';
       default:
@@ -56,24 +56,24 @@ export default function EnquiryManagement({
   return (
     <div className="space-y-6">
       {/* Action Header */}
-      <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-4 p-5 rounded-3xl bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-800 shadow-xl transition-colors">
+      <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-3.5 sm:gap-4 p-4 xs:p-5 rounded-2xl sm:rounded-3xl bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-800 shadow-xl transition-colors">
         <div>
-          <h3 className="text-lg font-black text-slate-900 dark:text-white">Student Lead Enquiries</h3>
-          <p className="text-xs text-slate-500 dark:text-slate-400">
+          <h3 className="text-base sm:text-lg font-black text-slate-900 dark:text-white">Student Lead Enquiries</h3>
+          <p className="text-[11px] sm:text-xs text-slate-500 dark:text-slate-400">
             View and manage counseling requests & enrollment applications ({enquiries.length} total)
           </p>
         </div>
 
-        <div className="flex flex-wrap items-center gap-3">
+        <div className="flex flex-wrap items-center gap-2 sm:gap-3">
           {/* Status Filter Tabs */}
-          <div className="flex items-center gap-1 bg-slate-100 dark:bg-slate-950 p-1 rounded-xl border border-slate-200 dark:border-slate-800">
+          <div className="flex items-center gap-1 bg-slate-100 dark:bg-slate-950 p-1 rounded-xl border border-slate-200 dark:border-slate-800 overflow-x-auto w-full xs:w-auto scrollbar-none">
             {['all', 'pending', 'contacted', 'enrolled', 'closed'].map((status) => (
               <button
                 key={status}
                 onClick={() => setSelectedStatus(status)}
                 className={`px-3 py-1 rounded-lg text-xs font-bold capitalize transition-all ${
                   selectedStatus === status
-                    ? 'bg-blue-600 text-white shadow-md'
+                    ? 'bg-lime-500 text-[#022620] shadow-md'
                     : 'text-slate-600 dark:text-slate-400 hover:text-slate-900 dark:hover:text-white'
                 }`}
               >
@@ -89,7 +89,7 @@ export default function EnquiryManagement({
               placeholder="Search leads..."
               value={activeSearch}
               onChange={(e) => handleSearchChange(e.target.value)}
-              className="w-full bg-slate-50 dark:bg-slate-950 border border-slate-200 dark:border-slate-800 rounded-xl px-3.5 py-2 pl-9 pr-8 text-xs text-slate-900 dark:text-white placeholder-slate-400 dark:placeholder-slate-500 focus:outline-none focus:border-blue-500 dark:focus:border-cyan-500 transition-colors"
+              className="w-full bg-slate-50 dark:bg-slate-950 border border-slate-200 dark:border-slate-800 rounded-xl px-3.5 py-2 pl-9 pr-8 text-xs text-slate-900 dark:text-white placeholder-slate-400 dark:placeholder-slate-500 focus:outline-none focus:border-lime-500 dark:focus:border-lime-400 transition-colors"
             />
             <Search className="w-3.5 h-3.5 absolute left-3 top-3 text-slate-400 dark:text-slate-500" />
             {activeSearch && (
@@ -122,7 +122,7 @@ export default function EnquiryManagement({
                   {activeSearch && (
                     <button
                       onClick={handleClearSearch}
-                      className="px-4 py-1.5 rounded-xl bg-blue-50 dark:bg-cyan-500/10 text-blue-600 dark:text-cyan-400 border border-blue-200 dark:border-cyan-500/20 hover:bg-blue-600 hover:text-white dark:hover:bg-cyan-500 dark:hover:text-slate-950 text-xs font-bold transition-all"
+                      className="px-4 py-1.5 rounded-xl bg-lime-50 dark:bg-lime-500/10 text-lime-600 dark:text-lime-400 border border-lime-200 dark:border-lime-500/20 hover:bg-lime-400 hover:text-[#022620] dark:hover:bg-lime-400 dark:hover:text-slate-950 text-xs font-bold transition-all"
                     >
                       Clear Search
                     </button>
@@ -164,7 +164,7 @@ export default function EnquiryManagement({
                 {filteredEnquiries.map((enquiry) => (
                   <tr key={enquiry._id} className="hover:bg-slate-50/70 dark:hover:bg-slate-950/40 transition-colors">
                     <td className="p-3.5 text-slate-900 dark:text-white font-bold">{enquiry.fullName}</td>
-                    <td className="p-3.5 text-blue-600 dark:text-cyan-400 font-mono">{enquiry.phone}</td>
+                    <td className="p-3.5 text-lime-600 dark:text-lime-400 font-mono">{enquiry.phone}</td>
                     <td className="p-3.5 text-slate-600 dark:text-slate-300">{enquiry.email}</td>
                     <td className="p-3.5 text-slate-800 dark:text-slate-200 font-medium">{enquiry.course}</td>
                     <td className="p-3.5 text-slate-500 dark:text-slate-400 text-[11px]">
@@ -187,7 +187,7 @@ export default function EnquiryManagement({
                     <td className="p-3.5 text-right space-x-2">
                       <button
                         onClick={() => setSelectedEnquiry(enquiry)}
-                        className="p-1.5 rounded-lg bg-blue-50 dark:bg-blue-600/20 text-blue-600 dark:text-cyan-300 hover:bg-blue-600 hover:text-white transition-colors"
+                        className="p-1.5 rounded-lg bg-lime-50 dark:bg-lime-500/20 text-lime-600 dark:text-lime-300 hover:bg-lime-400 hover:text-[#022620] transition-colors"
                         title="View Full Details"
                       >
                         <Eye className="w-3.5 h-3.5" />
@@ -210,8 +210,8 @@ export default function EnquiryManagement({
 
       {/* View Detail Modal */}
       {selectedEnquiry && (
-        <div className="fixed inset-0 z-50 flex items-center justify-center p-4 bg-slate-950/80 backdrop-blur-md animate-fadeIn">
-          <div className="relative w-full max-w-md bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-800 rounded-3xl p-6 shadow-2xl overflow-hidden transition-colors">
+        <div className="fixed inset-0 z-50 flex items-center justify-center p-3 xs:p-4 bg-slate-950/80 backdrop-blur-md animate-fadeIn">
+          <div className="relative w-full max-w-md bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-800 rounded-2xl sm:rounded-3xl p-5 sm:p-6 shadow-2xl overflow-hidden transition-colors max-h-[90vh] overflow-y-auto">
             <button
               onClick={() => setSelectedEnquiry(null)}
               className="absolute top-5 right-5 p-2 rounded-full bg-slate-100 dark:bg-slate-800 text-slate-500 dark:text-slate-400 hover:text-slate-900 dark:hover:text-white transition-colors"
@@ -220,7 +220,7 @@ export default function EnquiryManagement({
             </button>
 
             <div className="flex items-center gap-3 mb-4">
-              <div className="w-10 h-10 rounded-xl bg-blue-100 dark:bg-blue-600/20 text-blue-600 dark:text-cyan-400 flex items-center justify-center font-bold">
+              <div className="w-10 h-10 rounded-xl bg-lime-100 dark:bg-lime-500/20 text-lime-600 dark:text-lime-400 flex items-center justify-center font-bold">
                 {selectedEnquiry.fullName.charAt(0)}
               </div>
               <div>
@@ -238,11 +238,11 @@ export default function EnquiryManagement({
             <div className="space-y-3 text-xs mb-6">
               <div className="p-3 rounded-xl bg-slate-50 dark:bg-slate-950 border border-slate-200 dark:border-slate-800 space-y-2">
                 <div className="flex items-center gap-2 text-slate-700 dark:text-slate-300">
-                  <Phone className="w-4 h-4 text-blue-600 dark:text-cyan-400 shrink-0" />
+                  <Phone className="w-4 h-4 text-lime-600 dark:text-lime-400 shrink-0" />
                   <span className="font-mono font-bold text-slate-900 dark:text-white">{selectedEnquiry.phone}</span>
                 </div>
                 <div className="flex items-center gap-2 text-slate-700 dark:text-slate-300">
-                  <Mail className="w-4 h-4 text-blue-600 dark:text-blue-400 shrink-0" />
+                  <Mail className="w-4 h-4 text-lime-600 dark:text-lime-400 shrink-0" />
                   <span>{selectedEnquiry.email}</span>
                 </div>
               </div>
@@ -276,7 +276,7 @@ export default function EnquiryManagement({
                   await onUpdateStatus(selectedEnquiry._id, newStatus);
                   setSelectedEnquiry({ ...selectedEnquiry, status: newStatus });
                 }}
-                className="bg-slate-50 dark:bg-slate-950 border border-slate-200 dark:border-slate-800 rounded-xl px-3 py-2 text-xs text-slate-900 dark:text-white focus:outline-none focus:border-blue-500 dark:focus:border-cyan-500"
+                className="bg-slate-50 dark:bg-slate-950 border border-slate-200 dark:border-slate-800 rounded-xl px-3 py-2 text-xs text-slate-900 dark:text-white focus:outline-none focus:border-lime-500 dark:focus:border-lime-400"
               >
                 <option value="pending">Set Pending</option>
                 <option value="contacted">Set Contacted</option>

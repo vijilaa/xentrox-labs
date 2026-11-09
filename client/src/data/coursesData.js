@@ -349,51 +349,51 @@ export const courseCategories = [
 export const fallbackBlogs = [
   {
     id: "blog-1",
-    title: "Mastering React 19 & MERN Stack: Building Scalable Production Architectures",
+    title: "Building Production-Ready MERN Applications",
     slug: "mastering-react-19-mern-stack-scalable-architectures",
     category: "MERN Stack",
     image: "https://images.unsplash.com/photo-1633356122544-f134324a6cee?w=800&auto=format&fit=crop&q=80",
-    readTime: "5 min read",
+    readTime: "4 min read",
     author: "Sherin Singh S R",
     date: "October 2026",
-    excerpt: "Learn how modern full-stack teams build real-time web applications with React 19 Server Components, Express APIs, and scalable MongoDB database indexing.",
-    content: "The software landscape has shifted from basic CRUD tutorials to performance-first engineering. Developers mastering state machines, server actions, asynchronous event streaming with WebSockets, and clean architectural separation are in massive demand across tech companies."
+    excerpt: "Key architecture patterns for clean REST APIs, secure authentication, and database indexing.",
+    content: "Moving from tutorial apps to production requires thinking about error handling, secure authentication, and scalable database queries. Here are the core patterns we use in commercial client projects to keep full-stack applications reliable and maintainable."
   },
   {
     id: "blog-2",
-    title: "Why Full-Stack Developers with AI Fluency Are Dominating Tech Hiring in 2026",
+    title: "Using AI Tools Effectively in Everyday Coding",
     slug: "full-stack-developers-ai-fluency-2026",
     category: "Software Development",
     image: "https://images.unsplash.com/photo-1677442136019-21780ecad995?w=800&auto=format&fit=crop&q=80",
-    readTime: "5 min read",
+    readTime: "4 min read",
     author: "Subin S",
     date: "October 2026",
-    excerpt: "Discover why engineering leaders seek developers who orchestrate AI agents, manage microservices, and write reliable code with modern generative toolchains.",
-    content: "Software engineering in 2026 demands more than memorizing syntax. Engineering leads seek engineers who understand system design, error boundaries, LLM API integration, and production testing workflows."
+    excerpt: "How practicing engineers use modern tools for debugging, testing, and faster delivery.",
+    content: "AI assistants are changing how developers work, but fundamentals still matter most. Here is how our team uses code assistants for writing tests, debugging errors, and understanding legacy code without losing control of system design."
   },
   {
     id: "blog-3",
-    title: "Data-Driven SEO & Meta Ad Funnels: Converting Visitors into High-Ticket Clients",
+    title: "Running Effective Meta Ad Campaigns in 2026",
     slug: "data-driven-seo-meta-ad-funnels-conversions",
     category: "Digital Marketing",
     image: "https://images.unsplash.com/photo-1460925895917-afdab827c52f?w=800&auto=format&fit=crop&q=80",
     readTime: "4 min read",
     author: "Shahaban B",
     date: "September 2026",
-    excerpt: "A data-backed breakdown from XentroX Solutions client campaigns showing how technical speed, schema markup, and geographic intent compound organic sales.",
-    content: "When analyzing search results across Tier 1 and Tier 2 hubs, the correlation between lightning-fast mobile performance and high-ticket customer calls has never been tighter. Modern marketers must pair creative copywriting with deep analytics."
+    excerpt: "Practical lessons on audience targeting, budget allocation, and creative testing.",
+    content: "Running successful digital ad campaigns requires more than just boosting posts. Learn how we structure campaign budgets, test creatives, track conversions, and refine landing pages based on user behavior and analytics."
   },
   {
     id: "blog-4",
-    title: "From Student to Junior Engineer: Building a High-Impact GitHub Portfolio",
+    title: "How to Build a Developer Portfolio That Gets Hired",
     slug: "student-to-junior-engineer-github-portfolio",
     category: "Career Assistance",
     image: "https://images.unsplash.com/photo-1517694712202-14dd9538aa97?w=800&auto=format&fit=crop&q=80",
-    readTime: "6 min read",
+    readTime: "5 min read",
     author: "Dr. S. Priya Vasanth",
     date: "September 2026",
-    excerpt: "Stop pushing generic to-do lists to GitHub. Here is our 5-point blueprint for engineering real-world projects that catch senior engineering managers' attention.",
-    content: "Hiring managers review hundreds of candidate profiles every week. What separates an immediate interview invite from a rejection pile is evidence of real deployment, database schema reasoning, and error boundary handling in production environments."
+    excerpt: "What hiring managers actually look for in real projects, git history, and code reviews.",
+    content: "Hiring managers review hundreds of portfolios each week. What stands out is not a long list of tutorial clones, but clear documentation, clean commit history, and code deployed in real environments. Focus on 2-3 solid projects that solve actual problems, explain your design choices, and show how you handle errors."
   }
 ];
 

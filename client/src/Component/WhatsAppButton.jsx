@@ -11,7 +11,7 @@ export default function WhatsAppButton() {
   )}`;
 
   return (
-    <div className="fixed bottom-5 right-5 sm:bottom-6 sm:right-6 z-40 flex items-center group">
+    <div className="fixed bottom-18 right-3 xs:right-4 sm:bottom-22 sm:right-6 z-40 flex items-center group">
       {/* Tooltip */}
       <div className="mr-3 px-3 py-1.5 text-xs font-bold text-slate-800 bg-white border border-slate-200 rounded-xl shadow-xl opacity-0 group-hover:opacity-100 transition-opacity duration-300 pointer-events-none whitespace-nowrap hidden sm:flex items-center gap-1.5 backdrop-blur-md">
         <span className="w-2 h-2 rounded-full bg-[#25D366] animate-pulse" />
@@ -24,7 +24,7 @@ export default function WhatsAppButton() {
         target="_blank"
         rel="noopener noreferrer"
         aria-label="Chat on WhatsApp with XentroX Labs admissions counselor"
-        className="relative flex items-center justify-center w-12 h-12 sm:w-14 sm:h-14 rounded-full bg-[#25D366] text-white shadow-2xl hover:bg-[#20ba59] transition-all duration-300 hover:scale-110 active:scale-95 focus:outline-none focus:ring-4 focus:ring-[#25D366]/40 cursor-pointer"
+        className="relative flex items-center justify-center w-11 h-11 sm:w-14 sm:h-14 rounded-full bg-[#25D366] text-white shadow-2xl hover:bg-[#20ba59] transition-all duration-300 hover:scale-110 active:scale-95 focus:outline-none focus:ring-4 focus:ring-[#25D366]/40 cursor-pointer"
         title="Chat on WhatsApp"
       >
         {/* Subtle Ambient Pulse Ring */}
@@ -32,7 +32,7 @@ export default function WhatsAppButton() {
 
         {/* Official WhatsApp Logo SVG */}
         <svg
-          className="w-7 h-7 sm:w-8 sm:h-8 fill-white relative z-10 drop-shadow-sm"
+          className="w-6 h-6 sm:w-8 sm:h-8 fill-white relative z-10 drop-shadow-sm"
           viewBox="0 0 24 24"
           xmlns="http://www.w3.org/2000/svg"
           aria-hidden="true"

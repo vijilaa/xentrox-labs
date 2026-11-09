@@ -18,6 +18,7 @@ const courseRoutes = require('./routes/courseRoutes');
 const portfolioRoutes = require('./routes/portfolioRoutes');
 const blogRoutes = require('./routes/blogRoutes');
 const enquiryRoutes = require('./routes/enquiryRoutes');
+const chatbotRoutes = require('./routes/chatbotRoutes');
 
 const app = express();
 
@@ -64,8 +65,8 @@ const corsOptions = {
 
 app.use(cors(corsOptions));
 
-app.use(express.json());
-app.use(express.urlencoded({ extended: true }));
+app.use(express.json({ limit: '25mb' }));
+app.use(express.urlencoded({ extended: true, limit: '25mb' }));
 
 // Health Check API - root, /health, /api, and /api/health
 const sendHealthCheck = (req, res) => {
@@ -125,6 +126,10 @@ const ensureDatabaseConnected = async (req, res, next) => {
     diagnostic: dbInfo.diagnostic || 'Please verify MongoDB Atlas Network Access and Vercel Environment Variables.'
   });
 };
+
+// Chatbot Knowledge Base & User Question Logging routes (operates directly on JSON files)
+app.use('/api/chatbot', chatbotRoutes);
+app.use('/chatbot', chatbotRoutes);
 
 // Protect all API data routes with the database connection middleware
 app.use('/api', ensureDatabaseConnected);
